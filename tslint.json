@@ -1,0 +1,24 @@
+{
+  "defaultSeverity": "warning",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "linterOptions": {
+    "exclude": [
+      "node_modules/**"
+    ]
+  },
+  "rules": {
+    "quotemark": [true, "single"],
+    "indent": [true, "spaces", 2],
+    "interface-name": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-consecutive-blank-lines": false,
+    "no-var-requires": false,// 可以使用require
+    "no-shadowed-variable": false,// 可以使用state变量名
+    "no-console": false, // 不能使用console
+    "only-arrow-functions": false, // 允许非箭头函数
+    "max-line-length": false // 允许超过120个字的注释存在
+  }
+}
