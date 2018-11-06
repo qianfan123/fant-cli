@@ -37,17 +37,13 @@ export default class ApiClient {
 
     instance.interceptors.request.use(function(config) {
       let traceId;
-      // @ts-ignore
       if (store.state.user) {
-        // @ts-ignore
             traceId = store.state.user.id + '_' + new Date().getTime();
       } else {
         traceId = ObjectUtil.uuid();
       }
       config.headers.trace_id = traceId;
-      // @ts-ignore
       if (config.url && store.state.user) {
-        // @ts-ignore
             config.url = config.url.replace('{merchant}', store.state.user.merchant);
       } else {
         const user = JSON.parse(sessionStorage.getItem('user')!);

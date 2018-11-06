@@ -5,7 +5,12 @@
   ],
   "linterOptions": {
     "exclude": [
-      "node_modules/**"
+      "node_modules/**",
+      "src/util/**",
+      "src/locale/**",
+      "src/store/*.js",
+      "src/mgr/*.js",
+      "src/cmd/*.js"
     ]
   },
   "rules": {

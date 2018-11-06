@@ -31,6 +31,7 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
     {{5000 | fmt}}
+    <div>{{$t('m.el.ui')}}</div>
   </div>
 </template>
 
