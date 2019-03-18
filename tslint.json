@@ -17,13 +17,39 @@
     "quotemark": [true, "single"],
     "indent": [true, "spaces", 2],
     "interface-name": false,
+    "eofline": false,
     "ordered-imports": false,
     "object-literal-sort-keys": false,
+    "max-classes-per-file": [true],
+    "no-namespace":["allow-declarations"],
     "no-consecutive-blank-lines": false,
     "no-var-requires": false,// 可以使用require
     "no-shadowed-variable": false,// 可以使用state变量名
     "no-console": false, // 不能使用console
     "only-arrow-functions": false, // 允许非箭头函数
-    "max-line-length": false // 允许超过120个字的注释存在
+    "max-line-length": false, // 允许超过120个字的注释存在
+    "semicolon": [
+      false,
+      "always",
+      "ignore-interfaces"
+    ],
+    "member-access": false,
+    "comma-dangle": ["error", "never"],
+    "prefer-const": false,
+    "trailing-comma": [// 结尾逗号可以可无配置
+      true,
+      {
+        "multiline": {
+          "objects": "ignore",
+          "arrays": "ignore",
+          "functions": "ignore",
+          "typeLiterals": "ignore"
+        },
+        "esSpecCompliant": true
+      }
+    ],
+    "no-unused-expression": false,
+    "object-literal-shorthand": false,
+    "no-string-literal": false
   }
 }
