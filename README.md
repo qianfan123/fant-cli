@@ -34,3 +34,10 @@ npm run test:e2e
 ```
 npm run test:unit
 ```
+
+### Run your example
+```
+* example/auth  标准登录模板
+* example/main  标准主框架模板
+* example/test  标准列表、新建、编辑、详情模板
+```

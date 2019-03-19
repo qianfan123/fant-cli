@@ -1,7 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './pages/Home.vue';
-
+import Login from 'example/auth/Login.vue';
+import Main from 'example/main/Main.vue'
+import TestList from 'example/test/TestList.vue'
+import TestAdd from 'example/test/TestAdd.vue'
+import TestDtl from 'example/test/TestDtl.vue'
 Vue.use(Router);
 
 export default new Router({
@@ -9,17 +12,31 @@ export default new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home,
+      path: '/login',
+      name: 'login',
+      component: Login,
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './pages/About.vue'),
-    },
+      path: '/main',
+      name: 'main',
+      component: Main,
+      children: [
+        {
+          path: 'testList',
+          name: 'testList',
+          component: TestList,
+        },
+        {
+          path: 'testAdd',
+          name: 'testAdd',
+          component: TestAdd,
+        },
+        {
+          path: 'testDtl',
+          name: 'testDtl',
+          component: TestDtl,
+        }
+      ]
+    }
   ],
 });
