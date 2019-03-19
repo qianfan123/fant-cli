@@ -22,17 +22,17 @@ export default new Router({
       component: Main,
       children: [
         {
-          path: 'testList',
+          path: '/testList',
           name: 'testList',
           component: TestList,
         },
         {
-          path: 'testAdd',
+          path: '/testAdd',
           name: 'testAdd',
           component: TestAdd,
         },
         {
-          path: 'testDtl',
+          path: '/testDtl',
           name: 'testDtl',
           component: TestDtl,
         }

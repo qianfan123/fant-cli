@@ -6,7 +6,7 @@ declare module '*.vue' {
   export default Vue;
 }
 // 定义空值
-declare type Nullable<T> = T | undefined;
+declare type Nullable<T> = T | null | undefined;
 // ts识别js
 declare module 'store/StoragePlugin.js';
 declare module 'util/ObjectUtil.js';
