@@ -40,7 +40,6 @@ function copyFile(srcPath, tarPath, cb) {
             })
         }
     })
-
     rs.pipe(ws);
 }
 
