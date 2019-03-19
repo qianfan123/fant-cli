@@ -3,13 +3,13 @@ import App from './App.vue'
 import router from './router'
 import './assets/iconfont/iconfont.css'
 import './registerServiceWorker'
-import fant3 from 'fant3'
+import Fant from 'fant3'
 
 import Filter from './cmd/Filter.js'
 
 import i18n from './locale/Locale.js'
 
-Vue.use(fant3)
+Vue.use(Fant)
 Vue.config.productionTip = false
 Filter.init()
 new Vue({
