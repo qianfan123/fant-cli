@@ -1,6 +1,9 @@
 <template>
+    <!--顶层含面包屑wrapper-->
     <page-body :panelArray="panelArray">
+        <!--内层含滚动条wrapper-->
         <list-container>
+            <!--搜索栏-->
             <template slot="query">
                 <query-condition @search="onSearch" @reset="onReset">
                     <el-row>
@@ -62,6 +65,7 @@
                     </template>
                 </query-condition>
             </template>
+            <!--操作栏-->
             <template slot="toolbar">
                 <el-button size="small" type="primary" @click="doAdd">新建按钮</el-button>
                 <el-button size="small" type="success">成功按钮</el-button>
@@ -70,6 +74,7 @@
                 <el-button size="small" type="danger">危险按钮</el-button>
                 <el-button size="small" type="info" disabled="true">禁用按钮</el-button>
             </template>
+            <!--列表栏-->
             <template slot="list">
                 <el-table
                         :data="tableData"
@@ -94,6 +99,7 @@
                     </el-table-column>
                 </el-table>
             </template>
+            <!--分页栏-->
             <template slot="page">
                 <el-pagination
                         background
