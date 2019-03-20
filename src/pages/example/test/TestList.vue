@@ -63,7 +63,7 @@
                 </query-condition>
             </template>
             <template slot="toolbar">
-                <el-button size="small" type="primary">主要按钮</el-button>
+                <el-button size="small" type="primary" @click="doAdd">新建按钮</el-button>
                 <el-button size="small" type="success">成功按钮</el-button>
                 <el-button size="small" type="info">信息按钮</el-button>
                 <el-button size="small" type="warning">警告按钮</el-button>
