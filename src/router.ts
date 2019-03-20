@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Login from 'example/auth/Login.vue';
-import Main from 'example/main/Main.vue'
-import TestList from 'example/test/TestList.vue'
-import TestAdd from 'example/test/TestAdd.vue'
-import TestDtl from 'example/test/TestDtl.vue'
+import Login from 'pages/example/auth/Login.vue';
+import Main from 'pages/example/main/Main.vue'
+import TestList from 'pages/example/test/TestList.vue'
+import TestAdd from 'pages/example/test/TestAdd.vue'
+import TestDtl from 'pages/example/test/TestDtl.vue'
 Vue.use(Router);
 
 export default new Router({
