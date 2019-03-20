@@ -41,3 +41,7 @@ npm run test:unit
 * example/main  标准主框架模板
 * example/test  标准列表、新建、编辑、详情模板
 ```
+### See your example
+```
+* http://localhost:8080/example.html#/login
+```
