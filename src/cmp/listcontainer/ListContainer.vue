@@ -13,6 +13,7 @@
     <div class="page" v-if="$slots.page">
       <slot name="page"></slot>
     </div>
+    <footer>copyright© 2019 海鼎研发部出品</footer>
   </div>
 </template>
 
@@ -20,7 +21,10 @@
 
 <style lang='scss' scoped>
   .list-container {
-    overflow: hidden;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: auto;
     margin: 10px 10px;
     padding: 10px 10px;
     background-color: white;
@@ -47,6 +51,12 @@
           font-weight: normal;
         }
       }
+    }
+    footer {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.45);
+      padding: 32px 0;
+      text-align: center;
     }
   }
 </style>

@@ -21,6 +21,7 @@
 
 <style lang='scss'>
 .sub-header-view{
+    height: 54px;
     background: white;
     .panel{
         background: white;

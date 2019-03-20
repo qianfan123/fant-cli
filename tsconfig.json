@@ -11,6 +11,7 @@
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": true,
     "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
     "allowJs": true,
     "sourceMap": true,
     "baseUrl": ".",

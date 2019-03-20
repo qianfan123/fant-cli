@@ -1,29 +1,91 @@
 <template>
-    <page-body>
-        <sub-header title="项目列表" :panelArray="panelArray"></sub-header>
+    <page-body :panelArray="panelArray">
         <list-container>
             <template slot="query">
-                <el-form :inline="true" :model="formInline" class="demo-form-inline">
-                    <el-form-item label="审批人">
-                        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
-                    </el-form-item>
-                    <el-form-item label="活动区域">
-                        <el-select v-model="formInline.region" placeholder="活动区域">
-                            <el-option label="区域一" value="shanghai"></el-option>
-                            <el-option label="区域二" value="beijing"></el-option>
-                        </el-select>
-                    </el-form-item>
-                    <el-form-item>
-                        <el-button type="primary" @click="onSubmit">查询</el-button>
-                    </el-form-item>
-                </el-form>
+                <query-condition>
+                    <el-row>
+                        <el-col :span="16">
+                            <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                                <el-form-item label="审批人1">
+                                    <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                                </el-form-item>
+                            </el-form>
+                        </el-col>
+                    </el-row>
+                    <template slot="opened">
+                        <el-row>
+                            <el-col :span="8">
+                                <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                                    <el-form-item label="审批人1">
+                                        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                                    </el-form-item>
+                                </el-form>
+                            </el-col>
+                            <el-col :span="8">
+                                <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                                    <el-form-item label="审批人2">
+                                        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                                    </el-form-item>
+                                </el-form>
+                            </el-col>
+                            <el-col :span="8">
+                                <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                                    <el-form-item label="审批人3">
+                                        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                                    </el-form-item>
+                                </el-form>
+                            </el-col>
+                        </el-row>
+                        <el-row>
+                            <el-col :span="8">
+                                <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                                    <el-form-item label="审批人4">
+                                        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                                    </el-form-item>
+                                </el-form>
+                            </el-col>
+                            <el-col :span="8">
+                                <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                                    <el-form-item label="审批人5">
+                                        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                                    </el-form-item>
+                                </el-form>
+                            </el-col>
+                            <el-col :span="8">
+                                <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                                    <el-form-item label="审批人6">
+                                        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                                    </el-form-item>
+                                </el-form>
+                            </el-col>
+                        </el-row>
+                    </template>
+                    <template slot="openedQuery">
+                        <qf-row>
+                            <el-col :span="12">
+                                <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                                    <el-form-item label="审批人4">
+                                        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                                    </el-form-item>
+                                </el-form>
+                            </el-col>
+                            <el-col :span="12">
+                                <el-form :inline="true" :model="formInline" class="demo-form-inline">
+                                    <el-form-item label="审批人4">
+                                        <el-input v-model="formInline.user" placeholder="审批人"></el-input>
+                                    </el-form-item>
+                                </el-form>
+                            </el-col>
+                        </qf-row>
+                    </template>
+                </query-condition>
             </template>
             <template slot="toolbar">
-                <el-button type="primary">主要按钮</el-button>
-                <el-button type="success">成功按钮</el-button>
-                <el-button type="info">信息按钮</el-button>
-                <el-button type="warning">警告按钮</el-button>
-                <el-button type="danger">危险按钮</el-button>
+                <el-button size="small" type="primary">主要按钮</el-button>
+                <el-button size="small" type="success">成功按钮</el-button>
+                <el-button size="small" type="info">信息按钮</el-button>
+                <el-button size="small" type="warning">警告按钮</el-button>
+                <el-button size="small" type="danger">危险按钮</el-button>
             </template>
             <template slot="list">
                 <el-table
@@ -31,6 +93,15 @@
                         border
                         style="width: 100%">
                     <el-table-column
+                            type="index"
+                            width="60">
+                    </el-table-column>
+                    <el-table-column
+                            type="selection"
+                            width="60">
+                    </el-table-column>
+                    <el-table-column
+                            sortable
                             prop="date"
                             label="日期"
                             width="180">

@@ -6,13 +6,11 @@ import {Vue, Component, Prop} from 'vue-property-decorator';
 })
 export default class SubHeader extends Vue {
     @Prop()
-    public panelArray: any;
+    panelArray: any
     @Prop()
-    public title: string | undefined;
-    @Prop()
-    public proLogo: string | undefined
-    public bindPanel = '';
-    public created() {
+    proLogo: string
+    bindPanel = ''
+    created() {
         if (!this.panelArray) {
             return;
         }

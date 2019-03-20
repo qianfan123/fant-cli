@@ -37,7 +37,7 @@
                     </el-dropdown-menu>
                 </el-dropdown>
             </el-header>
-            <el-main>
+            <el-main class="replace-view">
                 <router-view/>
             </el-main>
         </el-container>
@@ -104,6 +104,10 @@
             /deep/ .el-card {
                 margin: 16px;
             }
+        }
+        .replace-view{
+            display: flex;
+            flex-direction: column
         }
     }
 </style>
