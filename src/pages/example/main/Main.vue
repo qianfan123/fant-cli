@@ -1,32 +1,55 @@
 <template>
     <el-container class="main">
-        <el-menu :collapse="isCollapse">
-            <el-header><span>产品发布管理系统</span></el-header>
-            <router-link to="/projectList">
-                <el-menu-item index="1">
-                    <i class="el-icon-location"/>
-                    <span slot="title">项目管理</span>
-                </el-menu-item>
-            </router-link>
-            <router-link to="/productList">
-                <el-menu-item index="2">
-                    <i class="el-icon-menu"/>
-                    <span slot="title">产品管理</span>
-                </el-menu-item>
-            </router-link>
-            <router-link to="/taskList">
-                <el-menu-item index="3">
-                    <i class="el-icon-message"/>
-                    <span slot="title">升级任务管理</span>
-                </el-menu-item>
-            </router-link>
-            <router-link to="/versionList">
-                <el-menu-item index="4">
-                    <i class="el-icon-setting"/>
-                    <span slot="title">版本管理</span>
-                </el-menu-item>
-            </router-link>
-        </el-menu>
+        <div class="nav-wrapper" v-show="!isCollapse">
+            <div class="nav-title">测试管理系统</div>
+            <el-menu :default-openeds="['1', '3']" class="menu-width">
+                <el-submenu index="1">
+                    <template slot="title"><i class="el-icon-message"></i>导航一</template>
+                    <el-menu-item-group class="nav-li-group">
+                        <template slot="title">分组一</template>
+                        <el-menu-item index="1-1">选项1</el-menu-item>
+                        <el-menu-item index="1-2">选项2</el-menu-item>
+                    </el-menu-item-group>
+                    <el-menu-item-group title="分组2" class="nav-li-group">
+                        <el-menu-item index="1-3">选项3</el-menu-item>
+                    </el-menu-item-group>
+                    <el-submenu index="1-4">
+                        <template slot="title">选项4</template>
+                        <el-menu-item index="1-4-1">选项4-1</el-menu-item>
+                    </el-submenu>
+                </el-submenu>
+                <el-submenu index="2">
+                    <template slot="title"><i class="el-icon-menu"></i>导航二</template>
+                    <el-menu-item-group class="nav-li-group">
+                        <template slot="title">分组一</template>
+                        <el-menu-item index="2-1">选项1</el-menu-item>
+                        <el-menu-item index="2-2">选项2</el-menu-item>
+                    </el-menu-item-group>
+                    <el-menu-item-group title="分组2" class="nav-li-group">
+                        <el-menu-item index="2-3">选项3</el-menu-item>
+                    </el-menu-item-group>
+                    <el-submenu index="2-4">
+                        <template slot="title">选项4</template>
+                        <el-menu-item index="2-4-1">选项4-1</el-menu-item>
+                    </el-submenu>
+                </el-submenu>
+                <el-submenu index="3">
+                    <template slot="title"><i class="el-icon-setting"></i>导航三</template>
+                    <el-menu-item-group class="nav-li-group">
+                        <template slot="title">分组一</template>
+                        <el-menu-item index="3-1">选项1</el-menu-item>
+                        <el-menu-item index="3-2">选项2</el-menu-item>
+                    </el-menu-item-group>
+                    <el-menu-item-group title="分组2" class="nav-li-group">
+                        <el-menu-item index="3-3">选项3</el-menu-item>
+                    </el-menu-item-group>
+                    <el-submenu index="3-4">
+                        <template slot="title">选项4</template>
+                        <el-menu-item index="3-4-1">选项4-1</el-menu-item>
+                    </el-submenu>
+                </el-submenu>
+            </el-menu>
+        </div>
         <el-container>
             <el-header class="navbar">
                 <i class="collapse-btn iconfont" :class="{'icon-ic_menufold':isCollapse,'icon-ic_menuunfold':!isCollapse}" @click="onCollapse"/>
@@ -45,37 +68,45 @@
 </template>
 <script lang="ts" src="./Main.ts"></script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .main {
         height: 100%;
-        /*侧边栏*/
-        .el-menu {
+        .nav-wrapper{
+            width: 200px;
             background-color: #1E2337;
-            .el-header {
-                height: 60px;
-                background: #20A0FF;
-                line-height: 60px;
-                text-align: center;
-                color: #FFF;
-                overflow: hidden;
-                white-space: nowrap;
-                text-overflow: ellipsis;
+            overflow: auto
+        }
+        /*侧边栏*/
+        .el-submenu .el-menu-item{
+            color: white;
+        }
+        .el-menu-item:hover, .el-menu-item:focus{
+            background-color: #354052;
+        }
+        .el-submenu__title:hover{
+            background-color: #354052;
+        }
+        .el-submenu__title{
+            color: white;
+        }
+        .el-menu {
+            border: none;
+            background-color: inherit;
+            color: white;
+            .nav-li-name{
+                color: white;
             }
-            a {
-                text-decoration: none;
-                color: #FFF;
-            }
-            .el-menu-item {
-                color: #FFF;
-            }
-            .el-menu-item:hover, .el-menu-item:focus {
-                background-color: #354052;
-            }
-            .el-menu-item.is-active {
-                background-color: #354052;
+            .nav-li-group{
+                background-color: rgb(30, 35, 55);
+                color: white
             }
         }
-
+        .nav-title{
+            height: 56px;
+            text-align: center;
+            line-height: 56px;
+            color: white;
+        }
         /* 头部导航*/
         .navbar {
             background-color: #FFF;
@@ -96,18 +127,6 @@
                 padding-left: 47px;
                 cursor: pointer;
             }
-        }
-
-        /* 内容*/
-        .el-main {
-            padding: 0;
-            /deep/ .el-card {
-                margin: 16px;
-            }
-        }
-        .replace-view{
-            display: flex;
-            flex-direction: column
         }
     }
 </style>
