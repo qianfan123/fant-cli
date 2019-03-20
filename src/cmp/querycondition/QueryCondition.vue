@@ -48,5 +48,8 @@
     .closed-action {
       padding-left: 12px;
     }
+    .opened-action{
+      float: right;
+    }
   }
 </style>

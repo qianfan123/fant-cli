@@ -1,0 +1,18 @@
+// table
+.el-table {
+  font-size: 14px;
+}
+
+.el-table th {
+  background-color: #FAFAFA;
+  border-bottom: none;
+}
+
+.el-table th, .el-table td {
+  padding: 0;
+  height: 36px;
+}
+
+.el-table .cell {
+  @include ellipsis()
+}

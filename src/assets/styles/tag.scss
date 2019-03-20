@@ -1,0 +1,13 @@
+// 标签
+.el-tag {
+  background-color: transparent;
+  border: none;
+}
+
+.el-tag:before {
+  width: 20px;
+  height: 20px;
+  display: block;
+  border-radius: 6px;
+  background-color: #53a8ff;
+}

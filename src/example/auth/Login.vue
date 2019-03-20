@@ -60,6 +60,7 @@
             padding-left: 35px;
         }
         .login-form {
+            display: flex;
             width: 1138px;
             height: 711px;
             .login-left {

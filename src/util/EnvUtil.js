@@ -1,15 +1,15 @@
 export default class EnvUtil {
   static getServiceUrl () {
     if (EnvUtil.isDev() || EnvUtil.isTest()) {
-      return 'https://api-alphamo-test.qianfan123.com:8302/alphamo'
+      return 'http://api-vcs-test.qianfan123.com:8028/'
     } else if (EnvUtil.isJdBranch()) {
-      return 'http://api-alphamo-branch-jd.qianfan123.com:8001/alphamo'
+      return 'http://api-vcs-branch.qianfan123.com:8028/'
     } else if (EnvUtil.isBranch()) {
-      return 'https://api-alphamo-branch.qianfan123.com:8306/alphamo'
+      return 'http://api-vcs-branch.qianfan123.com:8028/'
     } else if (EnvUtil.isUat()) {
-      return 'https://api-alphamo-uat.qianfan123.com:8308/alphamo'
+      return 'http://api-vcs-uat.qianfan123.com:8028/'
     } else {
-      return 'https://api-alphamo.qianfan123.com/alphamo'
+      return 'http://api-vcs-test.qianfan123.com:8028/'
     }
   }
 

@@ -1,0 +1,44 @@
+// 按钮
+.el-button--default {
+  &:hover, &:focus {
+    background: rgba(240, 242, 245, 1);
+    border-radius: 4px;
+    border: 1px solid rgba(206, 208, 218, 1);
+    color: #354052;
+  }
+}
+
+.el-button--primary {
+  background-color: #20A0FF;
+  &:hover, &:focus {
+    background-color: #2F96EA;
+  }
+  &[disabled] {
+    background-color: rgba(32, 160, 255, 0.4);
+    border-color: rgba(32, 160, 255, 0.4);
+  }
+}
+
+.el-button--small {
+  font-size: 14px;
+  line-height: 20px;
+  padding: 6px 20px;
+}
+
+.el-button--medium {
+  font-size: 16px;
+  line-height: 22px;
+  padding: 7px 18px;
+}
+
+.el-button[dashed] {
+  border: 1px dashed #ccc;
+}
+
+.el-button--text {
+  padding: 0;
+  color: #20A0FF;
+  &:hover, &:focus {
+    color: #2F96EA;
+  }
+}

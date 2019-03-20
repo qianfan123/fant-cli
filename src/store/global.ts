@@ -1,5 +1,5 @@
 import { Commit, ActionTree } from 'vuex';
-import User from 'model/User';
+import User from 'model/user/User.ts';
 // state
 export interface State {
   user: Nullable<User>; // 当前用户

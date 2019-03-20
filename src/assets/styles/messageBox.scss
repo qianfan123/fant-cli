@@ -1,0 +1,12 @@
+// MessageBox 弹框
+.el-message-box {
+  width: 480px;
+  .el-message-box__title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+  }
+  .el-message-box__content {
+    height: 114px;
+  }
+}

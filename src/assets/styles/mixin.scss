@@ -1,0 +1,18 @@
+// 添加省略号
+@mixin ellipsis() {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@mixin textIcon() {
+  display: inline-block;
+  text-align: center;
+  font-size: 12px;
+  padding: 0 2px;
+  color: #fff;
+  height: 15px;
+  line-height: 15px;
+  border-radius: 2px;
+  min-width: 15px;
+}

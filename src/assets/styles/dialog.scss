@@ -1,0 +1,23 @@
+// 对话框
+.el-dialog {
+  width: 920px;
+  .el-dialog__header {
+    height: 48px;
+    line-height: 48px;
+    padding: 0 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #eceaea;
+  }
+  .el-dialog__body {
+    height: 580px;
+    padding: 0 20px;
+  }
+  .el-dialog__footer {
+    height: 57px;
+  }
+}
+
+.el-dialog__wrapper {
+  overflow: hidden !important;
+}
