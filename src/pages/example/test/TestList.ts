@@ -115,11 +115,12 @@ export default class TestList extends Vue {
      *************************************************【点击事件定义start】***********************************************
      ******************************************************************************************************************/
     /**
-     * 升级
+     * 编辑
      * @param row
      */
-    doUpGrade(row: any) {
-        alert('升级')
+    doEdit(row: any) {
+        console.dir(row)
+        this.$router.push({name: 'testAdd', query: {id: row.id}})
     }
 
     /**
@@ -127,6 +128,7 @@ export default class TestList extends Vue {
      * @param row
      */
     doDelete(row: any) {
+        console.dir(row)
         alert('删除')
     }
 
@@ -135,7 +137,8 @@ export default class TestList extends Vue {
      * @param row
      */
     doGoDtl(row: any) {
-        this.$router.push({ name: 'testDtl', query: { id: row.id } })
+        console.dir(row)
+        this.$router.push('testDtl', row.id)
     }
 
     /**
