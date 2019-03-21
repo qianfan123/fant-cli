@@ -76,9 +76,9 @@ export default class TestDtl extends Vue {
         this.project = resp.data
         this.tableData1 = resp.data.lines
       }
-    }).catch((error) => {
+    }).catch((e) => {
       loading.close()
-      this.$message.error(error.message)
+      this.$message.error(e.message)
     })
   }
 }

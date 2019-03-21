@@ -1,5 +1,5 @@
 <template>
-  <page-body :panelArray="panelArray">
+  <page-body :panelArray="panelArray" v-if="project">
     <div slot="action">
       <el-button size="small" @click="onDelete">删除</el-button>
       <el-button size="small" type="primary" @click="onModify">修改</el-button>
