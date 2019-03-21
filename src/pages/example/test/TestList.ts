@@ -8,6 +8,7 @@ import QueryParam from 'model/request/QueryParam'
 import FilterParam from 'model/request/FilterParam.ts'
 import SortParam from 'model/request/SortParam'
 import ProjectLine from 'model/test/ProjectLine'
+import ConstantMgr from 'mgr/ConstantMgr'
 
 @Component({
     name: 'TestList',
@@ -165,12 +166,15 @@ export default class TestList extends Vue {
      * 获取列表数据
      */
     private getProjectList() {
+        const loading = this.$loading(ConstantMgr.loadingOption)
         ProjectApi.query(this.setParams()).then((resp: any) => {
             if (resp.success) {
+                loading.close()
                 this.tableData = resp.data
                 this.page.total = resp.total
             }
         }).catch((error: any) => {
+            loading.close()
             this.$message.error(error.message)
         })
     }
