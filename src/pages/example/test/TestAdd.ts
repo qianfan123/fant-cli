@@ -50,7 +50,7 @@ export default class TestAdd extends Vue {
       if (valid) {
         if (this.isEditMode) {
           const loading = this.$loading(ConstantMgr.loadingOption)
-          ProjectApi.saveModify(this.project).then((resp: any) => {
+          ProjectApi.saveModify(this.project).then((resp) => {
             if (resp.success) {
               loading.close()
               this.$message.success('编辑成功')
@@ -62,7 +62,7 @@ export default class TestAdd extends Vue {
           })
         } else {
           const loading = this.$loading(ConstantMgr.loadingOption)
-          ProjectApi.saveNew(this.project).then((resp: any) => {
+          ProjectApi.saveNew(this.project).then((resp) => {
             if (resp.success) {
               loading.close()
               this.$message.success('新增成功')
@@ -99,7 +99,7 @@ export default class TestAdd extends Vue {
    */
   private getProjectDtl() {
     const loading = this.$loading(ConstantMgr.loadingOption)
-    ProjectApi.get(this.$route.query.id).then((resp: any) => {
+    ProjectApi.get(this.$route.query.id).then((resp) => {
       if (resp.success) {
         loading.close()
         this.project = resp.data
