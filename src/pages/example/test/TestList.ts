@@ -115,12 +115,12 @@ export default class TestList extends Vue {
      *************************************************【点击事件定义start】***********************************************
      ******************************************************************************************************************/
     /**
-     * 升级
+     * 编辑
      * @param row
      */
-    doUpGrade(row: any) {
+    doEdit(row: any) {
         console.dir(row)
-        alert('升级')
+        this.$router.push({name: 'testAdd', query: {id: row.id}})
     }
 
     /**
