@@ -54,7 +54,7 @@ export default class TestDtl extends Vue {
       cancelButtonText: '取消'
     }).then(() => {
       const loading = this.$loading(ConstantMgr.loadingOption)
-      ProjectApi.delete(this.project.id!).then((resp) => {
+      ProjectApi.delete(this.project.id!).then(resp => {
         loading.close()
         this.$message.success('删除成功')
         this.$router.push('testList')
@@ -70,13 +70,13 @@ export default class TestDtl extends Vue {
    */
   private getProjectDtl() {
     const loading = this.$loading(ConstantMgr.loadingOption)
-    ProjectApi.get(this.$route.query.id).then((resp) => {
+    ProjectApi.get(this.$route.query.id).then(resp => {
       if (resp.success) {
         loading.close()
         this.project = resp.data
         this.tableData1 = resp.data.lines
       }
-    }).catch((e) => {
+    }).catch(e => {
       loading.close()
       this.$message.error(e.message)
     })

@@ -50,25 +50,25 @@ export default class TestAdd extends Vue {
       if (valid) {
         if (this.isEditMode) {
           const loading = this.$loading(ConstantMgr.loadingOption)
-          ProjectApi.saveModify(this.project).then((resp) => {
+          ProjectApi.saveModify(this.project).then(resp => {
             if (resp.success) {
               loading.close()
               this.$message.success('编辑成功')
               this.$router.push({ name: 'testDtl', query: { id: this.$route.query.id } })
             }
-          }).catch((error) => {
+          }).catch(error => {
             loading.close()
             this.$message.error(error.message)
           })
         } else {
           const loading = this.$loading(ConstantMgr.loadingOption)
-          ProjectApi.saveNew(this.project).then((resp) => {
+          ProjectApi.saveNew(this.project).then(resp => {
             if (resp.success) {
               loading.close()
               this.$message.success('新增成功')
               this.$router.push({ name: 'testDtl', query: { id: resp.data } })
             }
-          }).catch((error) => {
+          }).catch(error => {
             loading.close()
             this.$message.error(error.message)
           })
@@ -99,7 +99,7 @@ export default class TestAdd extends Vue {
    */
   private getProjectDtl() {
     const loading = this.$loading(ConstantMgr.loadingOption)
-    ProjectApi.get(this.$route.query.id).then((resp) => {
+    ProjectApi.get(this.$route.query.id).then(resp => {
       if (resp.success) {
         loading.close()
         this.project = resp.data
