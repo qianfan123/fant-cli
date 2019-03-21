@@ -28,7 +28,7 @@
                     </div>
                 </section>
                 <section>
-                    <el-button class="btn-login" type="primary" :disabled="!ruleForm.name || !ruleForm.password" ref="login" @click="onLogin('ruleForm')">登录</el-button>
+                    <el-button class="btn-login" type="primary" :disabled="!ruleForm.name || !ruleForm.password" ref="login" @click="onLogin()">登录</el-button>
                 </section>
             </div>
         </div>

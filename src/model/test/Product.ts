@@ -1,5 +1,5 @@
 import StandardEntity from 'model/entity/StandardEntity'
-import User from 'model/user/User'
+import User from 'model/test/User'
 
 export default class Product extends StandardEntity {
   // 产品名称

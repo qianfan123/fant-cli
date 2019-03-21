@@ -1,6 +1,6 @@
 import ApiClient from 'http/ApiClient'
 import Response from 'model/response/Response'
-import Project from 'model/project/Project'
+import Project from 'model/test/Project'
 import QueryParam from 'model/request/QueryParam'
 
 export default class ProjectApi {
@@ -12,8 +12,6 @@ export default class ProjectApi {
       return res.data
     })
   }
-
-
 
   /**
    * 删除接口

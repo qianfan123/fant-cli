@@ -1,6 +1,6 @@
 import StandardEntity from 'model/entity/StandardEntity'
-import Product from 'model/product/Product'
-import User from 'model/user/User'
+import Product from 'model/test/Product'
+import User from 'model/test/User'
 
 export default class ProductVersion extends StandardEntity {
   // 产品

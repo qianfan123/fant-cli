@@ -1,6 +1,6 @@
 import StandardEntity from 'model/entity/StandardEntity'
 import ProjectLine from 'model/test/ProjectLine'
-import User from 'model/user/User'
+import User from 'model/test/User'
 
 export default class Project extends StandardEntity {
   // 产品名称
