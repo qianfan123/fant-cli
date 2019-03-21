@@ -9,7 +9,7 @@
       </el-col>
     </el-row>
     <slot></slot>
-    <!--<footer>copyright© 2019 海鼎研发部出品</footer>-->
+    <footer>copyright© 2019 海鼎研发部出品</footer>
   </div>
 </template>
 
@@ -22,11 +22,11 @@
     display: flex;
     flex: 1;
     flex-direction: column;
-    /*footer {*/
-    /*font-size: 14px;*/
-    /*color: rgba(0, 0, 0, 0.45);*/
-    /*padding: 32px 0;*/
-    /*text-align: center;*/
-    /*}*/
+    footer {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.45);
+      padding: 32px 0;
+      text-align: center;
+    }
   }
 </style>
