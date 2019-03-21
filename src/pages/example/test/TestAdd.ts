@@ -31,6 +31,7 @@ export default class TestAdd extends Vue {
   created() {
     if (this.$route.query.id) { // 编辑
       this.panelArray[1].name = '编辑项目'
+      this.project.id = this.$route.query.id
       this.getProjectDtl()
     }
   }
@@ -99,7 +100,7 @@ export default class TestAdd extends Vue {
    */
   private getProjectDtl() {
     const loading = this.$loading(ConstantMgr.loadingOption)
-    ProjectApi.get(this.$route.query.id).then(resp => {
+    ProjectApi.get(this.project.id!).then(resp => {
       if (resp.success) {
         loading.close()
         this.project = resp.data

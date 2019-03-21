@@ -16,15 +16,14 @@
           <el-col :span="8">
             <el-form-item label="负责人" prop="manager">
               <el-select v-model="project.manager.name">
-                <el-option value="">张三</el-option>
-                <el-option>李四</el-option>
-                <el-option>王五</el-option>
+                <el-option value="张三">张三</el-option>
+                <el-option value="李四">李四</el-option>
+                <el-option value="王五">王五</el-option>
               </el-select>
-              <user-select v-model="project.manager"/>
             </el-form-item>
           </el-col>
           <el-col :span="8">
-            <el-form-item label="联系方式" prop="manager.contact" :rules="{required: true, message: '请输入联系方式', trigger: 'change'}">
+            <el-form-item label="联系方式" prop="manager.contact">
               <el-input clearable class="item" v-model.trim="project.manager.contact" maxlength="11"></el-input>
             </el-form-item>
           </el-col>
@@ -50,9 +49,7 @@
         </el-table-column>
         <el-table-column prop="product.manager.name" label="负责人"></el-table-column>
         <el-table-column prop="product.manager.contact" label="联系方式"></el-table-column>
-        <el-table-column prop="address"
-                         align="center"
-                         label="操作">
+        <el-table-column prop="address" align="center" label="操作">
           <template slot-scope="scope">
             <el-button type="text" @click="onDelete(scope)">删除</el-button>
           </template>

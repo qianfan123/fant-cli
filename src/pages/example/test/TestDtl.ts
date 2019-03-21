@@ -18,8 +18,6 @@ export default class TestDtl extends Vue {
   ]
   // 详情
   project = new Project()
-  // 表格数据
-  tableData1: any = []
   // 分页
   page = {
     currentPage: 1,
@@ -74,7 +72,6 @@ export default class TestDtl extends Vue {
       if (resp.success) {
         loading.close()
         this.project = resp.data
-        this.tableData1 = resp.data.lines
       }
     }).catch(e => {
       loading.close()

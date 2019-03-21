@@ -7,18 +7,30 @@
 
     <el-card>
       <div slot="header">项目详情</div>
-      <el-form>
-        <el-form-item label="负责人：">{{project.manager.name}}({{project.manager.contact}})</el-form-item>
-        <el-form-item label="描述：">{{project.describe}}</el-form-item>
-        <el-form-item label="创建人：">{{project.creator ? project.creator.name : ''}}</el-form-item>
-        <el-form-item label="创建时间：">{{project.created}}</el-form-item>
+      <el-form label-position="right" label-width="110px">
+        <el-row>
+          <el-col :span="8">
+            <el-form-item label="负责人：">{{project.manager.name}}({{project.manager.contact}})</el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="创建人：">{{project.creator ? project.creator.name : ''}}</el-form-item>
+          </el-col>
+          <el-col :span="8">
+            <el-form-item label="创建时间：">{{project.created}}</el-form-item>
+          </el-col>
+        </el-row>
+        <el-row>
+          <el-col :span="16">
+            <el-form-item label="描述：">{{project.describe}}</el-form-item>
+          </el-col>
+        </el-row>
       </el-form>
     </el-card>
 
     <el-card>
       <el-tabs>
         <el-tab-pane label="包含产品">
-          <el-table :data="tableData1">
+          <el-table :data="project.lines">
             <el-table-column prop="product.name" label="产品名称" sortable width="180"></el-table-column>
             <el-table-column prop="productVersion.name" label="版本号" width="180">
               <template slot-scope="scope">
