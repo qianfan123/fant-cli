@@ -94,7 +94,6 @@
                     <el-table-column prop="address" label="操作" align="center">
                         <template slot-scope="scope">
                             <el-button type="text" @click="doEdit(scope.row)">编辑</el-button>
-                            <el-button type="text" @click="doDelete(scope.row)">删除</el-button>
                         </template>
                     </el-table-column>
                 </el-table>

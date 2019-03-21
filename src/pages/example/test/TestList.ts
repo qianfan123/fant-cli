@@ -124,21 +124,12 @@ export default class TestList extends Vue {
     }
 
     /**
-     * 删除
-     * @param row
-     */
-    doDelete(row: any) {
-        console.dir(row)
-        alert('删除')
-    }
-
-    /**
      * 去详情
      * @param row
      */
     doGoDtl(row: any) {
         console.dir(row)
-        this.$router.push('testDtl', row.id)
+        this.$router.push({name: 'testDtl', query: {id: row.id}})
     }
 
     /**
