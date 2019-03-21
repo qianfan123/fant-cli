@@ -1,13 +1,11 @@
 <template>
   <div class="page-body">
-    <el-row>
-      <el-col :span="12">
-        <sub-header :panelArray="panelArray"></sub-header>
-      </el-col>
-      <el-col :span="12">
+    <header>
+      <sub-header class="title" :panelArray="panelArray"></sub-header>
+      <div class="action">
         <slot name="action"></slot>
-      </el-col>
-    </el-row>
+      </div>
+    </header>
     <slot></slot>
     <footer>copyright© 2019 海鼎研发部出品</footer>
   </div>
@@ -22,6 +20,14 @@
     display: flex;
     flex: 1;
     flex-direction: column;
+    header {
+      display: flex;
+      align-items: center;
+      background-color: #FFF;
+      .title {
+        flex: 1
+      }
+    }
     footer {
       font-size: 14px;
       color: rgba(0, 0, 0, 0.45);

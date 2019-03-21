@@ -3,11 +3,11 @@ import PageBody from 'cmp/pagebody/PageBody.vue'
 import QueryCondition from 'cmp/querycondition/QueryCondition.vue'
 import ListContainer from 'cmp/listcontainer/ListContainer.vue'
 import FormItem from 'cmp/formitem/FormItem.vue'
-import ProjectApi from 'http/project/ProjectApi'
+import ProjectApi from 'http/test/ProjectApi'
 import QueryParam from 'model/request/QueryParam'
 import FilterParam from 'model/request/FilterParam.ts'
 import SortParam from 'model/request/SortParam'
-import ProjectLine from 'model/project/ProjectLine'
+import ProjectLine from 'model/test/ProjectLine'
 
 @Component({
     name: 'TestList',
