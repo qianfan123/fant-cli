@@ -7,7 +7,7 @@ export default class ProjectApi {
   /**
    * 列表
    */
-  static query(body: QueryParam): Promise<Response<Project>> {
+  static query(body: QueryParam): Promise<Response<Project[]>> {
     return ApiClient.file(`mock/project/query.json`).get('').then((res) => {
       return res.data
     })
