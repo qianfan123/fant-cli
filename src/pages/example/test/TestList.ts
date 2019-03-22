@@ -176,9 +176,9 @@ export default class TestList extends Vue {
       loading.close()
       this.tableData = resp.data
       this.page.total = resp.total
-    }).catch((error: Error) => {
+    }).catch((e: Error) => {
       loading.close()
-      this.$message.error(error.message)
+      this.$message.error(e.message)
     })
   }
 }

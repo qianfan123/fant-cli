@@ -3,6 +3,7 @@ import PageBody from 'cmp/pagebody/PageBody.vue'
 import Project from 'model/test/Project'
 import ProjectApi from 'http/test/ProjectApi'
 import ConstantMgr from 'mgr/ConstantMgr'
+import Response from 'model/response/Response'
 
 @Component({
   name: 'TestDtl',
@@ -33,6 +34,7 @@ export default class TestDtl extends Vue {
    * 行内表格升级
    */
   onUpgrade() {
+    this.project.id = this.$route.query.id
     this.$message.success('假装已经跳转了')
   }
 
@@ -52,13 +54,13 @@ export default class TestDtl extends Vue {
       cancelButtonText: '取消'
     }).then(() => {
       const loading = this.$loading(ConstantMgr.loadingOption)
-      ProjectApi.delete(this.project.id!).then(resp => {
+      ProjectApi.delete(this.project.id!).then((resp: Response<void>) => {
         loading.close()
         this.$message.success('删除成功')
         this.$router.push('testList')
-      }).catch((error) => {
+      }).catch((e: Error) => {
         loading.close()
-        this.$message.error(error.message)
+        this.$message.error(e.message)
       })
     })
   }
@@ -68,12 +70,10 @@ export default class TestDtl extends Vue {
    */
   private getProjectDtl() {
     const loading = this.$loading(ConstantMgr.loadingOption)
-    ProjectApi.get(this.$route.query.id).then(resp => {
-      if (resp.success) {
-        loading.close()
-        this.project = resp.data
-      }
-    }).catch(e => {
+    ProjectApi.get(this.project.id!).then((resp: Response<Project>) => {
+      loading.close()
+      this.project = resp.data
+    }).catch((e: Error) => {
       loading.close()
       this.$message.error(e.message)
     })
