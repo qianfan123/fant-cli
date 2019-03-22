@@ -34,7 +34,7 @@ export default class TestDtl extends Vue {
    * 行内表格升级
    */
   onUpgrade() {
-    this.project.id = this.$route.query.id
+    this.project.id = this.$route.query.id as any
     this.$message.success('假装已经跳转了')
   }
 

@@ -32,7 +32,7 @@ export default class TestAdd extends Vue {
   created() {
     if (this.$route.query.id) { // 编辑
       this.panelArray[1].name = '编辑项目'
-      this.project.id = this.$route.query.id
+      this.project.id = this.$route.query.id as any
       this.getProjectDtl()
     }
   }
