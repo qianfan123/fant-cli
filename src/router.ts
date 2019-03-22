@@ -30,6 +30,9 @@ export default new Router({
           path: '/testList',
           name: 'testList',
           component: TestList,
+          meta: {
+            keepAlive: true
+          }
         },
         {
           path: '/testAdd',
