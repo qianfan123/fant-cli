@@ -1,5 +1,5 @@
 <template>
-  <page-body :panelArray="panelArray">
+  <page-body :panelArray="panelArray" class="test-add">
     <div slot="action">
       <el-button size="small" @click="onBack">返回</el-button>
       <el-button size="small" type="primary" @click="onSave">提交</el-button>
@@ -60,4 +60,11 @@
   </page-body>
 </template>
 <script lang="ts" src="./TestAdd.ts"></script>
-<style lang="scss"></style>
+<style lang="scss" scoped>
+  .test-add {
+    display: block; //  page-body  为何使用 flex ，导致magrin上下无法合并，但事实上也可通过只设置margin-top来解决
+    .el-card {
+      margin: 18px;
+    }
+  }
+</style>

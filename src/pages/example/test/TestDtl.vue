@@ -1,5 +1,5 @@
 <template>
-  <page-body :panelArray="panelArray" v-if="project">
+  <page-body :panelArray="panelArray" v-if="project" class="test-dtl">
     <div slot="action">
       <el-button size="small" @click="onDelete">删除</el-button>
       <el-button size="small" type="primary" @click="onModify">修改</el-button>
@@ -28,33 +28,37 @@
     </el-card>
 
     <el-card>
-      <el-tabs>
-        <el-tab-pane label="包含产品">
-          <el-table :data="project.lines">
-            <el-table-column prop="product.name" label="产品名称" sortable width="180"></el-table-column>
-            <el-table-column prop="productVersion.name" label="版本号" width="180">
-              <template slot-scope="scope">
-                {{scope.row.productVersion ? scope.row.productVersion.name : '--'}}
-              </template>
-            </el-table-column>
-            <el-table-column prop="product.manager.name" label="负责人"></el-table-column>
-            <el-table-column prop="product.manager.contact" label="联系方式"></el-table-column>
-            <el-table-column prop="upgradeTime" label="升级时间">
-              <template slot-scope="scope">
-                {{scope.row.upgradeTime ? scope.row.upgradeTime : '--'}}
-              </template>
-            </el-table-column>
-            <el-table-column prop="address" align="center" label="操作">
-              <template slot-scope="scope">
-                <el-button v-if="scope.row.upgradableVersions" type="text" @click="onUpgrade(scope.row)">升级</el-button>
-                <el-button v-if="!scope.row.upgradableVersions" type="text">--</el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-        </el-tab-pane>
-      </el-tabs>
+      <div slot="header">包含产品</div>
+      <el-table :data="project.lines">
+        <el-table-column prop="product.name" label="产品名称" sortable width="180"></el-table-column>
+        <el-table-column prop="productVersion.name" label="版本号" width="180">
+          <template slot-scope="scope">
+            {{scope.row.productVersion ? scope.row.productVersion.name : '--'}}
+          </template>
+        </el-table-column>
+        <el-table-column prop="product.manager.name" label="负责人"></el-table-column>
+        <el-table-column prop="product.manager.contact" label="联系方式"></el-table-column>
+        <el-table-column prop="upgradeTime" label="升级时间">
+          <template slot-scope="scope">
+            {{scope.row.upgradeTime ? scope.row.upgradeTime : '--'}}
+          </template>
+        </el-table-column>
+        <el-table-column prop="address" align="center" label="操作">
+          <template slot-scope="scope">
+            <el-button v-if="scope.row.upgradableVersions" type="text" @click="onUpgrade(scope.row)">升级</el-button>
+            <el-button v-if="!scope.row.upgradableVersions" type="text">--</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
     </el-card>
   </page-body>
 </template>
 <script lang="ts" src="./TestDtl.ts"></script>
-<style lang="scss"></style>
+<style lang="scss" scoped>
+  .test-dtl {
+    display: block; //  page-body  为何使用 flex ，导致magrin上下无法合并，但事实上也可通过只设置margin-top来解决
+    .el-card {
+      margin: 18px;
+    }
+  }
+</style>
