@@ -2,7 +2,7 @@
     <div class="login-view">
         <div class="login-form">
             <div class="login-left">
-                <img src="../../assets/image/auth/ic_login.png" alt="效果图缺失">
+                <img src="~assets/image/auth/ic_login.png" alt="效果图缺失">
             </div>
             <div class="login-right">
                 <header>产品发布管理系统</header>
@@ -12,14 +12,14 @@
                             <el-form-item prop="name">
                                 <div style="position: relative">
                                     <el-input v-model="ruleForm.name" placeholder="请输入用户名" ref="name" @keydown.native="onConfirm($event,'name')" style="margin-top: 71px;"></el-input>
-                                    <img src="../../assets/image/auth/ic_login_user_hl.svg" style="position: absolute;left: 108px;top:84px;width: 15px">
+                                    <img src="~assets/image/auth/ic_login_user_hl.svg" style="position: absolute;left: 108px;top:84px;width: 15px">
                                 </div>
 
                             </el-form-item>
                             <el-form-item prop="password">
                                 <div style="position: relative">
                                     <el-input v-model="ruleForm.password" placeholder="请输入登录密码" ref="password" type="password" @keydown.native="onConfirm($event,'password')" style="margin-top: 10px"></el-input>
-                                    <img src="../../assets/image/auth/ic_login_psw_hl.svg" style="position: absolute;left: 108px;top:22px;width: 15px">
+                                    <img src="~assets/image/auth/ic_login_psw_hl.svg" style="position: absolute;left: 108px;top:22px;width: 15px">
                                 </div>
 
 
