@@ -1,7 +1,7 @@
 import { Component, Vue } from 'vue-property-decorator'
-import PageBody from 'cmp/pagebody/PageBody.vue'
+import PageWrapper from 'cmp/page/PageWrapper.vue'
 import QueryCondition from 'cmp/querycondition/QueryCondition.vue'
-import ListContainer from 'cmp/listcontainer/ListContainer.vue'
+import ListWrapper from 'cmp/list/ListWrapper.vue'
 import FormItem from 'cmp/formitem/FormItem.vue'
 import ProjectApi from 'http/test/ProjectApi'
 import QueryParam from 'model/request/QueryParam'
@@ -11,16 +11,17 @@ import ConstantMgr from 'mgr/ConstantMgr'
 import Project from 'model/test/Project'
 import Response from 'model/response/Response'
 
+
 @Component({
-  name: 'TestList',
+  name: 'ProjectList',
   components: {
-    PageBody,
+    PageWrapper,
     QueryCondition,
-    ListContainer,
+    ListWrapper,
     FormItem
   }
 })
-export default class TestList extends Vue {
+export default class ProjectList extends Vue {
   /******************************************************************************************************************
    *************************************************【变量定义start】**************************************************
    ******************************************************************************************************************/
@@ -124,7 +125,7 @@ export default class TestList extends Vue {
    */
   doEdit(row: any) {
     console.dir(row)
-    this.$router.push({ name: 'testAdd', query: { id: row.id } })
+    this.$router.push({ name: 'projectAdd', query: { id: row.id } })
   }
 
   /**
@@ -133,7 +134,7 @@ export default class TestList extends Vue {
    */
   doGoDtl(row: any) {
     console.dir(row)
-    this.$router.push({ name: 'testDtl', query: { id: row.id } })
+    this.$router.push({ name: 'projectDtl', query: { id: row.id } })
   }
 
   /**

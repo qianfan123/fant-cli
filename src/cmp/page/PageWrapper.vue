@@ -1,5 +1,5 @@
 <template>
-  <div class="page-body">
+  <div class="page-wrapper">
     <header>
       <sub-header class="title" :panelArray="panelArray"></sub-header>
       <div class="action">
@@ -11,10 +11,10 @@
   </div>
 </template>
 
-<script lang='ts' src='./PageBody.ts'/>
+<script lang='ts' src='./PageWrapper.ts'/>
 
 <style lang='scss' scoped>
-  .page-body {
+  .page-wrapper {
     overflow: hidden;
     background-color: #F0F2F5;
     display: flex;
@@ -24,6 +24,8 @@
       display: flex;
       align-items: center;
       background-color: #FFF;
+      padding: 0 18px;
+      height: 54px;
       .title {
         flex: 1
       }

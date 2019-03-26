@@ -1,12 +1,12 @@
 import {Vue, Component, Prop} from 'vue-property-decorator'
 import SubHeader from 'cmp/subheader/SubHeader.vue'
 @Component({
-    name: 'PageBody',
+    name: 'PageWrapper',
     components: {
         SubHeader
     }
 })
-export default class PageBody extends Vue {
+export default class PageWrapper extends Vue {
     @Prop()
     title: string
     @Prop()

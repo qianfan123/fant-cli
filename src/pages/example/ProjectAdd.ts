@@ -1,20 +1,22 @@
 import { Component, Vue } from 'vue-property-decorator'
-import PageBody from 'cmp/pagebody/PageBody.vue'
+import PageWrapper from 'cmp/page/PageWrapper.vue'
 import Project from 'model/test/Project'
 import ConstantMgr from 'mgr/ConstantMgr'
 import ProjectApi from 'http/test/ProjectApi'
 import Response from 'model/response/Response'
+import DtlWrapper from 'cmp/dtl/DtlWrapper.vue'
 
 @Component({
   name: 'TestAdd',
   components: {
-    PageBody
+    PageWrapper,
+    DtlWrapper
   }
 })
-export default class TestAdd extends Vue {
+export default class ProjectAdd extends Vue {
   // 面包屑
   panelArray = [
-    { name: '示例列表', url: 'testList' },
+    { name: '示例列表', url: 'projectList' },
     { name: '示例新增' }
   ]
   project: Project = new Project()
@@ -55,7 +57,7 @@ export default class TestAdd extends Vue {
           ProjectApi.saveModify(this.project).then((resp: Response<void>) => {
             loading.close()
             this.$message.success('编辑成功')
-            this.$router.push({ name: 'testDtl', query: { id: this.$route.query.id } })
+            this.$router.push({ name: 'projectDtl', query: { id: this.$route.query.id } })
           }).catch((error: Error) => {
             loading.close()
             this.$message.error(error.message)
@@ -65,7 +67,7 @@ export default class TestAdd extends Vue {
           ProjectApi.saveNew(this.project).then((resp: Response<string>) => {
             loading.close()
             this.$message.success('新增成功')
-            this.$router.push({ name: 'testDtl', query: { id: resp.data } })
+            this.$router.push({ name: 'projectDtl', query: { id: resp.data } })
           }).catch((error: Error) => {
             loading.close()
             this.$message.error(error.message)

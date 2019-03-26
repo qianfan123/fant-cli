@@ -1,11 +1,12 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Login from 'pages/example/auth/Login.vue';
-import Main from 'pages/example/main/Main.vue'
-import TestList from 'pages/example/test/TestList.vue'
-import TestAdd from 'pages/example/test/TestAdd.vue'
-import TestDtl from 'pages/example/test/TestDtl.vue'
-Vue.use(Router);
+import Vue from 'vue'
+import Router from 'vue-router'
+import Login from 'pages/auth/Login.vue'
+import Main from 'pages/main/Main.vue'
+import ProjectList from 'pages/example/ProjectList'
+import ProjectAdd from 'pages/example/ProjectAdd'
+import ProjectDtl from 'pages/example/ProjectDtl'
+
+Vue.use(Router)
 
 export default new Router({
   mode: 'hash',
@@ -19,7 +20,7 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login,
+      component: Login
     },
     {
       path: '/main',
@@ -27,24 +28,24 @@ export default new Router({
       component: Main,
       children: [
         {
-          path: '/testList',
-          name: 'testList',
-          component: TestList,
+          path: '/projectList',
+          name: 'projectList',
+          component: ProjectList,
           meta: {
             keepAlive: true
           }
         },
         {
-          path: '/testAdd',
-          name: 'testAdd',
-          component: TestAdd,
+          path: '/projectAdd',
+          name: 'projectAdd',
+          component: ProjectAdd
         },
         {
-          path: '/testDtl',
-          name: 'testDtl',
-          component: TestDtl,
+          path: '/projectDtl',
+          name: 'projectDtl',
+          component: ProjectDtl
         }
       ]
     }
-  ],
-});
+  ]
+})

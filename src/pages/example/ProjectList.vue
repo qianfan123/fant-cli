@@ -1,8 +1,8 @@
 <template>
     <!--顶层含面包屑wrapper-->
-    <page-body :panelArray="panelArray">
+    <page-wrapper :panelArray="panelArray">
         <!--内层含滚动条wrapper-->
-        <list-container>
+        <list-wrapper>
             <!--搜索栏-->
             <template slot="query">
                 <query-condition @search="onSearch" @reset="onReset">
@@ -111,11 +111,11 @@
                         :total="page.total">
                 </el-pagination>
             </template>
-        </list-container>
-    </page-body>
+        </list-wrapper>
+    </page-wrapper>
 </template>
 
-<script lang="ts" src="./TestList.ts">
+<script lang="ts" src="./ProjectList.ts">
 </script>
 
 <style lang="scss">

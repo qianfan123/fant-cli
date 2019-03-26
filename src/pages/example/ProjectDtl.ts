@@ -1,20 +1,22 @@
 import { Component, Vue } from 'vue-property-decorator'
-import PageBody from 'cmp/pagebody/PageBody.vue'
+import PageWrapper from 'cmp/page/PageWrapper.vue'
+import DtlWrapper from 'cmp/dtl/DtlWrapper.vue'
 import Project from 'model/test/Project'
 import ProjectApi from 'http/test/ProjectApi'
 import ConstantMgr from 'mgr/ConstantMgr'
 import Response from 'model/response/Response'
 
 @Component({
-  name: 'TestDtl',
+  name: 'ProjectDtl',
   components: {
-    PageBody
+    PageWrapper,
+    DtlWrapper
   }
 })
-export default class TestDtl extends Vue {
+export default class ProjectDtl extends Vue {
   // 面包屑
   panelArray = [
-    { name: '示例列表', url: 'testList' },
+    { name: '示例列表', url: 'projectList' },
     { name: '示例详情' }
   ]
   // 详情
@@ -42,7 +44,7 @@ export default class TestDtl extends Vue {
    * 修改
    */
   onModify() {
-    this.$router.push({ name: 'testAdd', query: { id: this.project.id as any } })
+    this.$router.push({ name: 'projectAdd', query: { id: this.project.id as any } })
   }
 
   /**
@@ -57,7 +59,7 @@ export default class TestDtl extends Vue {
       ProjectApi.delete(this.project.id!).then((resp: Response<void>) => {
         loading.close()
         this.$message.success('删除成功')
-        this.$router.push('testList')
+        this.$router.push('projectList')
       }).catch((e: Error) => {
         loading.close()
         this.$message.error(e.message)

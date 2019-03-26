@@ -1,5 +1,5 @@
 <template>
-  <div class="list-container">
+  <div class="list-wrapper">
     <slot name="query" v-if="$slots.query"></slot>
     <div class="btn-group" v-if="$slots.btn">
       <slot name="btn"></slot>
@@ -16,10 +16,10 @@
   </div>
 </template>
 
-<script lang='ts' src='./ListContainer.ts'/>
+<script lang='ts' src='./ListWrapper.ts'/>
 
 <style lang='scss' scoped>
-  .list-container {
+  .list-wrapper {
     display: flex;
     flex: 1;
     flex-direction: column;

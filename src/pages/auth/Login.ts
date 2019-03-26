@@ -18,7 +18,7 @@ export default class Login extends Vue {
   }
 
   onLogin() {
-    this.$router.push('testList')
+    this.$router.push('projectList')
   }
 
   /**

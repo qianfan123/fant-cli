@@ -7,11 +7,7 @@ export const storage = {
       key = namespace + '-' + key
     }
     var value = null
-    if (window.top.java) {
-      value = window.top.java.getStorageItem(key)
-    } else {
-      value = localStorage.getItem(key)
-    }
+    value = localStorage.getItem(key)
     if (value) {
       return JSON.parse(value)
     } else if (arguments.length === 3) {
@@ -25,41 +21,14 @@ export const storage = {
       key = namespace + '-' + key
     }
     value = JSON.stringify(value)
-    if (window.top.java) {
-      window.top.java.setStorageItem(key, value)
-    } else {
-      localStorage.setItem(key, value)
-    }
+    localStorage.setItem(key, value)
   },
 
   clearItem: function (key, namespace) {
     if (namespace) {
       key = namespace + '-' + key
     }
-    if (window.top.java) {
-      window.top.java.removeStorageItem(key)
-    } else {
-      localStorage.removeItem(key)
-    }
-  },
-
-  clearPreItem: function (key, namespace) {
-    if (namespace) {
-      key = namespace + '-' + key
-    }
-    let teapAry = []
-    for (let i = 0, len = localStorage.length; i < len; i++) {
-      teapAry.push(localStorage.key(i))
-    }
-    for (let i = 0, len = teapAry.length; i < len; i++) {
-      let key0 = teapAry[i]
-      if (key0 === null || !key0) {
-        return
-      }
-      if (key0.indexOf(key) !== -1) {
-        storage.clearItem(key0)
-      }
-    }
+    localStorage.removeItem(key)
   }
 }
 
@@ -83,4 +52,4 @@ export const sessionStorage = {
     window.top.sessionStorage.removeItem(key)
   }
 }
-export default { storage, sessionStorage}
+export default { storage, sessionStorage }

@@ -21,19 +21,12 @@
 
 <style lang='scss'>
 .sub-header-view{
-    height: 54px;
     background: white;
     .panel{
         background: white;
-        height: 54px;
-        line-height: 54px;
-        padding-left: 20px;
     }
     .text-right{
         text-align: right;
-        line-height: 54px;
-        height: 54px;
-        /* padding-top: 10px; */
         padding-right: 60px;
     }
     .title{
