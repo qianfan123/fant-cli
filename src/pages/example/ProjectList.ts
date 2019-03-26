@@ -141,7 +141,7 @@ export default class ProjectList extends Vue {
    * 新建
    */
   doAdd() {
-    this.$router.push('testAdd')
+    this.$router.push('projectAdd')
   }
 
   /******************************************************************************************************************

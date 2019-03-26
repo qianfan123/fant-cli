@@ -1,9 +1,7 @@
 export default class EnvUtil {
-  static getServiceUrl () {
+  static getServiceUrl() {
     if (EnvUtil.isDev() || EnvUtil.isTest()) {
       return 'http://api-vcs-test.qianfan123.com:8028/'
-    } else if (EnvUtil.isJdBranch()) {
-      return 'http://api-vcs-branch.qianfan123.com:8028/'
     } else if (EnvUtil.isBranch()) {
       return 'http://api-vcs-branch.qianfan123.com:8028/'
     } else if (EnvUtil.isUat()) {
@@ -13,27 +11,19 @@ export default class EnvUtil {
     }
   }
 
-  static isDev () {
+  static isDev() {
     return window.location.href.toLocaleLowerCase().indexOf('://localhost:') !== -1
   }
 
-  static isTest () {
+  static isTest() {
     return window.location.href.toLocaleLowerCase().indexOf('/test') !== -1
   }
 
-  static isBranch () {
+  static isBranch() {
     return window.location.href.toLocaleLowerCase().indexOf('/branch') !== -1
   }
 
-  static isJdBranch () {
-    return window.location.href.toLocaleLowerCase().indexOf('mao-jd') !== -1 && window.location.href.toLocaleLowerCase().indexOf('/branch') !== -1
-  }
-
-  static isUat () {
+  static isUat() {
     return window.location.href.toLocaleLowerCase().indexOf('/uat') !== -1
-  }
-
-  static isProd () {
-    return window.location.href.toLocaleLowerCase().indexOf('/prod') !== -1
   }
 }
