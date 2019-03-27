@@ -17,11 +17,7 @@
             </el-col>
             <el-col :span="8">
               <el-form-item label="负责人" prop="manager">
-                <el-select v-model="project.manager.name">
-                  <el-option value="张三">张三</el-option>
-                  <el-option value="李四">李四</el-option>
-                  <el-option value="王五">王五</el-option>
-                </el-select>
+                <user-select v-model="project.manager"></user-select>
               </el-form-item>
             </el-col>
             <el-col :span="8">

@@ -1,16 +1,19 @@
 import { Component, Vue } from 'vue-property-decorator'
 import PageWrapper from 'cmp/page/PageWrapper.vue'
-import Project from 'model/test/Project'
+import Project from 'model/example/Project'
 import ConstantMgr from 'mgr/ConstantMgr'
-import ProjectApi from 'http/test/ProjectApi'
+import ProjectApi from 'http/example/ProjectApi'
 import Response from 'model/response/Response'
 import DtlWrapper from 'cmp/dtl/DtlWrapper.vue'
+import User from 'model/example/User'
+import UserSelect from 'pages/example/cmp/UserSelect'
 
 @Component({
   name: 'TestAdd',
   components: {
     PageWrapper,
-    DtlWrapper
+    DtlWrapper,
+    UserSelect
   }
 })
 export default class ProjectAdd extends Vue {
@@ -20,9 +23,25 @@ export default class ProjectAdd extends Vue {
     { name: '示例新增' }
   ]
   project: Project = new Project()
-  rules = [
-    { required: true, message: '请输入项目名称', trigger: 'blur' }
-  ]
+
+  get rules() {
+    return {
+      name: [{ required: true, message: '请输入项目名称', trigger: 'blur' }],
+      manager: [
+        {
+          required: true,
+          trigger: 'change',
+          validator: (rule: string, value: User, callback: (e?: any) => {}) => {
+            if (!value || !value.id) {
+              callback(new Error('请选择负责人'))
+            } else {
+              callback()
+            }
+          }
+        }
+      ]
+    }
+  }
 
   get isEditMode() {
     return !!this.$route.query.id

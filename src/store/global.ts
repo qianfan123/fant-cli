@@ -1,5 +1,5 @@
 import { Commit, ActionTree } from 'vuex'
-import Project from 'model/test/Project'
+import Project from 'model/example/Project'
 
 // state
 export interface State {

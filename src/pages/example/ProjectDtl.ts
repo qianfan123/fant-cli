@@ -1,8 +1,8 @@
 import { Component, Vue } from 'vue-property-decorator'
 import PageWrapper from 'cmp/page/PageWrapper.vue'
 import DtlWrapper from 'cmp/dtl/DtlWrapper.vue'
-import Project from 'model/test/Project'
-import ProjectApi from 'http/test/ProjectApi'
+import Project from 'model/example/Project'
+import ProjectApi from 'http/example/ProjectApi'
 import ConstantMgr from 'mgr/ConstantMgr'
 import Response from 'model/response/Response'
 

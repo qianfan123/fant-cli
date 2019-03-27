@@ -1,0 +1,70 @@
+{
+  "echoCode": 0,
+  "echoMessage": null,
+  "data": [
+    {
+      "id": "shi",
+      "name": "史国静",
+      "contact": "",
+      "password": null
+    },
+    {
+      "id": "suizhe",
+      "name": "隋哲",
+      "contact": "1361123123232",
+      "password": null
+    },
+    {
+      "id": "shiwei",
+      "name": "施伟",
+      "contact": "137612212312",
+      "password": null
+    },
+    {
+      "id": "sunyue",
+      "name": "孙玥",
+      "contact": "13761986257",
+      "password": null
+    },
+    {
+      "id": "songjie",
+      "name": "宋杰",
+      "contact": "139111112222",
+      "password": null
+    },
+    {
+      "id": "sunya",
+      "name": "孙亚",
+      "contact": "139111111111",
+      "password": null
+    },
+    {
+      "id": "shijie",
+      "name": "施杰",
+      "contact": "131111111111",
+      "password": null
+    },
+    {
+      "id": "shujun",
+      "name": "束俊",
+      "contact": "185111111111",
+      "password": null
+    },
+    {
+      "id": "shiyao",
+      "name": "施瑶",
+      "contact": "1569111111111",
+      "password": null
+    },
+    {
+      "id": "shendanni",
+      "name": "沈丹妮",
+      "contact": "121212121212",
+      "password": null
+    }
+  ],
+  "total": 10,
+  "more": null,
+  "success": true,
+  "fields": {}
+}
