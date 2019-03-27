@@ -7,7 +7,7 @@
                     <template slot="title"><i class="el-icon-message"></i>测试</template>
                     <el-menu-item-group class="nav-li-group">
                         <template slot="title">分组一</template>
-                        <router-link to="/testList"><el-menu-item index="1-1">示例管理</el-menu-item></router-link>
+                        <router-link to="/projectList"><el-menu-item index="1-1">示例管理</el-menu-item></router-link>
                     </el-menu-item-group>
                 </el-submenu>
             </el-menu>
@@ -71,6 +71,7 @@
             text-align: center;
             line-height: 56px;
             color: white;
+            background-color: #20A0FF;
         }
         /* 头部导航*/
         .navbar {

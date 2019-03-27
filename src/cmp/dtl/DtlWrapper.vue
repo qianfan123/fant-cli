@@ -9,7 +9,7 @@
 <style lang='scss' scoped>
   .dtl-wrapper {
     .el-card {
-      margin: 18px;
+      margin: 16px;
       /deep/ .el-select {
         width: 100%;
       }
