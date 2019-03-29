@@ -111,7 +111,6 @@ function rmdir (dir, callback) {
             // 如果文件还没有遍历结束的话，继续拼接新路径，使用fs.stat读取该路径
             let newPath = path.join(dir, files[index])
             // 读取文件，判断是文件还是文件目录
-
             fs.stat(newPath, (err, stat) => {
                 if (stat.isDirectory() ) {
                     // 因为我们这里是深度循环，也就是说遍历玩files[index]的目录以后，才会去遍历files[index+1]
