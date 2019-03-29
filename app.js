@@ -107,7 +107,7 @@ function rmdir (dir, callback) {
          */
         function next(index) {
             // 如果index 等于当前files的时候说明循环遍历已经完毕，可以删除dir，并且调用callback
-            if (index === files.length) return fs.rmdir(dir, callback)
+            if (files && index === files.length) return fs.rmdir(dir, callback)
             // 如果文件还没有遍历结束的话，继续拼接新路径，使用fs.stat读取该路径
             let newPath = path.join(dir, files[index])
             // 读取文件，判断是文件还是文件目录
