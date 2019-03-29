@@ -7,6 +7,8 @@ let fileCount = 0
 let closeCount = 0
 // 目录数
 let dirCount = 0
+// 项目名称
+let prjectName = ''
 
 /**
  * 拷贝文件
@@ -124,4 +126,36 @@ function rmdir (dir, callback) {
         next(0)
     })
 }
-copyDir(path.join(__dirname, './'), '.')
+// copyDir(path.join(__dirname, './'), '.')
+
+/**
+ * 读取用户输入信息
+ */
+function readUserSel() {
+    process.stdin.setEncoding('utf8');
+    process.stdout.write('请输入项目名称：');
+    process.stdin.on('data',(dir)=> {
+        prjectName = dir.toString().trim();
+        console.log(prjectName)
+        if (prjectName) {
+            fs.mkdir(`./${prjectName}`, function (error) {
+                if (error) {
+                    console.log('目录创建失败：'+error)
+                    process.exit(0);
+                }
+                console.log('目录创建成功')
+                copyDir(path.join(__dirname, './'), `./${prjectName}`)
+            })
+        } else {
+            process.stdout.write('您没有输入项目名称，是否在当前目录下创建项目模板？[Y/N]');
+            if (['Y', 'y', 'YES', 'yes'].indexOf(input) > -1) {
+                copyDir(path.join(__dirname, './'), `./${prjectName}`)
+                process.exit(0);
+            }
+            if (['N', 'n', 'NO', 'no'].indexOf(input) > -1) {
+                process.exit(0);
+            }
+        }
+    })
+}
+readUserSel()
