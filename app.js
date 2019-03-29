@@ -36,7 +36,7 @@ function copyFile(srcPath, tarPath, cb) {
         cb && cb(ex);
         closeCount++
         if (closeCount === fileCount - 1 - dirCount) {
-            rmdir('./node_modules', () => {
+            rmdir(`./${prjectName}/node_modules`, () => {
                 console.log('项目初始化完成！！！')
                 console.log('执行npm install 进行安装依赖！！！')
             })
