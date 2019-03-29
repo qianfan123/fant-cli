@@ -122,7 +122,7 @@ function rmdir (dir, callback) {
                 }
             })
         }
-        next(0)
+        files && next(0)
     })
 }
 // copyDir(path.join(__dirname, './'), '.')
