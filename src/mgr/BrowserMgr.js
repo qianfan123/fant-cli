@@ -34,7 +34,7 @@ export const storage = {
 
 export const sessionStorage = {
   getItem: function (key) {
-    var value = window.top.sessionStorage.getItem(key)
+    var value = window.sessionStorage.getItem(key)
     if (value === 'undefined') {
       return null
     }
@@ -45,11 +45,11 @@ export const sessionStorage = {
   },
 
   setItem: function (key, value) {
-    window.top.sessionStorage.setItem(key, JSON.stringify(value))
+    window.sessionStorage.setItem(key, JSON.stringify(value))
   },
 
   clearItem: function (key) {
-    window.top.sessionStorage.removeItem(key)
+    window.sessionStorage.removeItem(key)
   }
 }
 export default { storage, sessionStorage }
