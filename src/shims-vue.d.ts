@@ -9,7 +9,6 @@ declare module '*.vue' {
 declare type Nullable<T> = T | null | undefined;
 // ts识别js
 declare module 'store/StoragePlugin.js';
-declare module 'util/ObjectUtil.js';
 declare module 'util/EnvUtil.js';
 declare module 'cmd/Filter.js';
 declare module 'mgr/BrowserMgr.js';

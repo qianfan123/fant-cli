@@ -3,7 +3,7 @@
  *
  * @param store
  */
-import ObjectUtil from '../util/ObjectUtil';
+import { ObjectUtil } from 'fant3';
 
 const storagePlugin = (store) => {
   var key = 'vuex'

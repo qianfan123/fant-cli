@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import DateUtil from '../util/DateUtil.js'
+import { DateUtil } from 'fant3'
 import NumberUtil from '../util/NumberUtil.js'
 /**
  * 过滤器定制
