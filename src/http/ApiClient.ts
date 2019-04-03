@@ -4,7 +4,7 @@
 import axios from 'axios';
 import store from '../store';
 
-import { ObjectUtil } from 'fant3';
+import ObjectUtil from 'util/ObjectUtil.js'
 import ShortcutMgr from 'mgr/ShortcutMgr';
 
 import EnvUtil from 'util/EnvUtil.js';
