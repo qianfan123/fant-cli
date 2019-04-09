@@ -11,6 +11,7 @@ import i18n from './locale/Locale.js'
 import store from './store/index'
 Vue.use(Fant)
 Vue.config.productionTip = false
+console.dir(i18n)
 Filter.init()
 new Vue({
   store,

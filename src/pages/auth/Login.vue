@@ -2,23 +2,23 @@
     <div class="login-view">
         <div class="login-form">
             <div class="login-left">
-                <img src="~assets/image/auth/ic_login.png" alt="效果图缺失">
+                <img src="~assets/image/auth/ic_login.png" :alt="$t('message.m.pages.login.noBackImg')">
             </div>
             <div class="login-right">
-                <header>产品发布管理系统</header>
+                <header>{{$t('message.m.pages.login.title')}}</header>
                 <section>
                     <div class="wrap">
                         <el-form :rules="rules" ref="ruleForm" :model="ruleForm">
                             <el-form-item prop="name">
                                 <div style="position: relative">
-                                    <el-input v-model="ruleForm.name" placeholder="请输入用户名" ref="name" @keydown.native="onConfirm($event,'name')" style="margin-top: 71px;"></el-input>
+                                    <el-input v-model="ruleForm.name" :placeholder="$t('message.m.pages.login.userNamePhd')" ref="name" @keydown.native="onConfirm($event,'name')" style="margin-top: 71px;"></el-input>
                                     <img src="~assets/image/auth/ic_login_user_hl.svg" style="position: absolute;left: 108px;top:84px;width: 15px">
                                 </div>
 
                             </el-form-item>
                             <el-form-item prop="password">
                                 <div style="position: relative">
-                                    <el-input v-model="ruleForm.password" placeholder="请输入登录密码" ref="password" type="password" @keydown.native="onConfirm($event,'password')" style="margin-top: 10px"></el-input>
+                                    <el-input v-model="ruleForm.password" :placeholder="$t('message.m.pages.login.userPwdPhd')" ref="password" type="password" @keydown.native="onConfirm($event,'password')" style="margin-top: 10px"></el-input>
                                     <img src="~assets/image/auth/ic_login_psw_hl.svg" style="position: absolute;left: 108px;top:22px;width: 15px">
                                 </div>
 
@@ -28,7 +28,7 @@
                     </div>
                 </section>
                 <section>
-                    <el-button class="btn-login" type="primary" :disabled="!ruleForm.name || !ruleForm.password" ref="login" @click="onLogin()">登录</el-button>
+                    <el-button class="btn-login" type="primary" :disabled="!ruleForm.name || !ruleForm.password" ref="login" @click="onLogin()">{{$t('message.m.pages.login.loginBtn')}}</el-button>
                 </section>
             </div>
         </div>

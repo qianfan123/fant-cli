@@ -1,15 +1,28 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
+import locale from 'fant3/lib/locale'
+import enLocale from 'fant3/lib/locale/lang/en'
+import zhLocale from 'fant3/lib/locale/lang/zh-CN'
 
-// 国际化
+
 Vue.use(VueI18n)
-const i18n = new VueI18n({
-  locale: 'zh-CN',    // 语言标识
-  // this.$i18n.locale // 通过切换locale的值来实现语言切换
-  messages: {
-    'zh-CN': require('./lang/zh'),   // 中文语言包
-    'en-US': require('./lang/en')    // 英文语言包
+
+const messages = {
+  en: {
+    message: require('./lang/en'),
+    ...enLocale // 或者用 Object.assign({ message: 'hello' }, enLocale)
+  },
+  zh: {
+    message: require('./lang/zh'),
+    ...zhLocale // 或者用 Object.assign({ message: '你好' }, zhLocale)
   }
+}
+
+const i18n = new VueI18n({
+  locale: 'zh',    // 语言标识
+  messages,
+  silentTranslationWarn: true
 })
+locale.i18n((key, value) => i18n.t(key, value)) //重点：为了实现element插件的多语言切换
 
 export default i18n

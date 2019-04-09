@@ -1,10 +1,8 @@
+import component from './component'
+import login from './login'
 export const m = {
-  el: {
-    ui: 'test{0}'
-  },
+  el: component,
   pages: {
-    mall: {
-
-    }
+    login: login
   }
 }

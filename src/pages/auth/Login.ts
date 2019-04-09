@@ -38,4 +38,7 @@ export default class Login extends Vue {
       }
     }
   }
+  mounted() {
+    console.log(this.$t('m.pages.login.title'))
+  }
 }
