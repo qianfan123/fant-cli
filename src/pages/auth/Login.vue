@@ -35,6 +35,22 @@
         <footer class="page-footer">
             <p>Copyright @ 1997-2018HEADING Co., Ltd. All Rights Reserved. 海鼎公司 版权所有</p>
         </footer>
+        <!--<ElCustomDialog-->
+                <!--title="自定义提示"-->
+                <!--confirmText="自定义确认"-->
+                <!--cancelText="自定义取消"-->
+                <!--@before-close="dialogShow = false"-->
+                <!--@confirm="dialogShow = false"-->
+                <!--@cancel="dialogShow = false"-->
+                <!--:isDialogShow="dialogShow">-->
+            <!--<div style="height: 40px">11111</div>-->
+            <!--<div style="height: 40px">11111</div>-->
+            <!--<div style="height: 40px">11111</div>-->
+            <!--<div style="height: 40px">11111</div>-->
+            <!--<template slot="other">-->
+                <!--<el-button size="small" type="primary" @click="dialogShow = false">其它</el-button>-->
+            <!--</template>-->
+        <!--</ElCustomDialog>-->
     </div>
 </template>
 

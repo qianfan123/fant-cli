@@ -7,6 +7,7 @@ import { Vue, Component } from 'vue-property-decorator'
 export default class Login extends Vue {
   name: string = ''
   password: string = ''
+  // dialogShow = false
   $refs: any
   ruleForm = {
     name: '',
@@ -19,6 +20,7 @@ export default class Login extends Vue {
 
   onLogin() {
     this.$router.push('projectList')
+    // this.dialogShow = true
   }
 
   /**
