@@ -5,6 +5,7 @@ import Main from 'pages/main/Main.vue'
 import ProjectList from 'pages/example/ProjectList'
 import ProjectAdd from 'pages/example/ProjectAdd'
 import ProjectDtl from 'pages/example/ProjectDtl'
+import TestComponent from 'pages/testcomponent/TestComponent.vue'
 
 Vue.use(Router)
 
@@ -15,7 +16,7 @@ export default new Router({
     {
       path: '/',
       name: '/',
-      redirect: '/login'
+      redirect: location.pathname.indexOf('example.html') > 0 ? '/testComponent' : '/login'
     },
     {
       path: '/login',
@@ -46,6 +47,11 @@ export default new Router({
           component: ProjectDtl
         }
       ]
+    },
+    {
+      path: '/testComponent',
+      name: 'testComponent',
+      component: TestComponent
     }
   ]
 })
