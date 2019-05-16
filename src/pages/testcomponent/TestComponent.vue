@@ -70,7 +70,8 @@
         在permissionMgr中提供了商贸的开发模式，一个是左边菜单权限，一个是页面的操作权限<br>
         数据格式分别如下：<br>
         登录之后，获取用户拥有的权限全集：<br>
-        [
+        <pre>
+            [
             {
                 caption: null
                 children: null
@@ -108,8 +109,10 @@
                 name: "采购.进货.导入"
             }
         ]
+        </pre>
         在main.ts中获取菜单的信息：<br>
-        [
+        <pre>
+            [
             {
                 children: null
                 code: null
@@ -157,7 +160,9 @@
                 version: 0
             }
         ]
-
+        </pre>
+        <h1>清理多与代码fant-122</h1>
+        在文件中备注清楚
     </div>
 </template>
 
