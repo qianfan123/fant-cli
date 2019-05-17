@@ -163,8 +163,16 @@
         </pre>
         <h1>清理多余代码fant-122</h1>
         在文件中备注清楚
+        <h1>富文本编译器</h1>
+        <rich-text :editorOption="editorOption"
+                   @rich-text-ready="onRichTextReady"
+                   @rich-text-focus="onRichTextFocus"
+                   @rich-text-blur="onRichTextBlur">
+        </rich-text>
+        <h1>表格树</h1>
+        <tree-table :data="treeTableData" :columns="columns"></tree-table>
     </div>
-</template>
+</template>32
 
 <script lang="ts" src="./TestComponent.ts">
 </script>

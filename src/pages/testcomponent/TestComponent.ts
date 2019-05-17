@@ -1,15 +1,112 @@
 import { Component, Vue } from 'vue-property-decorator'
 import AutoBroadcast from 'cmp/autobroadcast/AutoBroadcast.vue'
 import MyDialog from 'pages/testcomponent/MyDialog.vue'
+import RichText from 'cmp/richtext/RichText.vue'
+import TreeTable from 'cmp/treetable/TreeTable.vue'
 @Component({
     name: 'TestComponent',
     components: {
-        AutoBroadcast
+        AutoBroadcast,
+        RichText,
+        TreeTable
     }
 })
 export default class TestComponent extends Vue {
     dialogShow = false
     $refs: any
+    columns = [
+        {
+            text: '事件',
+            value: 'event',
+            width: 200
+        },
+        {
+            text: 'ID',
+            value: 'id'
+        }
+    ]
+    treeTableData =  [
+        {
+            id: 0,
+            event: '事件1',
+            timeLine: 50,
+            comment: '无'
+        },
+        {
+            id: 1,
+            event: '事件1',
+            timeLine: 100,
+            comment: '无',
+            children: [
+                {
+                    id: 2,
+                    event: '事件2',
+                    timeLine: 10,
+                    comment: '无'
+                },
+                {
+                    id: 3,
+                    event: '事件3',
+                    timeLine: 90,
+                    comment: '无',
+                    children: [
+                        {
+                            id: 4,
+                            event: '事件4',
+                            timeLine: 5,
+                            comment: '无'
+                        },
+                        {
+                            id: 5,
+                            event: '事件5',
+                            timeLine: 10,
+                            comment: '无'
+                        },
+                        {
+                            id: 6,
+                            event: '事件6',
+                            timeLine: 75,
+                            comment: '无',
+                            children: [
+                                {
+                                    id: 7,
+                                    event: '事件7',
+                                    timeLine: 50,
+                                    comment: '无',
+                                    children: [
+                                        {
+                                            id: 71,
+                                            event: '事件71',
+                                            timeLine: 25,
+                                            comment: 'xx'
+                                        },
+                                        {
+                                            id: 72,
+                                            event: '事件72',
+                                            timeLine: 5,
+                                            comment: 'xx'
+                                        },
+                                        {
+                                            id: 73,
+                                            event: '事件73',
+                                            timeLine: 20,
+                                            comment: 'xx'
+                                        }
+                                        ]
+                                },
+                                {
+                                    id: 8,
+                                    event: '事件8',
+                                    timeLine: 25,
+                                    comment: '无'
+                                }
+                                ]
+                        }
+                        ]
+                }
+            ]
+        }
+    ]
     broadcastArray = [
         {
             name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
@@ -27,6 +124,7 @@ export default class TestComponent extends Vue {
             code: 'code3'
         }
     ]
+    editorOption = {}
     tableData = [{
         date: '2016-05-02',
         name: '王小虎',
@@ -80,5 +178,14 @@ export default class TestComponent extends Vue {
                 }
             })
         }
+    }
+    onRichTextReady(quill: any) {
+        console.log(quill)
+    }
+    onRichTextFocus(quill: any) {
+        console.log(quill)
+    }
+    onRichTextBlur(quill: any) {
+        console.log(quill)
     }
 }
