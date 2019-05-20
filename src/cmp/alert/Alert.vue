@@ -17,10 +17,10 @@
 </template>
 <script>
   const ALERT_TYPE_ICON = {
-    'success': 'el-icon-success',
-    'warning': 'el-icon-warning',
-    'error': 'el-icon-error',
-    'info': 'el-icon-info'
+    success: 'el-icon-success',
+    warning: 'el-icon-warning',
+    error: 'el-icon-error',
+    info: 'el-icon-info'
   }
   export default {
     name: 'FantAlert',

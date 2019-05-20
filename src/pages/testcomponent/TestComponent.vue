@@ -13,6 +13,7 @@
         </auto-broadcast>
         <div style="margin: 10px 0">
             <!--提示组件-->
+            <h1>提示组件</h1>
             <alert title="定单异常" :center="false" :closeable="false" type="warning" description="请及时处理！"></alert>
         </div>
         <!--飘窗组件-->
