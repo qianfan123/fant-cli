@@ -24,11 +24,12 @@ export default class TestComponent extends Vue {
             text: 'ID',
             value: 'id'
         }
+
     ]
     treeTableData =  [
         {
             id: 0,
-            event: '事件1',
+            event: '事件0',
             timeLine: 50,
             comment: '无'
         },
@@ -37,7 +38,7 @@ export default class TestComponent extends Vue {
             event: '事件1',
             timeLine: 100,
             comment: '无',
-            children: [
+            child: [
                 {
                     id: 2,
                     event: '事件2',
@@ -49,7 +50,7 @@ export default class TestComponent extends Vue {
                     event: '事件3',
                     timeLine: 90,
                     comment: '无',
-                    children: [
+                    child: [
                         {
                             id: 4,
                             event: '事件4',
@@ -67,13 +68,13 @@ export default class TestComponent extends Vue {
                             event: '事件6',
                             timeLine: 75,
                             comment: '无',
-                            children: [
+                            child: [
                                 {
                                     id: 7,
                                     event: '事件7',
                                     timeLine: 50,
                                     comment: '无',
-                                    children: [
+                                    child: [
                                         {
                                             id: 71,
                                             event: '事件71',
