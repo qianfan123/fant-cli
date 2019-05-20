@@ -11,6 +11,10 @@
             <template slot="icon"><i class="el-icon-delete"></i></template>
 
         </auto-broadcast>
+        <div style="margin: 10px 0">
+            <!--提示组件-->
+            <alert title="定单异常" :center="false" :closeable="false" type="warning" description="请及时处理！"></alert>
+        </div>
         <!--飘窗组件-->
         <h1>飘窗内容自定义</h1>
         <el-button @click="doShowAnnotation">飘窗</el-button>
