@@ -11,6 +11,8 @@ import Qrcode from 'cmp/qrcode/Qrcode.vue'
         RichText,
         TreeTable,
         Qrcode
+        TreeTable,
+        FastAddition
     }
 })
 export default class TestComponent extends Vue {
