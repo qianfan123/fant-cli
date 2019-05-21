@@ -4,6 +4,7 @@ import MyDialog from 'pages/testcomponent/MyDialog.vue'
 import RichText from 'cmp/richtext/RichText.vue'
 import TreeTable from 'cmp/treetable/TreeTable.vue'
 import Qrcode from 'cmp/qrcode/Qrcode.vue'
+import InputDailog from 'cmp/inputdialog/InputDailog.vue'
 import Alert from 'cmp/alert/Alert.vue'
 
 @Component({
@@ -12,6 +13,8 @@ import Alert from 'cmp/alert/Alert.vue'
         AutoBroadcast,
         RichText,
         TreeTable,
+        Qrcode,
+        InputDailog
         Qrcode,
         Alert
     }
@@ -131,6 +134,7 @@ export default class TestComponent extends Vue {
         }
     ]
     editorOption = {}
+    inputValue: any = {}
     tableData = [{
         date: '2016-05-02',
         name: '王小虎',
@@ -147,6 +151,40 @@ export default class TestComponent extends Vue {
         date: '2016-05-03',
         name: '王小虎',
         address: '上海市普陀区金沙江路 1516 弄'
+    }]
+    inputDialogArray = [{
+        date: '2016-05-02',
+        name: '王小虎1',
+        address: '上海市普陀区金沙江路 1518 弄'
+    }, {
+        date: '2016-05-04',
+        name: '王小虎2',
+        address: '上海市普陀区金沙江路 1517 弄'
+    }, {
+        date: '2016-05-01',
+        name: '王小虎3',
+        address: '上海市普陀区金沙江路 1519 弄'
+    }, {
+        date: '2016-05-03',
+        name: '王小虎4',
+        address: '上海市普陀区金沙江路 1516 弄'
+    }]
+    gridData = [{
+        date: '2016-05-02',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+    }, {
+        date: '2016-05-04',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+    }, {
+        date: '2016-05-01',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
+    }, {
+        date: '2016-05-03',
+        name: '王小虎',
+        address: '上海市普陀区金沙江路 1518 弄'
     }]
     onGetUcn(ucn: any) {
         console.log(ucn)
@@ -193,5 +231,12 @@ export default class TestComponent extends Vue {
     }
     onRichTextBlur(quill: any) {
         console.log(quill)
+    }
+    doItemClick(item: any) {
+        this.inputValue = item
+    }
+    queryFunc() {
+        console.log(this.gridData)
+        return this.gridData
     }
 }
