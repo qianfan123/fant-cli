@@ -1,16 +1,16 @@
 <template>
   <translation name="fant-alert-fade">
-    <div class="fant-alert" v-show="visible" :class="[typeClass, center ? 'is-center' : '']">
-      <i class="fant-alert-icon" :class="[ iconClass, isExistDesc ? 'big-icon' : '' ]" v-if="showIcon"></i>
-      <div class="fant-alert-content">
+    <div class="fant-alert" v-show="visible" :class="typeClass">
+      <i class="fant-alert-icon" v-if="showIcon" :class="[ iconClass, isExistDesc ? 'big-icon' : '' ]" ></i>
+      <div class="fant-alert-content" :class="{ 'is-center' : center }">
         <span class="fant-alert-title" :class="{ 'bold-title' :  isExistDesc }" v-if="title">{{ title }}</span>
         <slot>
-          <p class="fant-alert-description" v-if="description">{{ description }}</p>
+          <div class="fant-alert-description" v-if="description">{{ description }}</div>
         </slot>
-        <i class="fant-alert-closebtn"
-           :class="[closeText === '' ? 'el-icon-close' : 'is-Text']"
-           v-show="closeable"
+       <div class="fant-alert-closebtn" v-show="closeable">
+          <i :class="[closeText === '' ? 'el-icon-close' : 'is-Text']"
            @click="closeAlert()">{{closeText}}</i>
+       </div>
       </div>
     </div>
   </translation>
@@ -112,8 +112,13 @@
       width: 28px;
     }
 
+    .is-center{
+      text-align: center
+    }
+
     .fant-alert-content {
-      display: table-cell;
+      display: inline-block;
+      width: 100%;
       padding: 0 8px;
 
       .fant-alert-title {
@@ -127,7 +132,7 @@
 
       .fant-alert-description {
         font-size: 12px;
-        margin: 5px 0 0;
+        padding: 3px 0;
       }
 
       .fant-alert-closebtn{
@@ -135,9 +140,14 @@
         color: #c0c4cc;
         opacity: 1;
         position: absolute;
-        top: 12px;
+        top: 0px;
         right: 15px;
         cursor: pointer;
+        height: 100%;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
       }
       .is-Text{
         font-style: normal;
@@ -147,29 +157,27 @@
     }
   }
 
-  .fant-alert.is-center {
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-  }
-
   .fant-alert-info {
     background-color: #f4f4f5;
     color: #909399;
+    border: 1px solid #909399;
   }
 
   .fant-alert-success {
     background-color: #f0f9eb;
     color: #67c23a;
+    border: 1px solid #67c23a;
   }
 
   .fant-alert-error {
     background-color: #fef0f0;
     color: #f56c6c;
+    border: 1px solid #f56c6c;
   }
 
   .fant-alert-warning {
     background-color: #fdf6ec;
     color: #e6a23c;
+    border: 1px solid #e6a23c;
   }
 </style>

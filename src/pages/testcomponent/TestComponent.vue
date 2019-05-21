@@ -14,13 +14,11 @@
         <!--带输入可弹框组件-->
         <h1>带输入可弹框组件</h1>
         <input-dailog v-model="inputValue" :query="queryFunc">
-            <div v-for="item in inputDialogArray" @click="doItemClick(item)">{{item.name}}</div>
+            <div v-for="(item, index) in inputDialogArray" :key="index" @click="doItemClick(item)">{{item.name}}</div>
         </input-dailog>
-        <div style="margin: 10px 0">
-            <!--提示组件-->
-            <h1>提示组件</h1>
-            <alert title="定单异常" :center="false" :closeable="false" type="warning" description="请及时处理！"></alert>
-        </div>
+        <!--提示组件-->
+        <h1>提示组件</h1>
+        <alert title="定单异常" :center="false" :closeable="true" type="warning" description="请及时处理！"></alert>
         <!--飘窗组件-->
         <h1>飘窗内容自定义</h1>
         <el-button @click="doShowAnnotation">飘窗</el-button>
