@@ -3,17 +3,18 @@
         <el-popover
                 ref="popover"
                 placement="bottom"
-                title="标题"
                 v-model="visiable"
                 trigger="manual">
-            <el-table :data="getTableData">
-                <el-table-column width="150" property="date" label="日期"></el-table-column>
-                <el-table-column width="100" property="name" label="姓名"></el-table-column>
-                <el-table-column width="300" property="address" label="地址"></el-table-column>
-            </el-table>
+            <ul class="list-wrapper">
+                <li v-for="(item, index) in getTableData" @click="doSelect(item)">{{item.name}}</li>
+            </ul>
         </el-popover>
-        <el-input :placeholder="placeholder" v-model="innerValue" v-popover:popover></el-input>
-        <i class="el-icon-more more" @click="doDialogShow"></i>
+        <el-input
+                :disabled="disabled"
+                :placeholder="placeholder"
+                @keyup.native="onKeyup()"
+                v-model="innerValue"></el-input>
+        <i class="el-icon-more more" @click="doDialogShow" :style="{'cursor': disabled ? 'not-allowed' : 'pointer'}"></i>
         <el-custom-dialog
                 :title="dialogTitle"
                 :confirmText="dialogConfirmText"
@@ -32,6 +33,10 @@
 <script>
     export default {
         props: {
+            disabled: {
+                type: Boolean,
+                default: false
+            },
             placeholder: {
                 type: String,
                 default: '请输入'
@@ -71,6 +76,7 @@
         },
         data() {
             return {
+                clickFlag: false,
                 visiable: false,
                 innerValue: '',
                 tableData: [],
@@ -79,6 +85,9 @@
         },
         methods: {
             doDialogShow() {
+                if (this.disabled) {
+                    return
+                }
                 this.dialogShow = true
             },
             onBeforeClose() {
@@ -92,33 +101,45 @@
             onCancel() {
                 this.dialogShow = false
                 this.$emit('cancel')
+            },
+            doSelect(item) {
+                this.$emit('get-select', item)
+                this.$emit('input', item)
+                this.clickFlag = true
+                this.innerValue = item.name
+                this.visiable = false
+            },
+            onKeyup() {
+                if (!this.innerValue) {
+                    this.visiable = false
+                    return
+                }
+                clearTimeout(this.timer)
+                this.timer = setTimeout(() => {
+                    this.tableData = this.query()
+                    this.visiable = true
+                }, 500)
             }
         },
         watch: {
             value(value) {
                 if (value) {
+                    this.clickFlag = true
                     this.dialogShow = false
-                    console.log(value)
                     this.innerValue = value.name
                 }
             },
-            innerValue(value) {
-                if (value) {
-                    clearTimeout(this.timer)
-                    this.timer = setTimeout(() => {
-                        console.log(value)
-                        this.tableData = this.query()
-                        console.log(typeof this.query)
-                        this.visiable = true
-                    }, 500)
-                }
-            },
-            // query: {
-            //     handler(newName, oldName) {
-            //         console.log(newName());
-            //     },
-            //     immediate: true,
-            //     deep: true
+            // innerValue(value) {
+            //     if (value) {
+            //         if (!this.clickFlag) {
+            //             clearTimeout(this.timer)
+            //             this.timer = setTimeout(() => {
+            //                 console.log(value)
+            //                 this.tableData = this.query()
+            //                 this.visiable = true
+            //             }, 500)
+            //         }
+            //     }
             // }
         },
         destroyed: function() {
@@ -142,5 +163,19 @@
     right: 10px;
     top: 8px;
     cursor: pointer;
+}
+.input-dialog .list-wrapper{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.input-dialog .list-wrapper li{
+    height: 40px;
+    line-height: 40px;
+    border-bottom: 1px solid #eeeeee;
+    cursor: pointer;
+}
+.input-dialog .el-popover{
+    top: 40px;
 }
 </style>

@@ -14,8 +14,7 @@ import Alert from 'cmp/alert/Alert.vue'
         RichText,
         TreeTable,
         Qrcode,
-        InputDailog
-        Qrcode,
+        InputDailog,
         Alert
     }
 })
@@ -134,22 +133,22 @@ export default class TestComponent extends Vue {
         }
     ]
     editorOption = {}
-    inputValue: any = {}
+    inputValue: any = null
     tableData = [{
         date: '2016-05-02',
-        name: '王小虎',
+        name: '王小虎1',
         address: '上海市普陀区金沙江路 1518 弄'
     }, {
         date: '2016-05-04',
-        name: '王小虎',
+        name: '王小虎2',
         address: '上海市普陀区金沙江路 1517 弄'
     }, {
         date: '2016-05-01',
-        name: '王小虎',
+        name: '王小虎3',
         address: '上海市普陀区金沙江路 1519 弄'
     }, {
         date: '2016-05-03',
-        name: '王小虎',
+        name: '王小虎4',
         address: '上海市普陀区金沙江路 1516 弄'
     }]
     inputDialogArray = [{
@@ -171,19 +170,19 @@ export default class TestComponent extends Vue {
     }]
     gridData = [{
         date: '2016-05-02',
-        name: '王小虎',
+        name: '王小虎111111111111111111111111111111111111111',
         address: '上海市普陀区金沙江路 1518 弄'
     }, {
         date: '2016-05-04',
-        name: '王小虎',
+        name: '王小虎2',
         address: '上海市普陀区金沙江路 1518 弄'
     }, {
         date: '2016-05-01',
-        name: '王小虎',
+        name: '王小虎3',
         address: '上海市普陀区金沙江路 1518 弄'
     }, {
         date: '2016-05-03',
-        name: '王小虎',
+        name: '王小虎4',
         address: '上海市普陀区金沙江路 1518 弄'
     }]
     onGetUcn(ucn: any) {
