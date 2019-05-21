@@ -4,15 +4,16 @@ import MyDialog from 'pages/testcomponent/MyDialog.vue'
 import RichText from 'cmp/richtext/RichText.vue'
 import TreeTable from 'cmp/treetable/TreeTable.vue'
 import Qrcode from 'cmp/qrcode/Qrcode.vue'
+import Alert from 'cmp/alert/Alert.vue'
+
 @Component({
     name: 'TestComponent',
     components: {
         AutoBroadcast,
         RichText,
         TreeTable,
-        Qrcode
-        TreeTable,
-        FastAddition
+        Qrcode,
+        Alert
     }
 })
 export default class TestComponent extends Vue {
