@@ -6,6 +6,7 @@ import TreeTable from 'cmp/treetable/TreeTable.vue'
 import Qrcode from 'cmp/qrcode/Qrcode.vue'
 import InputDailog from 'cmp/inputdialog/InputDailog.vue'
 import Alert from 'cmp/alert/Alert.vue'
+import FastAddition from 'cmp/fastAddition/FastAddition.vue'
 
 @Component({
     name: 'TestComponent',
@@ -15,7 +16,8 @@ import Alert from 'cmp/alert/Alert.vue'
         TreeTable,
         Qrcode,
         InputDailog,
-        Alert
+        Alert,
+        FastAddition
     }
 })
 export default class TestComponent extends Vue {
@@ -132,6 +134,7 @@ export default class TestComponent extends Vue {
             code: 'code3'
         }
     ]
+    fastAdditionArray = ['name1', 'name2', 'name3']
     editorOption = {}
     inputValue: any = null
     tableData = [{
