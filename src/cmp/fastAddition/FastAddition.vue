@@ -9,12 +9,12 @@
             </ul>
             <input v-model="code"
                    @keydown.enter="onAdd"
-                   placeholder="输入后按回车确认"/>
+                   placeholder="输入后按回车确认" v-if="!disabled"/>
         </div>
         <!--<div class="fast-addition-right">-->
             <!---->
         <!--</div>-->
-        <el-tip closable v-if="isShowTip" type="warning">
+        <el-tip closable v-if="isShowTip" type="warning" :disabled="disabled">
         </el-tip>
     </div>
 </template>
@@ -25,6 +25,10 @@
             fastAdditionArray: { // 默认示例
                 type: Array,
                 default: []
+            },
+            disabled: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
@@ -66,7 +70,7 @@
             margin: 0;
             padding: 0;
             border: none;
-            color: blue;
+            color: #5090f0;
             font-size: 12px;
             height: 30px;
             line-height: 30px;
@@ -74,17 +78,17 @@
                 margin: 0;
                 padding: 0;
                 .fast-addition-text-content {
-                    margin: 5px 0 5px 5px;
+                    margin: 5px 0 5px 8px;
                     padding: 0;
                     list-style: none;
                     float: left;
-                    background-color: skyblue;
+                    background-color: #F1F7FE;
                     height: 20px;
                     line-height: 20px;
                     display: inline-block;
                     .secCircle {
                         cursor: pointer;
-                        font-size: 15px;
+                        font-size: 13px;
                         margin-left: 2px;
                     }
                 }
