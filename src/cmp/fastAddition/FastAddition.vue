@@ -39,6 +39,7 @@
         methods: {
             onClose(index) {
                 this.fastAdditionArray.splice(index, 1)
+                this.$emit('existArray',  this.fastAdditionArray)
             },
             onAdd() {
                 if (this.fastAdditionArray.length >= 0) {

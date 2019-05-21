@@ -202,6 +202,9 @@ export default class TestComponent extends Vue {
             position: 'bottom-right'
         })
     }
+    onExistArray(arr: any) {
+        console.log(arr)
+    }
     doShowDialog() {
         this.dialogShow = true
     }
