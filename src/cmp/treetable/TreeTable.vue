@@ -171,24 +171,53 @@
             //某个复选框被点击时
             toselect(row) {
                 console.log(row);
-                // row._expanded = row.checks;//选中后是否展开
-                //1、若有子集先让子选中
-                if (row.child) {
-                    this.setchildtobeselect(row.child, row.checks);
+                if (row.parent) { // 有父节点
+                    // 1、遍历父节点的所有子节点
+                    let selectArr = row.parent.child.filter((item) => {
+                        return item.checks
+                    })
+                    // 2、如果所有一级节点都选中了，则选中父级节点
+                    if (selectArr.length === row.parent.child.length) {
+                        row.parent.checks = true
+                    } else {
+                        row.parent.checks = false
+                    }
+
                 }
-                //2、然后判断是否全选中
-                this.key = true; //重置为true，防止上次已经是false的状态
-                this.isallchecked(this.formatData);
-                //3、设置多选框的状态
-                if (!row.checks) {
-                    this.setparentfalse(this.formatData, row.id, row._level); //设置父级选中的状态为false
-                    document.getElementById("chooseall").checked = false; //设置全选框的状态
+                if (row.child) { // 有子节点
+                    if (row.checks) { // 选中
+                        this.setchildtobeselect(row.child, row.checks)
+                    } else { // 取消
+                        this.setchildtobeselect(row.child, row.checks)
+                    }
+                }
+                console.log(this.formatData)
+                let selectAllCount = this.formatData.filter((item) => {
+                    return item.checks
+                })
+                if (selectAllCount.length === this.formatData.length) {
+                    document.getElementById("chooseall").checked = true;
                 } else {
-                    this.setparenttrue(this.formatData, row.id, row._level); //设置父级选中的状态为true
+                    document.getElementById("chooseall").checked = false;
                 }
-                if (this.key) {
-                    document.getElementById("chooseall").checked = true; //设置全选框的状态
-                }
+                // // row._expanded = row.checks;//选中后是否展开
+                // //1、若有子集先让子选中
+                // if (row.child) {
+                //     this.setchildtobeselect(row.child, row.checks);
+                // }
+                // //2、然后判断是否全选中
+                // this.key = true; //重置为true，防止上次已经是false的状态
+                // this.isallchecked(this.formatData);
+                // //3、设置多选框的状态
+                // if (!row.checks) {
+                //     this.setparentfalse(this.formatData, row.id, row._level); //设置父级选中的状态为false
+                //     document.getElementById("chooseall").checked = false; //设置全选框的状态
+                // } else {
+                //     this.setparenttrue(this.formatData, row.id, row._level); //设置父级选中的状态为true
+                // }
+                // if (this.key) {
+                //     document.getElementById("chooseall").checked = true; //设置全选框的状态
+                // }
             }
         },
         mounted() {

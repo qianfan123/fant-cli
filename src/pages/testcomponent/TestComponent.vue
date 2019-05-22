@@ -29,6 +29,7 @@
             title="自定义提示"
             confirmText="自定义确认"
             cancelText="自定义取消"
+            width="500px"
             @before-close="dialogShow = false"
             @confirm="dialogShow = false"
             @cancel="dialogShow = false"
@@ -37,6 +38,10 @@
                 <div style="height: 40px">11111</div>
                 <div style="height: 40px">11111</div>
                 <div style="height: 40px">11111</div>
+            <div style="height: 40px">11111</div>
+            <div style="height: 40px">11111</div>
+            <div style="height: 40px">11111</div>
+            <div style="height: 40px">11111</div>
                 <template slot="other">
                     <el-button size="small" type="primary" @click="dialogShow = false">其它</el-button>
                 </template>
@@ -74,6 +79,24 @@
         <h1>国际化</h1>
         见登录模块，登录模块已改造成国际化
         需要配置src/locale/Locale.js下面的zh和en
+        <h1>清理多余代码fant-122</h1>
+        在文件中备注清楚
+        <h1>富文本编译器</h1>
+        <rich-text :editorOption="editorOption"
+                   @rich-text-ready="onRichTextReady"
+                   @rich-text-focus="onRichTextFocus"
+                   @rich-text-blur="onRichTextBlur">
+        </rich-text>
+        <h1>表格树</h1>
+        <tree-table :data="treeTableData" :columns="columns"></tree-table>
+        <h1>二维码</h1>
+        <!--dark: '#00F'像素点颜色,light: '#0000'透明背景-->
+        <qrcode value="http://www.baidu.com" :options="{ width: 200, color: { dark: '#00F', light: '#0000'} }"></qrcode>
+        <h1>回车快速新增</h1>
+        <fast-addition  :fastAdditionArray="fastAdditionArray" :disabled="true" @existArray="onExistArray" :onRepeat="onRepeat" :maxLength="maxLength"></fast-addition>
+        <h1>分块面板组件</h1>
+        <block-panel></block-panel>
+
         <h1>提供权限支持</h1>
         在permissionMgr中提供了商贸的开发模式，一个是左边菜单权限，一个是页面的操作权限<br>
         数据格式分别如下：<br>
@@ -169,23 +192,6 @@
             }
         ]
         </pre>
-        <h1>清理多余代码fant-122</h1>
-        在文件中备注清楚
-        <h1>富文本编译器</h1>
-        <rich-text :editorOption="editorOption"
-                   @rich-text-ready="onRichTextReady"
-                   @rich-text-focus="onRichTextFocus"
-                   @rich-text-blur="onRichTextBlur">
-        </rich-text>
-        <h1>表格树</h1>
-        <tree-table :data="treeTableData" :columns="columns"></tree-table>
-        <h1>二维码</h1>
-        <!--dark: '#00F'像素点颜色,light: '#0000'透明背景-->
-        <qrcode value="http://www.baidu.com" :options="{ width: 200, color: { dark: '#00F', light: '#0000'} }"></qrcode>
-        <h1>回车快速新增</h1>
-        <fast-addition  :fastAdditionArray="fastAdditionArray" :disabled="false" @existArray="onExistArray" :onRepeat="onRepeat" :maxLength="maxLength"></fast-addition>
-        <h1>分块面板组件</h1>
-        <block-panel></block-panel>
     </div>
 </template>
 
