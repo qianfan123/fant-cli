@@ -96,12 +96,13 @@
             }
             input {
                 margin: 0 0 0 20px;
-                padding: 0;
+                padding: 0 0 0 5px;
                 display: inline-block;
                 width: 160px;
                 height: 70%;
                 border-radius: 5px;
                 border: 1px solid #ccc;
+                color: #ccc;
             }
         }
     }
