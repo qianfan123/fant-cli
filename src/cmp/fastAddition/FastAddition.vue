@@ -63,7 +63,7 @@
                     })
                     // 自动去除前后空格
                     this.code = this.code.replace(/(^\s*)|(\s*$)/g, '')
-                    if (oArr.length > 0 && this.onRepeat === true) {
+                    if (oArr.length > 0 && this.onRepeat === false) {
                         this.$message.warning('不允许添加重复内容')
                     } else {
                         if (this.code) {
