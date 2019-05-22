@@ -176,19 +176,7 @@
                     this.dialogShow = false
                     this.innerValue = value.name
                 }
-            },
-            // innerValue(value) {
-            //     if (value) {
-            //         if (!this.clickFlag) {
-            //             clearTimeout(this.timer)
-            //             this.timer = setTimeout(() => {
-            //                 console.log(value)
-            //                 this.tableData = this.query()
-            //                 this.visiable = true
-            //             }, 500)
-            //         }
-            //     }
-            // }
+            }
         },
         destroyed: function() {
             clearTimeout(this.timer)
