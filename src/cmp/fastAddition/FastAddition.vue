@@ -101,7 +101,6 @@
                 width: 160px;
                 height: 70%;
                 border-radius: 5px;
-                border: 1px solid #ccc;
                 color: #ccc;
             }
         }
