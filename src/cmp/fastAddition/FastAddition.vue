@@ -67,11 +67,14 @@
                         this.$message.warning('不允许添加重复内容')
                     } else {
                         if (this.code) {
-                            let obj = {
-                                uuid: '',
-                                name: this.code,
-                                code: ''
+                            let obj = ''
+                            if (this.fastAdditionArray.length > 0) {
+                                obj = JSON.parse(JSON.stringify(this.fastAdditionArray[0]))
                             }
+                            for (let item in obj) {
+                                obj[item] = ''
+                            }
+                            obj.name = this.code
                             this.fastAdditionArray.push(obj) && (this.code = '')
                         }
                     }

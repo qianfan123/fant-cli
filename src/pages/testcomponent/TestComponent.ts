@@ -140,17 +140,20 @@ export default class TestComponent extends Vue {
         {
             name: 'name1',
             uuid: 'uuid1',
-            code: 'code1'
+            code: 'code1',
+            barcode: 'bar1'
         },
         {
             name: 'name2',
             uuid: 'uuid2',
-            code: 'code2'
+            code: 'code2',
+            barcode: 'bar2'
         },
         {
             name: 'name3',
             uuid: 'uuid3',
-            code: 'code3'
+            code: 'code3',
+            barcode: 'bar3'
         }
     ]
     editorOption = {}
