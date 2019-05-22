@@ -50,6 +50,9 @@
         },
         methods: {
             onClose(index) {
+                if(this.disabled) {
+                    return
+                }
                 this.fastAdditionArray.splice(index, 1)
                 this.$emit('existArray',  this.fastAdditionArray)
             },
@@ -96,7 +99,6 @@
                 margin: 5px 0 5px 8px;
                 padding: 0;
                 list-style: none;
-                float: left;
                 background-color: #F1F7FE;
                 height: 20px;
                 line-height: 20px;
