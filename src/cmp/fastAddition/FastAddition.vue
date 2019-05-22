@@ -8,7 +8,7 @@
                 <!--</li>-->
             <!--</ul>-->
             <span class="fast-addition-text-content" v-for="(item, index) in fastAdditionArray" :key="index">
-                <label class="firCircle" @click="onClose(index)">{{item.name}}</label>
+                <label class="firCircle" @click="onClose(index)">{{item[prop]}}</label>
                 <i class="el-icon-close delete" @click="onClose(index)"></i>
             </span>
             <input v-model="code"
@@ -41,6 +41,10 @@
             maxLength: {
                 type: Number,
                 default: 255
+            },
+            prop: {
+                type: String,
+                default: 'name'
             }
         },
         data() {
@@ -59,7 +63,7 @@
             onAdd() {
                 if (this.fastAdditionArray.length >= 0) {
                     let oArr = this.fastAdditionArray.filter((item) => {
-                        return this.code === item.name
+                        return this.code === item[this.prop]
                     })
                     // 自动去除前后空格
                     this.code = this.code.replace(/(^\s*)|(\s*$)/g, '')
@@ -74,7 +78,7 @@
                             for (let item in obj) {
                                 obj[item] = ''
                             }
-                            obj.name = this.code
+                            obj[this.prop] = this.code
                             this.fastAdditionArray.push(obj) && (this.code = '')
                         }
                     }

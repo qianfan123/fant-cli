@@ -93,7 +93,13 @@
         <!--dark: '#00F'像素点颜色,light: '#0000'透明背景-->
         <qrcode value="http://www.baidu.com" :options="{ width: 200, color: { dark: '#00F', light: '#0000'} }"></qrcode>
         <h1>回车快速新增</h1>
-        <fast-addition  :fastAdditionArray="fastAdditionArray" :disabled="false" @existArray="onExistArray" :onRepeat="false" :maxLength="10"></fast-addition>
+        <fast-addition
+                prop="code"
+                :fastAdditionArray="fastAdditionArray"
+                :disabled="false"
+                @existArray="onExistArray"
+                :onRepeat="false"
+                :maxLength="10"></fast-addition>
         <h1>分块面板组件</h1>
         <block-panel></block-panel>
 
