@@ -6,13 +6,20 @@
                 v-model="visiable"
                 trigger="manual">
             <ul class="list-wrapper">
-                <li v-for="(item, index) in getTableData" @click="doSelect(item)">{{item.name}}</li>
+                <li v-for="(item, index) in getTableData"
+                    ref="item"
+                    tabindex="1"
+                    :class="{'select': index === selectIndex}"
+                    @click="doSelect(item)">{{item.name}}</li>
             </ul>
         </el-popover>
         <el-input
+                ref="input"
                 :disabled="disabled"
                 :placeholder="placeholder"
-                @keyup.native="onKeyup()"
+                @keyup.native="onKeyup($event)"
+                @keydown.native="onKeyDown($event)"
+                @blur="onBlur"
                 v-model="innerValue"></el-input>
         <i class="el-icon-more more" @click="doDialogShow" :style="{'cursor': disabled ? 'not-allowed' : 'pointer'}"></i>
         <el-custom-dialog
@@ -80,7 +87,8 @@
                 visiable: false,
                 innerValue: '',
                 tableData: [],
-                timer: 0
+                timer: 0,
+                selectIndex: -1
             }
         },
         methods: {
@@ -109,16 +117,56 @@
                 this.innerValue = item.name
                 this.visiable = false
             },
-            onKeyup() {
+            onKeyup(event) {
+                if (event.which === 38 || event.which === 40 || event.which === 13) {
+                    return
+                }
+                clearTimeout(this.timer)
                 if (!this.innerValue) {
                     this.visiable = false
                     return
                 }
-                clearTimeout(this.timer)
                 this.timer = setTimeout(() => {
                     this.tableData = this.query()
                     this.visiable = true
+                    this.selectIndex = -1
                 }, 500)
+            },
+            onKeyDown(event) {
+                console.log(event.which)
+                if (!this.visiable) {
+                    return
+                }
+                if (event.which === 38) {
+                    --this.selectIndex
+                    if (this.selectIndex <= -1) {
+                        this.selectIndex = -1
+                        console.log(this.$refs.input)
+                        this.$nextTick(() => {
+                            this.$refs.input.focus()
+                            this.$refs.input.select()
+                        })
+                    }
+                    console.log(this.selectIndex)
+                }
+
+                if (event.which === 40) {
+                    ++this.selectIndex
+                    if (this.selectIndex === this.getTableData.length) {
+                        this.selectIndex = this.getTableData.length - 1
+                    }
+                    console.log(this.selectIndex)
+                }
+                if (event.which === 13) {
+                    if (this.selectIndex > -1) {
+                        this.innerValue = this.getTableData[this.selectIndex].name
+                        this.visiable = false
+                        this.$emit('input', this.getTableData[this.selectIndex])
+                    }
+                }
+            },
+            onBlur() {
+                this.visiable = false
             }
         },
         watch: {
@@ -174,6 +222,9 @@
     line-height: 40px;
     border-bottom: 1px solid #eeeeee;
     cursor: pointer;
+}
+.input-dialog .list-wrapper .select{
+    background-color:  #e3eefa;
 }
 .input-dialog .el-popover{
     top: 40px;
