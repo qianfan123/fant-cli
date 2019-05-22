@@ -1,7 +1,7 @@
 module.exports = {
     // 部署应用时的基本 URL
     baseUrl: './',
-
+    // baseUrl: process.env.NODE_ENV === 'development' ? 'https://mbr-test.qianfan123.com' : 'https://mbr-branch.qianfan123.com',
     // build时构建文件的目录 构建时传入 --no-clean 可关闭该行为
     // outputDir: 'dist',
 
@@ -11,7 +11,7 @@ module.exports = {
     // 指定生成的 index.html 的输出路径 (相对于 outputDir)。也可以是一个绝对路径。
     // indexPath: 'index.html',
 
-    // 默认在生成的静态资源文件名中包含hash以控制缓存
+    // 默认在生成的静态资源文件名中包含hash以控制 缓存
     // filenameHashing: true,
     // 构建多页面应用，页面的配置
     pages: {

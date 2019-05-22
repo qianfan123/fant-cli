@@ -73,7 +73,7 @@
             border: none;
             color: #5090f0;
             font-size: 12px;
-            height: 30px;
+            /*height: 30px;*/
             line-height: 30px;
             .fast-addition-text-content-wrap {
                 margin: 0;
@@ -85,7 +85,7 @@
                     float: left;
                     background-color: #F1F7FE;
                     height: 20px;
-                    line-height: 20px;
+                    line-height: 17px;
                     display: inline-block;
                     .secCircle {
                         cursor: pointer;

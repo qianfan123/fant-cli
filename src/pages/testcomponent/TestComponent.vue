@@ -14,7 +14,7 @@
         <!--带输入可弹框组件-->
         <h1>带输入可弹框组件</h1>
         <input-dailog v-model="inputValue" :query="queryFunc">
-            <div v-for="(item, index) in inputDialogArray" :key="index" @click="doItemClick(item)">{{item.name}}</div>
+            <div v-for="item in inputDialogArray" @click="doItemClick(item)">{{item.name}}</div>
         </input-dailog>
         <!--提示组件-->
         <h1>提示组件</h1>
@@ -188,7 +188,8 @@
     </div>
 </template>
 
-<script lang="ts" src="./TestComponent.ts"></script>
+<script lang="ts" src="./TestComponent.ts">
+</script>
 
 <style lang="scss">
 
