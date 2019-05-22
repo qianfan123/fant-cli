@@ -134,7 +134,23 @@ export default class TestComponent extends Vue {
             code: 'code3'
         }
     ]
-    fastAdditionArray = ['name1', 'name2', 'name3']
+    fastAdditionArray = [
+        {
+            name: 'name1',
+            uuid: 'uuid1',
+            code: 'code1'
+        },
+        {
+            name: 'name2',
+            uuid: 'uuid2',
+            code: 'code2'
+        },
+        {
+            name: 'name3',
+            uuid: 'uuid3',
+            code: 'code3'
+        }
+    ]
     editorOption = {}
     inputValue: any = null
     tableData = [{
