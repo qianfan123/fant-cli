@@ -7,6 +7,7 @@ import Qrcode from 'cmp/qrcode/Qrcode.vue'
 import InputDailog from 'cmp/inputdialog/InputDailog.vue'
 import Alert from 'cmp/alert/Alert.vue'
 import FastAddition from 'cmp/fastAddition/FastAddition.vue'
+import BlockPanel from 'cmp/blockPanel/BlockPanel.vue'
 
 @Component({
     name: 'TestComponent',
@@ -17,7 +18,8 @@ import FastAddition from 'cmp/fastAddition/FastAddition.vue'
         Qrcode,
         InputDailog,
         Alert,
-        FastAddition
+        FastAddition,
+        BlockPanel
     }
 })
 export default class TestComponent extends Vue {
