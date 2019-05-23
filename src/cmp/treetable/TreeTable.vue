@@ -1,5 +1,10 @@
 <template>
-    <el-table ref="multipleTable" :data="formatData" :row-style="showRow" v-bind="$attrs">   <!--  @header-click="chooseall" -->
+    <el-table
+            ref="multipleTable"
+            :data="formatData"
+            :row-style="showRow"
+            @sort-change="onSortChange"
+            v-bind="$attrs">   <!--  @header-click="chooseall" -->
         <el-table-column :render-header="renderHeader" width="50" align="center">
             <template slot-scope="scope">
                 <el-checkbox v-model="scope.row.checks" @change="toselect(scope.row)"></el-checkbox>
@@ -15,7 +20,10 @@
                 {{ scope.$index }}
             </template>
         </el-table-column>
-        <el-table-column v-for="(column, index) in columns" v-else :key="column.value" :label="column.text" :width="column.width">
+        <el-table-column v-for="(column, index) in columns" v-else :key="column.value"
+                         :sortable="column.sortable"
+                         :label="column.text"
+                         :width="column.width">
             <template slot-scope="scope">
                 <!-- Todo -->
                 <span v-for="space in scope.row._level" v-if="index === 0" :key="space" class="ms-tree-space"/>
@@ -110,12 +118,28 @@
             //功能函数:选中部分子集
             setchildtobeselect(arr, key) {
                 arr.forEach((v, i) => {
-                    v.checks = key;
+                    // v.checks = key;
+                    this.$set(v, 'checks', key)
                     // v._expanded = key;//选中后展开子项
                     if (v.child) {
                         this.setchildtobeselect(v.child, v.checks);
                     }
                 });
+                console.log(arr)
+            },
+            setParenttobeselect(arr) {
+                let selectArr = arr.child.filter((item) => {
+                    return item.checks
+                })
+                // 2、如果所有一级节点都选中了，则选中父级节点
+                if (selectArr.length === arr.child.length) {
+                    arr.checks = true
+                } else {
+                    arr.checks = false
+                }
+                if (arr.parent) {
+                    this.setParenttobeselect(arr.parent)
+                }
             },
             //是否所有的都被选中
             isallchecked(arr) {
@@ -172,17 +196,7 @@
             toselect(row) {
                 console.log(row);
                 if (row.parent) { // 有父节点
-                    // 1、遍历父节点的所有子节点
-                    let selectArr = row.parent.child.filter((item) => {
-                        return item.checks
-                    })
-                    // 2、如果所有一级节点都选中了，则选中父级节点
-                    if (selectArr.length === row.parent.child.length) {
-                        row.parent.checks = true
-                    } else {
-                        row.parent.checks = false
-                    }
-
+                    this.setParenttobeselect(row.parent)
                 }
                 if (row.child) { // 有子节点
                     if (row.checks) { // 选中
@@ -191,7 +205,6 @@
                         this.setchildtobeselect(row.child, row.checks)
                     }
                 }
-                console.log(this.formatData)
                 let selectAllCount = this.formatData.filter((item) => {
                     return item.checks
                 })
@@ -200,24 +213,14 @@
                 } else {
                     document.getElementById("chooseall").checked = false;
                 }
-                // // row._expanded = row.checks;//选中后是否展开
-                // //1、若有子集先让子选中
-                // if (row.child) {
-                //     this.setchildtobeselect(row.child, row.checks);
-                // }
-                // //2、然后判断是否全选中
-                // this.key = true; //重置为true，防止上次已经是false的状态
-                // this.isallchecked(this.formatData);
-                // //3、设置多选框的状态
-                // if (!row.checks) {
-                //     this.setparentfalse(this.formatData, row.id, row._level); //设置父级选中的状态为false
-                //     document.getElementById("chooseall").checked = false; //设置全选框的状态
-                // } else {
-                //     this.setparenttrue(this.formatData, row.id, row._level); //设置父级选中的状态为true
-                // }
-                // if (this.key) {
-                //     document.getElementById("chooseall").checked = true; //设置全选框的状态
-                // }
+                this.$emit('get-select', this.formatData)
+            },
+            onSortChange(column) {
+                this.$emit('table-sort', {
+                    column: column,
+                    prop: column.column ? column.column.label : '',
+                    order: column.column.order === 'ascending' ? 'ASC' : 'DESC'
+                })
             }
         },
         mounted() {

@@ -88,7 +88,11 @@
                    @rich-text-blur="onRichTextBlur">
         </rich-text>
         <h1>表格树</h1>
-        <tree-table :data="treeTableData" :columns="columns"></tree-table>
+        <tree-table
+                @table-sort="onTableSort"
+                @get-select="onTableSelect"
+                :data="treeTableData"
+                :columns="columns"></tree-table>
         <h1>二维码</h1>
         <!--dark: '#00F'像素点颜色,light: '#0000'透明背景-->
         <qrcode value="http://www.baidu.com" :options="{ width: 200, color: { dark: '#00F', light: '#0000'} }"></qrcode>

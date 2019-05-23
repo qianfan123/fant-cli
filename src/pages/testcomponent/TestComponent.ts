@@ -29,11 +29,12 @@ export default class TestComponent extends Vue {
         {
             text: '事件',
             value: 'event',
-            width: 200
+            width: 200,
         },
         {
             text: 'ID',
-            value: 'id'
+            value: 'id',
+            sortable: true
         }
 
     ]
@@ -264,5 +265,11 @@ export default class TestComponent extends Vue {
     queryFunc() {
         console.log(this.gridData)
         return this.gridData
+    }
+    onTableSort(obj: any) {
+        console.dir(obj)
+    }
+    onTableSelect(arr: any) {
+        console.log(arr)
     }
 }
