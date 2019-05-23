@@ -8,6 +8,7 @@ import InputDailog from 'cmp/inputdialog/InputDailog.vue'
 import Alert from 'cmp/alert/Alert.vue'
 import FastAddition from 'cmp/fastAddition/FastAddition.vue'
 import BlockPanel from 'cmp/blockPanel/BlockPanel.vue'
+import FantSwitch from 'cmp/switch/Switch.vue'
 
 @Component({
     name: 'TestComponent',
@@ -19,7 +20,8 @@ import BlockPanel from 'cmp/blockPanel/BlockPanel.vue'
         InputDailog,
         Alert,
         FastAddition,
-        BlockPanel
+        BlockPanel,
+        FantSwitch
     }
 })
 export default class TestComponent extends Vue {
@@ -158,6 +160,7 @@ export default class TestComponent extends Vue {
         }
     ]
     editorOption = {}
+    switchValue: boolean = true
     inputValue: any = null
     tableData = [{
         date: '2016-05-02',

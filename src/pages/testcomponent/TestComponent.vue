@@ -19,6 +19,13 @@
         <!--提示组件-->
         <h1>提示组件</h1>
         <alert title="定单异常" :center="false" :closeable="true" type="warning" description="请及时处理！"></alert>
+        <!--开关组件-->
+        <h1>开关组件</h1>
+        <fant-switch v-model="switchValue"
+                     width="52"
+                     active-inner-text="开启"
+                     inactive-inner-text="关闭"
+        ></fant-switch>
         <!--飘窗组件-->
         <h1>飘窗内容自定义</h1>
         <el-button @click="doShowAnnotation">飘窗</el-button>
