@@ -37,8 +37,12 @@ export default class TestComponent extends Vue {
             text: 'ID',
             value: 'id',
             sortable: true
+        },
+        {
+            text: '自定义view',
+            value: 'view',
+            sortable: false
         }
-
     ]
     treeTableData =  [
         {
@@ -120,6 +124,13 @@ export default class TestComponent extends Vue {
                         ]
                 }
             ]
+        },
+        {
+            id: 2,
+            event: '事件2',
+            timeLine: 50,
+            comment: '无',
+            view: true
         }
     ]
     broadcastArray = [

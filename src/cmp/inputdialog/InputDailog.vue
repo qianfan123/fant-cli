@@ -10,7 +10,7 @@
                     ref="item"
                     tabindex="1"
                     :class="{'select': index === selectIndex}"
-                    @click="doSelect(item)">{{item.name}}</li>
+                    @click="doSelect(item)">{{item[prop]}}</li>
             </ul>
         </el-popover>
         <el-input
@@ -79,6 +79,10 @@
             query: {
                 type: Function,
                 default: () => {}
+            },
+            prop: {
+                type: String,
+                default: ''
             }
         },
         data() {
@@ -114,7 +118,7 @@
                 this.$emit('get-select', item)
                 this.$emit('input', item)
                 this.clickFlag = true
-                this.innerValue = item.name
+                this.innerValue = item[this.prop]
                 this.visiable = false
             },
             onKeyup(event) {
@@ -159,7 +163,7 @@
                 }
                 if (event.which === 13) {
                     if (this.selectIndex > -1) {
-                        this.innerValue = this.getTableData[this.selectIndex].name
+                        this.innerValue = this.getTableData[this.selectIndex][this.prop]
                         this.visiable = false
                         this.$emit('input', this.getTableData[this.selectIndex])
                     }
@@ -174,7 +178,7 @@
                 if (value) {
                     this.clickFlag = true
                     this.dialogShow = false
-                    this.innerValue = value.name
+                    this.innerValue = value[this.prop]
                 }
             }
         },

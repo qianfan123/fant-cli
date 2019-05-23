@@ -4,7 +4,7 @@
             :data="formatData"
             :row-style="showRow"
             @sort-change="onSortChange"
-            v-bind="$attrs">   <!--  @header-click="chooseall" -->
+            v-bind="$attrs">
         <el-table-column :render-header="renderHeader" width="50" align="center">
             <template slot-scope="scope">
                 <el-checkbox v-model="scope.row.checks" @change="toselect(scope.row)"></el-checkbox>
@@ -31,7 +31,8 @@
                     <i v-if="!scope.row._expanded" class="el-icon-plus"/>
                     <i v-else class="el-icon-minus"/>
                 </span>
-                {{ scope.row[column.value] }}
+                <span v-if="column.value !== 'view'">{{ scope.row[column.value] }}</span>
+                <div v-if="column.value === 'view'"><slot></slot></div>
             </template>
         </el-table-column>
         <slot/>
@@ -105,14 +106,20 @@
             //设置表头全选
             renderHeader(h, data) {
                 return h("span", [
-                    h("input", {
+                    // h("input", {
+                    //     attrs: {
+                    //         id: "chooseall",
+                    //         type: "checkbox",
+                    //         style:
+                    //             "border: 1px solid #dcdfe6;border-radius: 2px;box-sizing: border-box;width: 14px;height: 14px;background-color: #fff;"
+                    //     }
+                    // })
+                    h('el-checkbox', {
                         attrs: {
-                            id: "chooseall",
-                            type: "checkbox",
-                            style:
-                                "border: 1px solid #dcdfe6;border-radius: 2px;box-sizing: border-box;width: 14px;height: 14px;background-color: #fff;"
+                            ref: 'selectAll',
+                            id: 'chooseall'
                         }
-                    })
+                    }),
                 ]);
             },
             //功能函数:选中部分子集
@@ -208,10 +215,17 @@
                 let selectAllCount = this.formatData.filter((item) => {
                     return item.checks
                 })
+                let chooseAll = document.getElementById("chooseall")
                 if (selectAllCount.length === this.formatData.length) {
-                    document.getElementById("chooseall").checked = true;
+                    chooseAll.classList.add('is-checked')
+                    chooseAll.setAttribute('aria-checked', true)
+                    chooseAll.children[0].classList.add('is-checked')
+                    chooseAll.children[0].children[1].checked = true
                 } else {
-                    document.getElementById("chooseall").checked = false;
+                    chooseAll.classList.remove('is-checked')
+                    chooseAll.setAttribute('aria-checked', false)
+                    chooseAll.children[0].classList.remove('is-checked')
+                    chooseAll.children[0].children[1].checked = false
                 }
                 this.$emit('get-select', this.formatData)
             },
@@ -226,7 +240,8 @@
         mounted() {
             this.$nextTick(() => {
                 var that = this;
-                const all = document.getElementById("chooseall");
+                const all = document.getElementById("chooseall").children[0].children[1];
+
                 all.onchange = function(e) {
                     console.log(all.checked);
                     if (all.checked == true) {

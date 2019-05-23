@@ -13,8 +13,8 @@
         </auto-broadcast>
         <!--带输入可弹框组件-->
         <h1>带输入可弹框组件</h1>
-        <input-dailog v-model="inputValue" :query="queryFunc">
-            <div v-for="item in inputDialogArray" @click="doItemClick(item)">{{item.name}}</div>
+        <input-dailog v-model="inputValue" :query="queryFunc" prop="address">
+            <div v-for="item in inputDialogArray" @click="doItemClick(item)">{{item.address}}</div>
         </input-dailog>
         <!--提示组件-->
         <h1>提示组件</h1>
@@ -99,7 +99,11 @@
                 @table-sort="onTableSort"
                 @get-select="onTableSelect"
                 :data="treeTableData"
-                :columns="columns"></tree-table>
+                :columns="columns">
+            <el-button size="mini" type="primary">审核</el-button>
+            <el-button size="mini" type="primary">编辑</el-button>
+            <el-button size="mini" type="primary">查看</el-button>
+        </tree-table>
         <h1>二维码</h1>
         <!--dark: '#00F'像素点颜色,light: '#0000'透明背景-->
         <qrcode value="http://www.baidu.com" :options="{ width: 200, color: { dark: '#00F', light: '#0000'} }"></qrcode>
