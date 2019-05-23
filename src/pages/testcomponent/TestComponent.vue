@@ -3,10 +3,26 @@
         <!--自动广播组件-->
         <h1>自动广播组件</h1>
         <auto-broadcast
+                prop="code"
+                mode="double"
                 backgroundColor="pink"
                 textColor="white"
                 iconColor="blue"
-                @get-ucn="onGetUcn"
+                @get-select="onGetSelect"
+                :broadcastArray="broadcastDoubleArray">
+            <template slot="icon"><i class="el-icon-delete"></i></template>
+
+        </auto-broadcast>
+        <br>
+        <br>
+        <br>
+        <auto-broadcast
+                prop="code"
+                mode="single"
+                backgroundColor="pink"
+                textColor="white"
+                iconColor="blue"
+                @get-select="onGetSelect"
                 :broadcastArray="broadcastArray">
             <template slot="icon"><i class="el-icon-delete"></i></template>
 

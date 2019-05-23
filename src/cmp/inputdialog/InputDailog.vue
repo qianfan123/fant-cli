@@ -82,7 +82,7 @@
             },
             prop: {
                 type: String,
-                default: ''
+                default: 'name'
             }
         },
         data() {
