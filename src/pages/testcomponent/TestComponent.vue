@@ -115,9 +115,16 @@
                 @existArray="onExistArray"
                 :onRepeat="false"
                 :maxLength="10"></fast-addition>
-        <h1>分块面板组件</h1>
+        <h1>分块面板</h1>
         <block-panel></block-panel>
+        <h1>多级地址</h1>
+        <MultilevelAddress
+                :provinceFunc="provinceFunc"
+                :cityFunc="cityFunc"
+                :countyFunc="countyFunc"
+                :villageFunc="villageFunc">
 
+        </MultilevelAddress>
         <h1>提供权限支持</h1>
         在permissionMgr中提供了商贸的开发模式，一个是左边菜单权限，一个是页面的操作权限<br>
         数据格式分别如下：<br>

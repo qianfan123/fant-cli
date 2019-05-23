@@ -9,6 +9,7 @@ import Alert from 'cmp/alert/Alert.vue'
 import FastAddition from 'cmp/fastAddition/FastAddition.vue'
 import BlockPanel from 'cmp/blockPanel/BlockPanel.vue'
 import FantSwitch from 'cmp/switch/Switch.vue'
+import MultilevelAddress from 'cmp/multilevelAddress/MultilevelAddress.vue'
 
 @Component({
     name: 'TestComponent',
@@ -21,7 +22,8 @@ import FantSwitch from 'cmp/switch/Switch.vue'
         Alert,
         FastAddition,
         BlockPanel,
-        FantSwitch
+        FantSwitch,
+        MultilevelAddress
     }
 })
 export default class TestComponent extends Vue {
@@ -285,5 +287,61 @@ export default class TestComponent extends Vue {
     }
     onTableSelect(arr: any) {
         console.log(arr)
+    }
+    provinceFunc() {
+        return [
+            {
+                uuid: 'hn',
+                name: '河南省',
+                code: 'henan'
+            },
+            {
+                uuid: 'sh',
+                name: '上海市',
+                code: 'shanghai'
+            }
+        ]
+    }
+    cityFunc() {
+        return [
+            {
+                uuid: 'xy',
+                name: '信阳市',
+                code: 'xinyang'
+            },
+            {
+                uuid: 'zz',
+                name: '郑州市',
+                code: 'zhengzhou'
+            }
+        ]
+    }
+    countyFunc() {
+        return [
+            {
+                uuid: 'sc',
+                name: '商城县',
+                code: 'shangcheng'
+            },
+            {
+                uuid: 'gs',
+                name: '固始县',
+                code: 'gushi'
+            }
+        ]
+    }
+    villageFunc() {
+        return [
+            {
+                uuid: 'hfq',
+                name: '河凤桥乡',
+                code: 'hefengqiao'
+            },
+            {
+                uuid: 'cg',
+                name: '城关乡',
+                code: 'chengguan'
+            }
+        ]
     }
 }
