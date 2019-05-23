@@ -1,15 +1,15 @@
 <template>
-    <div>
-        <el-select v-model="province" @change="doProvinceChange">
+    <div class="dividerAddress">
+        <el-select class="marginRight" v-model="province" @change="doProvinceChange">
             <el-option v-for="(item, index) in provinceList" :key="index" :label="item.name" :value="item.uuid"></el-option>
         </el-select>
-        <el-select v-model="city" @change="doCityChange">
+        <el-select class="marginRight" v-model="city" @change="doCityChange">
             <el-option v-for="(item, index) in  cityList" :key="index" :label="item.name" :value="item.uuid"></el-option>
         </el-select>
-        <el-select v-model="county" @change="doCountyChange">
+        <el-select class="marginRight" v-model="county" @change="doCountyChange">
             <el-option v-for="(item,index) in countyList" :key="index" :label="item.name" :value="item.uuid"></el-option>
         </el-select>
-        <el-select v-model="village">
+        <el-select class="marginRight" v-model="village">
             <el-option v-for="(item,index) in villageList" :key="index" :label="item.name" :value="item.uuid"></el-option>
         </el-select>
         <el-input class="streetStyle" v-model="street"></el-input>
@@ -67,12 +67,15 @@
     }
 </script>
 
-<style>
-    .streetStyle {
-        width: 50px;
-        display: inline-block;
-        position: relative;
-        left: 888px;
-        top: -33px;
+<style lang="scss">
+    .dividerAddress {
+        .marginRight {
+            margin-right: 20px;
+        }
+        .streetStyle {
+            width: 350px;
+            display: inline-block;
+            position: relative;}
     }
+
 </style>
