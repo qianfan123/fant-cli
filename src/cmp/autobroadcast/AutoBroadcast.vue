@@ -1,15 +1,27 @@
 <template>
-    <div class="auto-broadcast-wrap" :style="{'backgroundColor': backgroundColor}">
+    <div class="auto-broadcast-wrap" :style="{'backgroundColor': backgroundColor, 'height' : mode === 'single' ? '50px' : '100px'}">
         <div class="auto-broadcast-absolute">
-            <div class="broadcast-icon" :style="{'color': iconColor}"><slot name="icon"></slot></div>
-            <div class="broadcast-text" :class="{broadcast_marquee_top:animate}">
+            <div class="broadcast-icon" :style="{'color': iconColor, 'marginTop' : mode === 'single' ? '0px' : '20px'}"><slot name="icon"></slot></div>
+            <div class="broadcast-text" :class="{broadcast_marquee_top:animate}" :style="{'top' : mode === 'single' ? '-50px' : '-100px'}">
                 <ul class="broadcast-text-content-wrap">
                     <li class="broadcast-text-content"
+                        v-if="mode === 'single'"
                         :style="{'color': textColor}"
                         v-for="(item, index) in broadcastArray"
-                        @click="doBroadcast(index)">
-                        <a @mouseover="doCancelTimer"
-                           @mouseleave="doStartTimer">{{typeof item === 'string' ? item : item.name}}</a>
+                    >
+                        <a @click="doBroadcast(item)"
+                           @mouseover="doCancelTimer"
+                           @mouseleave="doStartTimer">{{typeof item === 'string' ? item : item[prop]}}</a>
+                    </li>
+                    <li class="broadcast-text-content"
+                        v-if="mode === 'double'"
+                        :style="{'color': textColor}"
+                        v-for="(item, index) in broadcastArray"
+                        >
+                        <div><a @click="doBroadcast(item[0])" @mouseover="doCancelTimer"
+                           @mouseleave="doStartTimer">{{typeof item === 'string' ? item : item[0][prop]}}</a></div>
+                        <div><a @click="doBroadcast(item[1])" @mouseover="doCancelTimer"
+                           @mouseleave="doStartTimer">{{typeof item === 'string' ? item : item[1][prop]}}</a></div>
                     </li>
                 </ul>
             </div>
@@ -39,13 +51,22 @@
             time: { // 动画时间>=500
                 type: Number,
                 default: 2000
+            },
+            prop: {
+                type: String,
+                default: 'name'
+            },
+            mode: {
+                type: String,
+                default: 'single' // single or double
             }
         },
         data() {
             return {
                 timer500: null,
                 timer2000: null,
-                animate: false
+                animate: false,
+                doubleArray: []
             }
         },
         created: function() {
@@ -60,8 +81,8 @@
                     this.animate = false;
                 }, 500)
             },
-            doBroadcast(index) {
-                this.$emit('get-ucn', this.broadcastArray[index])
+            doBroadcast(item) {
+                this.$emit('get-select', item)
             },
             doCancelTimer() {
                 console.log('mouseover')

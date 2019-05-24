@@ -152,6 +152,44 @@ export default class TestComponent extends Vue {
             code: 'code3'
         }
     ]
+    broadcastDoubleArray = [
+        [
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid11',
+                code: 'code11'
+            },
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid12',
+                code: 'code12'
+            }
+        ],
+        [
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid21',
+                code: 'code21'
+            },
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid22',
+                code: 'code22'
+            }
+        ],
+        [
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid31',
+                code: 'code1'
+            },
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid32',
+                code: 'code1'
+            }
+        ]
+    ]
     fastAdditionArray = [
         {
             name: 'name1',
@@ -226,7 +264,7 @@ export default class TestComponent extends Vue {
         name: '王小虎4',
         address: '上海市普陀区金沙江路 1518 弄'
     }]
-    onGetUcn(ucn: any) {
+    onGetSelect(ucn: any) {
         console.log(ucn)
     }
     doShowAnnotation() {
