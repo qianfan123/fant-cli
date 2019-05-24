@@ -12,7 +12,7 @@
         <el-select class="marginRight" v-model="village">
             <el-option v-for="(item,index) in villageList" :key="index" :label="item.name" :value="item.uuid"></el-option>
         </el-select>
-        <el-input class="streetStyle" v-model="street"></el-input>
+        <el-input class="streetStyle" v-model="street" placeholder="请输入街道，门牌号"></el-input>
     </div>
 </template>
 
