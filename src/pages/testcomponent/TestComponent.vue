@@ -99,6 +99,7 @@
                 </template>
             </el-table-column>
         </el-table>
+
         <h1>国际化</h1>
         见登录模块，登录模块已改造成国际化
         需要配置src/locale/Locale.js下面的zh和en
@@ -120,6 +121,33 @@
             <el-button size="mini" type="primary">编辑</el-button>
             <el-button size="mini" type="primary">查看</el-button>
         </tree-table>
+        <br><br><br>
+        <el-table
+                :data="tableData11"
+                style="width: 100%;margin-bottom: 20px;"
+                border
+                row-key="id">
+            <el-table-column
+                    type="selection"
+                    width="55">
+            </el-table-column>
+            <el-table-column
+                    prop="date"
+                    label="日期"
+                    sortable
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="name"
+                    label="姓名"
+                    sortable
+                    width="180">
+            </el-table-column>
+            <el-table-column
+                    prop="address"
+                    label="地址">
+            </el-table-column>
+        </el-table>
         <h1>二维码</h1>
         <!--dark: '#00F'像素点颜色,light: '#0000'透明背景-->
         <qrcode value="http://www.baidu.com" :options="{ width: 200, color: { dark: '#00F', light: '#0000'} }"></qrcode>
