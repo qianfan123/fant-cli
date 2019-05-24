@@ -1,6 +1,6 @@
 <template>
     <div>
-        <span>喜欢花秋月</span>
+        <span>春花秋月</span>
         <el-divider direction="vertical"></el-divider>
         <span>何时了</span>
         <el-divider direction="vertical"></el-divider>
