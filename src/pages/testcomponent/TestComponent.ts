@@ -10,6 +10,8 @@ import FastAddition from 'cmp/fastAddition/FastAddition.vue'
 import BlockPanel from 'cmp/blockPanel/BlockPanel.vue'
 import FantSwitch from 'cmp/switch/Switch.vue'
 import MultilevelAddress from 'cmp/multilevelAddress/MultilevelAddress.vue'
+import StoreRank from 'cmp/storeRank/StoreRank.vue'
+import StoreRankList from 'cmp/storeRank/StoreRankList.vue'
 
 @Component({
     name: 'TestComponent',
@@ -23,7 +25,9 @@ import MultilevelAddress from 'cmp/multilevelAddress/MultilevelAddress.vue'
         FastAddition,
         BlockPanel,
         FantSwitch,
-        MultilevelAddress
+        MultilevelAddress,
+        StoreRank,
+        StoreRankList
     }
 })
 export default class TestComponent extends Vue {
@@ -302,6 +306,28 @@ export default class TestComponent extends Vue {
         name: '王小虎',
         address: '上海市普陀区金沙江路 1516 弄'
     }]
+
+    rankList = [
+        {
+            name: '重庆火锅',
+            score: 99,
+            rank: 1,
+            percent: 90
+        },
+        {
+            name: '潮汕牛肉火锅',
+            score: 88,
+            rank: 2,
+            percent: 70
+        },
+        {
+            name: '老北京火锅',
+            score: 70,
+            rank: 3,
+            percent: 50
+        }
+    ]
+
     onGetSelect(ucn: any) {
         console.log(ucn)
     }

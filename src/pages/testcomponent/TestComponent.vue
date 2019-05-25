@@ -169,6 +169,18 @@
                 :villageFunc="villageFunc">
 
         </MultilevelAddress>
+        <!--门店排行组件-->
+        <h1>门店排行组件</h1>
+        <store-rank color="#dd6b4d"
+                    width="300"
+                    title="火锅排行榜"
+                    left-text="浦江火锅店"
+                    right-text="第一名"
+                    :showRank="true"
+                    rank="2"
+                    percentage="80"></store-rank>
+        
+        <store-rank-list color="#40a798" width="300" title="闵行区火锅排行榜" :rankData="rankList"></store-rank-list>
         <h1>提供权限支持</h1>
         在permissionMgr中提供了商贸的开发模式，一个是左边菜单权限，一个是页面的操作权限<br>
         数据格式分别如下：<br>
