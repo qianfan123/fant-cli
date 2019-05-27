@@ -214,6 +214,23 @@ export default class TestComponent extends Vue {
             barcode: 'bar3'
         }
     ]
+    blockPanelArray = [
+        {
+            name: '春花秋月',
+            uuid: 'uuid1',
+            code: 'code1'
+        },
+        {
+            name: '何时了',
+            uuid: 'uuid2',
+            code: 'code2'
+        },
+        {
+            name: '往事知多少',
+            uuid: 'uuid3',
+            code: 'code3'
+        }
+    ]
     editorOption = {}
     switchValue: boolean = true
     inputValue: any = null

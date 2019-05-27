@@ -160,7 +160,11 @@
                 :onRepeat="false"
                 :maxLength="10"></fast-addition>
         <h1>分块面板</h1>
-        <block-panel></block-panel>
+        <block-panel :blockPanelArray="blockPanelArray">
+            <div>111</div>
+            <div>222222</div>
+            <div>333</div>
+        </block-panel>
         <h1>多级地址</h1>
         <MultilevelAddress
                 :provinceFunc="provinceFunc"
