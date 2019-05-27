@@ -9,7 +9,7 @@
         <el-select class="marginRight" v-model="county" @change="doCountyChange">
             <el-option v-for="(item,index) in countyList" :key="index" :label="item.name" :value="item.uuid"></el-option>
         </el-select>
-        <el-select class="marginRight" v-model="village">
+        <el-select class="marginRight" v-model="village" @change="doVillageChange">
             <el-option v-for="(item,index) in villageList" :key="index" :label="item.name" :value="item.uuid"></el-option>
         </el-select>
         <el-input class="streetStyle" v-model="street" placeholder="请输入街道，门牌号"></el-input>
@@ -56,12 +56,24 @@
         methods: {
             doProvinceChange() {
                 this.cityList = this.cityFunc()
+                this.city = ''
+                this.county = ''
+                this.village = ''
+                this.street = ''
             },
             doCityChange() {
                 this.countyList = this.countyFunc()
+                this.county = ''
+                this.village = ''
+                this.street = ''
             },
             doCountyChange() {
                 this.villageList = this.villageFunc()
+                this.village = ''
+                this.street = ''
+            },
+            doVillageChange() {
+                this.street = ''
             }
         }
     }
