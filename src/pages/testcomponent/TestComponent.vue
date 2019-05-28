@@ -160,10 +160,11 @@
                 :onRepeat="false"
                 :maxLength="10"></fast-addition>
         <h1>分块面板</h1>
-        <block-panel :blockPanelArray="blockPanelArray">
-            <div>111</div>
-            <div>222222</div>
-            <div>333</div>
+        <block-panel>
+            <block-panel-item>春花秋月</block-panel-item>
+            <block-panel-item>何时了</block-panel-item>
+            <block-panel-item>往事知多少</block-panel-item>
+            <block-panel-item>往事知多少</block-panel-item>
         </block-panel>
         <h1>多级地址</h1>
         <MultilevelAddress
@@ -171,7 +172,6 @@
                 :cityFunc="cityFunc"
                 :countyFunc="countyFunc"
                 :villageFunc="villageFunc">
-
         </MultilevelAddress>
         <!--门店排行组件-->
         <h1>门店排行组件</h1>
