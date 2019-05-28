@@ -10,7 +10,6 @@ import FastAddition from 'cmp/fastAddition/FastAddition.vue'
 import BlockPanel from 'cmp/blockPanel/BlockPanel.vue'
 import FantSwitch from 'cmp/switch/Switch.vue'
 import MultilevelAddress from 'cmp/multilevelAddress/MultilevelAddress.vue'
-import StoreRank from 'cmp/storeRank/StoreRank.vue'
 import StoreRankList from 'cmp/storeRank/StoreRankList.vue'
 
 @Component({
@@ -26,7 +25,6 @@ import StoreRankList from 'cmp/storeRank/StoreRankList.vue'
         BlockPanel,
         FantSwitch,
         MultilevelAddress,
-        StoreRank,
         StoreRankList
     }
 })

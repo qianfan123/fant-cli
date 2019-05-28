@@ -1,5 +1,5 @@
 <template>
-  <div class="store-rank-list" :style="{  'width': rankWidth + 'px'  }">
+  <div class="store-rank-list">
     <div class="title" v-if="title">{{ title }}</div>
     <div v-for="(data, index) in rankData" :key="index">
       <div class="rank">
@@ -34,19 +34,6 @@ export default {
       type: Boolean,
       default: true
     },
-    width: {
-      type: Number,
-      default: 300
-    },
-  },
-  data() {
-    return {
-      rankWidth: this.width
-    }
-  },
-  mounted() {
-    this.rankWidth = this.width || 300
-    console.log(this.rankData)
   },
   computed: {
      barStyle() {
@@ -62,9 +49,10 @@ export default {
 </script>
 <style lang="scss">
 .store-rank-list{
-  width: 300px;
+  width: 100%;
+  min-width: 300px;
   .title{
-    margin: 10px 0;
+    margin: 15px 0;
     text-align: center;
   }
   .rank{
