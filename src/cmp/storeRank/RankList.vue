@@ -1,5 +1,5 @@
 <template>
-  <div class="store-rank-list">
+  <div class="rank-list">
     <div class="title" v-if="title">{{ title }}</div>
     <div v-for="(data, index) in rankData" :key="index">
       <div class="rank">
@@ -15,6 +15,7 @@
 </template>
 <script>
 export default {
+  name: 'rankList',
   props: {
     title: String,
     color: {
@@ -24,10 +25,10 @@ export default {
     rankData: {
       type: Array,
       default: [{
-            name: '重庆火锅',
-            score: 99,
-            rank: 1,
-            percent: 90
+            name: '',
+            score: 0,
+            rank: 0,
+            percent: 0
         }]
     },
     showRank: {
@@ -48,7 +49,7 @@ export default {
 }
 </script>
 <style lang="scss">
-.store-rank-list{
+.rank-list{
   width: 100%;
   min-width: 300px;
   .title{

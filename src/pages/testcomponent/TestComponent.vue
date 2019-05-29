@@ -177,10 +177,10 @@
         <h1>门店排行组件</h1>
         <div class="rank-lists">
             <div class="list">
-                <store-rank-list color="#40a798" title="闵行区火锅排行榜" :rankData="rankList"></store-rank-list>
+                <rank-list color="#40a798" title="闵行区火锅排行榜" :rankData="rankList"></rank-list>
             </div>
             <div class="list">
-                <store-rank-list color="#dd6b4d" title="闵行区火锅排行榜" :rankData="rankList"></store-rank-list>
+                <rank-list color="#dd6b4d" title="闵行区火锅排行榜" :rankData="rankList"></rank-list>
             </div>
         </div>
         <h1>提供权限支持</h1>
