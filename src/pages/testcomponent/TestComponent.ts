@@ -326,18 +326,24 @@ export default class TestComponent extends Vue {
 
     rankList = [
         {
+            uuid: '001',
+            code: 'chongqin',
             name: '重庆火锅',
             score: 99,
             rank: 1,
             percent: 90
         },
         {
+            uuid: '002',
+            code: 'chaosan',
             name: '潮汕牛肉火锅',
             score: 88,
             rank: 2,
             percent: 70
         },
         {
+            uuid: '001',
+            code: 'beijing',
             name: '老北京火锅',
             score: 70,
             rank: 3,
@@ -406,6 +412,9 @@ export default class TestComponent extends Vue {
     }
     onTableSelect(arr: any) {
         console.log(arr)
+    }
+    getRank(value: any) {
+        console.log(value)
     }
     provinceFunc() {
         return [

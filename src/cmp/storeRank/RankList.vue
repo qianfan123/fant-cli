@@ -1,7 +1,7 @@
 <template>
   <div class="rank-list">
     <div class="title" v-if="title">{{ title }}</div>
-    <div v-for="(data, index) in rankData" :key="index">
+    <div v-for="(data, index) in rankData" :key="index" @click="getRank(data)">
       <div class="rank">
         <span>{{ data.name }}</span>
         <span :style="{ 'color': color }">{{ data.score }}</span>
@@ -25,6 +25,8 @@ export default {
     rankData: {
       type: Array,
       default: [{
+            uuid: '',
+            code: '',
             name: '',
             score: 0,
             rank: 0,
@@ -45,6 +47,11 @@ export default {
         }
       }
      }
+  },
+  methods: {
+    getRank(value) {
+      this.$emit('get-rank', value)
+    }
   }
 }
 </script>
