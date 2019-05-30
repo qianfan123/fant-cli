@@ -158,7 +158,7 @@
                 :disabled="false"
                 @existArray="onExistArray"
                 :onRepeat="false"
-                :maxLength="10"></fast-addition>
+                :maxLength="255"></fast-addition>
         <h1>分块面板</h1>
         <block-panel>
             <block-panel-item>春花秋月</block-panel-item>
