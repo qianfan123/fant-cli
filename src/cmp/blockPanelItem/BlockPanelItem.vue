@@ -7,6 +7,12 @@
 <script>
     export default {
         name: "blockPanelItem",
+        props: {
+            borderStyle: {
+                type: String,
+                default: '1px solid red'
+            }
+        },
         data() {
             return {
                 blockLength: 0
@@ -24,7 +30,8 @@
                     percent = 100/this.blockLength - (this.blockLength - 1)
                 }
                 return {
-                    width: percent + '%'
+                    width: percent + '%',
+                    borderRight: this.borderStyle
                 }
             }
         }
@@ -33,11 +40,10 @@
 
 <style lang="scss">
     .block-panel-item {
-        border-right: 1px solid #ccc;
         display: inline-block;
         text-align: center;
         &:last-child{
-            border-right: none;
+            border-right: none !important;
         }
     }
 </style>

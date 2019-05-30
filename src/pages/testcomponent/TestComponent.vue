@@ -160,11 +160,11 @@
                 :onRepeat="false"
                 :maxLength="255"></fast-addition>
         <h1>分块面板</h1>
-        <block-panel>
-            <block-panel-item>春花秋月</block-panel-item>
-            <block-panel-item>何时了</block-panel-item>
-            <block-panel-item>往事知多少</block-panel-item>
-            <block-panel-item>往事知多少</block-panel-item>
+        <block-panel borderStyle="1px solid orange" backgroundColor="pink">
+            <block-panel-item borderStyle="1px solid green">春花秋月</block-panel-item>
+            <block-panel-item borderStyle="1px solid green">何时了</block-panel-item>
+            <block-panel-item borderStyle="1px solid green">往事知多少</block-panel-item>
+            <block-panel-item borderStyle="1px solid green">往事知多少</block-panel-item>
         </block-panel>
         <h1>多级地址</h1>
         <MultilevelAddress
