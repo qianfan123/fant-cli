@@ -167,6 +167,11 @@ export default class TestComponent extends Vue {
                 name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
                 uuid: 'uuid12',
                 code: 'code12'
+            },
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid13',
+                code: 'code13'
             }
         ],
         [
@@ -179,18 +184,28 @@ export default class TestComponent extends Vue {
                 name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
                 uuid: 'uuid22',
                 code: 'code22'
+            },
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid23',
+                code: 'code23'
             }
         ],
         [
             {
                 name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
                 uuid: 'uuid31',
-                code: 'code1'
+                code: 'code31'
             },
             {
                 name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
                 uuid: 'uuid32',
-                code: 'code1'
+                code: 'code32'
+            },
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid32',
+                code: 'code33'
             }
         ]
     ]

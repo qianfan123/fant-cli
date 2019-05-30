@@ -147,6 +147,15 @@
                     prop="address"
                     label="地址">
             </el-table-column>
+            <el-table-column
+                    prop="address"
+                    label="自定义view">
+                <template slot-scope="scope">
+                    <el-button size="mini" type="primary">审核</el-button>
+                    <el-button size="mini" type="primary">编辑</el-button>
+                    <el-button size="mini" type="primary">查看</el-button>
+                </template>
+            </el-table-column>
         </el-table>
         <h1>二维码</h1>
         <!--dark: '#00F'像素点颜色,light: '#0000'透明背景-->

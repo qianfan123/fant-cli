@@ -1,27 +1,26 @@
 <template>
-    <div class="auto-broadcast-wrap" :style="{'backgroundColor': backgroundColor, 'height' : mode === 'single' ? '50px' : '100px'}">
+    <div class="auto-broadcast-wrap" :style="{'backgroundColor': backgroundColor, 'height' : getHeight}">
         <div class="auto-broadcast-absolute">
-            <div class="broadcast-icon" :style="{'color': iconColor, 'marginTop' : mode === 'single' ? '0px' : '20px'}"><slot name="icon"></slot></div>
-            <div class="broadcast-text" :class="{broadcast_marquee_top:animate}" :style="{'top' : mode === 'single' ? '-50px' : '-100px'}">
+            <div class="broadcast-icon" :style="{'color': iconColor, 'marginTop' : getMarginTop}"><slot name="icon"></slot></div>
+            <div class="broadcast-text" :class="{broadcast_marquee_top:animate}" :style="getStyle">
                 <ul class="broadcast-text-content-wrap">
                     <li class="broadcast-text-content"
-                        v-if="mode === 'single'"
                         :style="{'color': textColor}"
-                        v-for="(item, index) in broadcastArray"
+                        v-for="item in broadcastArray"
                     >
-                        <a @click="doBroadcast(item)"
-                           @mouseover="doCancelTimer"
-                           @mouseleave="doStartTimer">{{typeof item === 'string' ? item : item[prop]}}</a>
-                    </li>
-                    <li class="broadcast-text-content"
-                        v-if="mode === 'double'"
-                        :style="{'color': textColor}"
-                        v-for="(item, index) in broadcastArray"
-                        >
-                        <div><a @click="doBroadcast(item[0])" @mouseover="doCancelTimer"
-                           @mouseleave="doStartTimer">{{typeof item === 'string' ? item : item[0][prop]}}</a></div>
-                        <div><a @click="doBroadcast(item[1])" @mouseover="doCancelTimer"
-                           @mouseleave="doStartTimer">{{typeof item === 'string' ? item : item[1][prop]}}</a></div>
+                        <div v-if="mode === 'single'">
+                            <a @click="doBroadcast(item)"
+                               @mouseover="doCancelTimer"
+                               @mouseleave="doStartTimer">{{typeof item === 'string' ? item : item[prop]}}
+                            </a>
+                        </div>
+                        <div v-else>
+                            <div v-for="sub in item">
+                                <a @click="doBroadcast(sub)" @mouseover="doCancelTimer"
+                                    @mouseleave="doStartTimer">{{typeof item === 'string' ? item : sub[prop]}}
+                                </a>
+                            </div>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -46,7 +45,7 @@
             },
             broadcastArray: { // 默认示例
                 type: Array,
-                default: ['上路无压力', '中路有点吃紧', '下路也不行啊', '打野快来GANK啊']
+                default: []
             },
             time: { // 动画时间>=500
                 type: Number,
@@ -96,6 +95,31 @@
                 this.timer2000 = setInterval(this.showMarquee, 2000)
             }
         },
+        computed: {
+            getHeight() {
+                if (this.broadcastArray[0]) {
+                    let type = Object.prototype.toString.call(this.broadcastArray[0])
+                    return type === '[object Array]' ? this.broadcastArray[0].length * 50 + 'px' : 1 * 50 + 'px'
+                } else {
+                    return 1 * 50 + 'px'
+                }
+
+            },
+            getMarginTop() {
+                if (this.broadcastArray[0]) {
+                    let type = Object.prototype.toString.call(this.broadcastArray[0])
+                    return type === '[object Array]' ? (this.broadcastArray[0].length - 1) * 25 + 'px' : '0px'
+                } else {
+                    return '0px'
+                }
+            },
+            getStyle() {
+                console.log(`-${this.getHeight}`)
+                return {
+                    'top' : `-${this.getHeight}`
+                }
+            }
+        },
         destroyed: function() {
             clearInterval(this.timer2000);
             clearTimeout(this.timer500)
@@ -114,7 +138,6 @@
         .auto-broadcast-absolute{
             .broadcast-icon{
                 position: absolute;
-
                 text-align: center;
                 display: inline-block;
                 padding: 9px;
