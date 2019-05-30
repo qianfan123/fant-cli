@@ -8,7 +8,7 @@
     export default {
         name: "BlockPanel",
         props: {
-            borderStyle: {
+            borderStyle: { //边框样式
                 type: String,
                 default: '1px solid red'
             },

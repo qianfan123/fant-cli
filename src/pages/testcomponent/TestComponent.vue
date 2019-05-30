@@ -160,6 +160,7 @@
                 :onRepeat="false"
                 :maxLength="255"></fast-addition>
         <h1>分块面板</h1>
+        <!--分块面板-->
         <block-panel borderStyle="1px solid orange" backgroundColor="pink">
             <block-panel-item borderStyle="1px solid green">春花秋月</block-panel-item>
             <block-panel-item borderStyle="1px solid green">何时了</block-panel-item>
