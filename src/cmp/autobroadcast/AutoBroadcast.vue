@@ -2,13 +2,13 @@
     <div class="auto-broadcast-wrap" :style="{'backgroundColor': backgroundColor, 'height' : getHeight}">
         <div class="auto-broadcast-absolute">
             <div class="broadcast-icon" :style="{'color': iconColor, 'marginTop' : getMarginTop}"><slot name="icon"></slot></div>
-            <div class="broadcast-text" :class="{broadcast_marquee_top:animate}" :style="getStyle">
+            <div class="broadcast-text" :class="{broadcast_marquee_top:animate}">
                 <ul class="broadcast-text-content-wrap">
                     <li class="broadcast-text-content"
                         :style="{'color': textColor}"
                         v-for="item in broadcastArray"
                     >
-                        <div v-if="mode === 'single'">
+                        <div v-if="getType === 'object'">
                             <a @click="doBroadcast(item)"
                                @mouseover="doCancelTimer"
                                @mouseleave="doStartTimer">{{typeof item === 'string' ? item : item[prop]}}
@@ -54,10 +54,6 @@
             prop: {
                 type: String,
                 default: 'name'
-            },
-            mode: {
-                type: String,
-                default: 'single' // single or double
             }
         },
         data() {
@@ -96,27 +92,31 @@
             }
         },
         computed: {
-            getHeight() {
+            getType() {
                 if (this.broadcastArray[0]) {
                     let type = Object.prototype.toString.call(this.broadcastArray[0])
-                    return type === '[object Array]' ? this.broadcastArray[0].length * 50 + 'px' : 1 * 50 + 'px'
+                    if (type === '[object Array]') {
+                        return 'array'
+                    } else {
+                        return 'object'
+                    }
                 } else {
-                    return 1 * 50 + 'px'
+                    return 'object'
+                }
+            },
+            getHeight() {
+                if (this.broadcastArray[0]) {
+                    return this.getType === 'array' ? this.broadcastArray[0].length * 50 + 'px' : 50 + 'px'
+                } else {
+                    return 50 + 'px'
                 }
 
             },
             getMarginTop() {
                 if (this.broadcastArray[0]) {
-                    let type = Object.prototype.toString.call(this.broadcastArray[0])
-                    return type === '[object Array]' ? (this.broadcastArray[0].length - 1) * 25 + 'px' : '0px'
+                    return this.getType === 'array' ? (this.broadcastArray[0].length - 1) * 25 + 'px' : '0px'
                 } else {
                     return '0px'
-                }
-            },
-            getStyle() {
-                console.log(`-${this.getHeight}`)
-                return {
-                    'top' : `-${this.getHeight}`
                 }
             }
         },

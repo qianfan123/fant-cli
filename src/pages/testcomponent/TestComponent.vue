@@ -4,7 +4,6 @@
         <h1>自动广播组件</h1>
         <auto-broadcast
                 prop="code"
-                mode="double"
                 backgroundColor="pink"
                 textColor="white"
                 iconColor="blue"
@@ -18,7 +17,6 @@
         <br>
         <auto-broadcast
                 prop="code"
-                mode="single"
                 backgroundColor="pink"
                 textColor="white"
                 iconColor="blue"
