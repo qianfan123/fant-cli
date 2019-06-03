@@ -22,7 +22,6 @@
         mounted(){
             console.dir(this.$refs.blockPanelLength)
             let childLength = this.$refs.blockPanelLength.children.length
-            let timer = 0
             addResizeListener(this.$el, () => {
                 console.log(this.$refs.blockPanelLength.clientWidth)
                 // 函数防抖
