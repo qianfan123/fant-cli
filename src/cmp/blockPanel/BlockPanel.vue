@@ -5,6 +5,8 @@
 </template>
 
 <script>
+    import { addResizeListener, removeResizeListener } from 'fant3/src/utils/resize-event';
+    import debounce from 'throttle-debounce/debounce';
     export default {
         name: "BlockPanel",
         props: {
@@ -17,28 +19,39 @@
                 default: 'red'
             }
         },
+        mounted(){
+            console.dir(this.$refs.blockPanelLength)
+            let childLength = this.$refs.blockPanelLength.children.length
+            let timer = 0
+            addResizeListener(this.$el, () => {
+                console.log(this.$refs.blockPanelLength.clientWidth)
+                // 函数防抖
+                // debounce(100, () => {
+                //     console.log('500000')
+                //     for (let child of this.$refs.blockPanelLength.children) {
+                //         child.style.width = (this.$refs.blockPanelLength.clientWidth - 30 - (childLength - 1)) / childLength  + 'px'
+                //     }
+                // })()
+
+                for (let child of this.$refs.blockPanelLength.children) {
+                    child.style.width = (this.$refs.blockPanelLength.clientWidth - 30 - (childLength - 1)) / childLength  + 'px'
+                }
+            })
+        },
         provide(){
             return {
                 $this: this
             }
         },
-        mounted() {
-            let childLength = 0
-            let blockPanelChildren = ''
-            window.onresize = () => {
-                childLength = this.$refs.blockPanelLength.children.length
-                blockPanelChildren = this.$refs.blockPanelLength.children
-                for(let i=0;i<childLength;i++) {
-                    blockPanelChildren[i].style.width = (this.$refs.blockPanelLength.clientWidth - 32 -(childLength - 1)) / childLength + 'px'
-                }
-            }
+        destroyed: function () {
+            removeResizeListener(this.$el)
         }
     }
 </script>
 
 <style lang="scss">
     .block-panel {
-        padding: 15px
+        padding: 15px;
     }
 
 </style>

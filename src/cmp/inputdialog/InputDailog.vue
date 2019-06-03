@@ -22,18 +22,7 @@
                 @blur="onBlur"
                 v-model="innerValue"></el-input>
         <i class="el-icon-more more" @click="doDialogShow" :style="{'cursor': disabled ? 'not-allowed' : 'pointer'}"></i>
-        <el-custom-dialog
-                :title="dialogTitle"
-                :confirmText="dialogConfirmText"
-                :cancelText="dialogCancelText"
-                :isConfirmShow="isConfirmShow"
-                :isCancelShow="isCancelShow"
-                @before-close="onBeforeClose"
-                @confirm="onConfirm"
-                @cancel="onCancel"
-                :isDialogShow="dialogShow">
-            <slot></slot>
-        </el-custom-dialog>
+        <slot :prop="prop"></slot>
     </div>
 </template>
 
@@ -47,30 +36,6 @@
             placeholder: {
                 type: String,
                 default: '请输入'
-            },
-            dialogShow: {
-                type: Boolean,
-                default: false
-            },
-            dialogTitle: {
-                type: String,
-                default: '提示'
-            },
-            dialogConfirmText: {
-                type: String,
-                default: '确认'
-            },
-            dialogCancelText: {
-                type: String,
-                default: '取消'
-            },
-            isConfirmShow: {
-                type: Boolean,
-                default: true
-            },
-            isCancelShow: {
-                type: Boolean,
-                default: true
             },
             value: {
                 type: Boolean,
@@ -100,19 +65,7 @@
                 if (this.disabled) {
                     return
                 }
-                this.dialogShow = true
-            },
-            onBeforeClose() {
-                this.dialogShow = false
-                this.$emit('before-close')
-            },
-            onConfirm() {
-                this.dialogShow = false
-                this.$emit('confirm')
-            },
-            onCancel() {
-                this.dialogShow = false
-                this.$emit('cancel')
+                this.$emit('visiable')
             },
             doSelect(item) {
                 this.$emit('get-select', item)
@@ -177,10 +130,12 @@
             value(value) {
                 if (value) {
                     this.clickFlag = true
-                    this.dialogShow = false
                     this.innerValue = value[this.prop]
                 }
             }
+        },
+        mounted: function() {
+            console.dir(this)
         },
         destroyed: function() {
             clearTimeout(this.timer)

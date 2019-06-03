@@ -234,6 +234,7 @@ export default class TestComponent extends Vue {
     editorOption = {}
     switchValue: boolean = true
     inputValue: any = null
+    inputDialogShow = false
     tableData = [{
         date: '2016-05-02',
         name: '王小虎1',
@@ -402,6 +403,7 @@ export default class TestComponent extends Vue {
     }
     doItemClick(item: any) {
         this.inputValue = item
+        this.inputDialogShow = false
     }
     queryFunc() {
         console.log(this.gridData)
@@ -471,5 +473,17 @@ export default class TestComponent extends Vue {
                 code: 'chengguan'
             }
         ]
+    }
+    onVisiable() {
+        this.inputDialogShow = true
+    }
+    onInputDialogConfirm() {
+        this.inputDialogShow = false
+    }
+    onInputDialogCancel() {
+        this.inputDialogShow = false
+    }
+    onBeforeClose() {
+        this.inputDialogShow = false
     }
 }

@@ -27,8 +27,22 @@
         </auto-broadcast>
         <!--带输入可弹框组件-->
         <h1>带输入可弹框组件</h1>
-        <input-dailog v-model="inputValue" :query="queryFunc" prop="address">
-            <div v-for="item in inputDialogArray" @click="doItemClick(item)">{{item.address}}</div>
+        <input-dailog v-model="inputValue" :query="queryFunc" prop="address" @visiable="onVisiable">
+            <template slot-scope="scope">
+                <el-custom-dialog
+                        :title="dialogTitle"
+                        :confirmText="dialogConfirmText"
+                        :cancelText="dialogCancelText"
+                        :isConfirmShow="isConfirmShow"
+                        :isCancelShow="isCancelShow"
+                        :width="500"
+                        @before-close="onBeforeClose"
+                        @confirm="onInputDialogConfirm"
+                        @cancel="onInputDialogCancel"
+                        :isDialogShow="inputDialogShow">
+                    <div v-for="item in inputDialogArray" @click="doItemClick(item)">{{item[scope.prop]}}</div>
+                </el-custom-dialog>
+            </template>
         </input-dailog>
         <!--提示组件-->
         <h1>提示组件</h1>
