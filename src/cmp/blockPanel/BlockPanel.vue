@@ -6,7 +6,7 @@
 
 <script>
     import { addResizeListener, removeResizeListener } from 'fant3/src/utils/resize-event';
-    import debounce from 'throttle-debounce/debounce';
+    // import debounce from 'throttle-debounce/debounce';
     export default {
         name: "BlockPanel",
         props: {
