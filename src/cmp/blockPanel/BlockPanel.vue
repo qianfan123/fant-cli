@@ -6,7 +6,7 @@
 
 <script>
     import { addResizeListener, removeResizeListener } from 'fant3/src/utils/resize-event';
-    // import debounce from 'throttle-debounce/debounce';
+    import debounce from 'throttle-debounce/debounce';
     export default {
         name: "BlockPanel",
         props: {
@@ -26,14 +26,13 @@
                 console.log(this.$refs.blockPanelLength.clientWidth)
                 // 函数防抖
                 // debounce(100, () => {
-                //     console.log('500000')
                 //     for (let child of this.$refs.blockPanelLength.children) {
-                //         child.style.width = (this.$refs.blockPanelLength.clientWidth - 30 - (childLength - 1)) / childLength  + 'px'
+                //         child.style.width = Math.floor((Math.floor(this.$refs.blockPanelLength.clientWidth) - 32 - (childLength - 1)) / childLength)  + 'px'
                 //     }
                 // })()
 
                 for (let child of this.$refs.blockPanelLength.children) {
-                    child.style.width = (this.$refs.blockPanelLength.clientWidth - 30 - (childLength - 1)) / childLength  + 'px'
+                    child.style.width = Math.floor((Math.floor(this.$refs.blockPanelLength.clientWidth) - 32 - (childLength - 1)) / childLength)  + 'px'
                 }
             })
         },

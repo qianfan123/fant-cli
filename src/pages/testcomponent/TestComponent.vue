@@ -61,25 +61,25 @@
         <el-button @click="doShowDialog">弹框</el-button>
         <!--dialog组件-->
         <ElCustomDialog
-            title="自定义提示"
-            confirmText="自定义确认"
-            cancelText="自定义取消"
-            width="500px"
-            @before-close="dialogShow = false"
-            @confirm="dialogShow = false"
-            @cancel="dialogShow = false"
-            :isDialogShow="dialogShow">
-                <div style="height: 40px">11111</div>
-                <div style="height: 40px">11111</div>
-                <div style="height: 40px">11111</div>
-                <div style="height: 40px">11111</div>
+                title="自定义提示"
+                confirmText="自定义确认"
+                cancelText="自定义取消"
+                width="500px"
+                @before-close="dialogShow = false"
+                @confirm="dialogShow = false"
+                @cancel="dialogShow = false"
+                :isDialogShow="dialogShow">
             <div style="height: 40px">11111</div>
             <div style="height: 40px">11111</div>
             <div style="height: 40px">11111</div>
             <div style="height: 40px">11111</div>
-                <template slot="other">
-                    <el-button size="small" type="primary" @click="dialogShow = false">其它</el-button>
-                </template>
+            <div style="height: 40px">11111</div>
+            <div style="height: 40px">11111</div>
+            <div style="height: 40px">11111</div>
+            <div style="height: 40px">11111</div>
+            <template slot="other">
+                <el-button size="small" type="primary" @click="dialogShow = false">其它</el-button>
+            </template>
         </ElCustomDialog>
         <!--标准可编辑表格-->
         <h1>可编辑表格</h1>
@@ -90,7 +90,7 @@
             <el-table-column
                     prop="date"
                     label="日期"
-                    >
+            >
                 <template slot-scope="scope">
                     <el-input v-model="scope.row.date" ref="date"></el-input>
                 </template>
@@ -98,7 +98,7 @@
             <el-table-column
                     prop="name"
                     label="姓名"
-                   >
+            >
                 <template slot-scope="scope">
                     <el-input v-model="scope.row.name" ref="name"></el-input>
                 </template>
@@ -307,16 +307,16 @@
 </script>
 
 <style lang="scss">
-.rank-lists{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    .list {
-        padding: 0 30px;
-        flex: 1;
-        &:nth-child(1) {
-            border-right: 1px solid #f2f2f2;
+    .rank-lists{
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        .list {
+            padding: 0 30px;
+            flex: 1;
+            &:nth-child(1) {
+                border-right: 1px solid #f2f2f2;
+            }
         }
     }
-}
 </style>

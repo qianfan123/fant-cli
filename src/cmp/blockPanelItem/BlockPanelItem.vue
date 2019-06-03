@@ -27,8 +27,7 @@
             getWidth() {
                 let percent = 0
                 if (this.blockLength > 0) {
-                    percent = (this.$this.$refs.blockPanelLength.clientWidth -
-                        (this.$this.$refs.blockPanelLength.offsetWidth - this.$this.$refs.blockPanelLength.clientWidth) - 30) / this.blockLength - (this.blockLength - 1)
+                    percent = Math.floor((Math.floor(this.$this.$refs.blockPanelLength.clientWidth) - 32 - (this.blockLength - 1)) / this.blockLength)  + 'px'
                 }
                 return {
                     width: percent + 'px',
