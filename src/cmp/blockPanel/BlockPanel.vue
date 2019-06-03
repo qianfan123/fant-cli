@@ -21,6 +21,17 @@
             return {
                 $this: this
             }
+        },
+        mounted() {
+            let childLength = 0
+            let blockPanelChildren = ''
+            window.onresize = () => {
+                childLength = this.$refs.blockPanelLength.children.length
+                blockPanelChildren = this.$refs.blockPanelLength.children
+                for(let i=0;i<childLength;i++) {
+                    blockPanelChildren[i].style.width = (this.$refs.blockPanelLength.clientWidth - 32 -(childLength - 1)) / childLength + 'px'
+                }
+            }
         }
     }
 </script>
