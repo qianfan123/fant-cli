@@ -21,7 +21,7 @@
         inject: ['$this'],
         mounted() {
             this.blockLength = this.$this.$refs.blockPanelLength.children.length
-            console.log(this.$this.$refs.blockPanelLength.children.length)
+            // console.log(this.$this.$refs.blockPanelLength.children.length)
         },
         computed: {
             getWidth() {

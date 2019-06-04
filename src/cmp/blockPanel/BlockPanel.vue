@@ -24,7 +24,7 @@
             console.dir(this.$refs.blockPanelLength)
             let childLength = this.$refs.blockPanelLength.children.length
             addResizeListener(this.$el, () => {
-                console.log(this.$refs.blockPanelLength.clientWidth)
+                // console.log(this.$refs.blockPanelLength.clientWidth)
                 // 函数防抖
                 throttle(100, () => {
                     for (let child of this.$refs.blockPanelLength.children) {
