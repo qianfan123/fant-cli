@@ -31,10 +31,6 @@
                         child.style.width = Math.floor((Math.floor(this.$refs.blockPanelLength.clientWidth) - 32 - (childLength - 1)) / childLength)  + 'px'
                     }
                 })()
-
-                // for (let child of this.$refs.blockPanelLength.children) {
-                //     child.style.width = Math.floor((Math.floor(this.$refs.blockPanelLength.clientWidth) - 32 - (childLength - 1)) / childLength)  + 'px'
-                // }
             })
         },
         provide(){
