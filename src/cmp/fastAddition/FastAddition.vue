@@ -15,11 +15,6 @@
                    @keydown.enter="onAdd"
                    placeholder="输入后按回车确认" v-if="!disabled" :maxlength="maxLength"/>
         </div>
-        <!--<div class="fast-addition-right">-->
-            <!---->
-        <!--</div>-->
-        <el-tip closable v-if="isShowTip" type="warning" :disabled="disabled">
-        </el-tip>
     </div>
 </template>
 
