@@ -19,7 +19,9 @@
                 :placeholder="placeholder"
                 @keyup.native="onKeyup($event)"
                 @keydown.native="onKeyDown($event)"
+                @clear="onClear"
                 @blur="onBlur"
+                :clearable="clearable"
                 v-model="innerValue"></el-input>
         <i class="el-icon-more more" @click="doDialogShow" :style="{'cursor': disabled ? 'not-allowed' : 'pointer'}"></i>
         <slot :prop="prop"></slot>
@@ -48,6 +50,10 @@
             prop: {
                 type: String,
                 default: 'name'
+            },
+            clearable: {
+                type: Boolean,
+                default: false
             }
         },
         data() {
@@ -124,6 +130,10 @@
             },
             onBlur() {
                 this.visiable = false
+            },
+            onClear() {
+                this.visiable = false
+                this.$emit('input', null)
             }
         },
         watch: {
@@ -152,6 +162,10 @@
 <style>
 .input-dialog{
     position: relative;
+}
+.input-dialog .el-input__suffix{
+    right: 30px;
+    top: 3px;
 }
 .input-dialog>.more{
     position: absolute;

@@ -83,8 +83,8 @@
 
         </auto-broadcast>
         <!--带输入可弹框组件-->
-        <h1>带输入可弹框组件</h1>
-        <input-dailog v-model="inputValue" :query="queryFunc" prop="address" @visiable="onVisiable">
+        <h1>带输入可弹框组件{{inputValue}}</h1>
+        <input-dailog v-model="inputValue" :query="queryFunc" prop="address" @visiable="onVisiable" clearable>
             <template slot-scope="scope">
                 <el-custom-dialog
                         :title="dialogTitle"
