@@ -57,13 +57,14 @@
                 </template>
             </el-table-column>
         </el-table>
+        <!--选择天-->
+        <h1>选择天{{selectDay}}</h1>
+        <input-day v-model="selectDay" month="2" clearable
+                   @click="onClick" @focus="onFocus" @blur="onBlur"></input-day>
         <!--自动广播组件-->
         <h1>自动广播组件</h1>
         <auto-broadcast
-                prop="code"
-                backgroundColor="pink"
-                textColor="white"
-                iconColor="blue"
+                prop="name"
                 @get-select="onGetSelect"
                 :broadcastArray="broadcastDoubleArray">
             <template slot="icon"><i class="el-icon-delete"></i></template>
@@ -73,10 +74,7 @@
         <br>
         <br>
         <auto-broadcast
-                prop="code"
-                backgroundColor="pink"
-                textColor="white"
-                iconColor="blue"
+                prop="name"
                 @get-select="onGetSelect"
                 :broadcastArray="broadcastArray">
             <template slot="icon"><i class="el-icon-delete"></i></template>
@@ -206,6 +204,8 @@
                 <rank-list color="#dd6b4d" title="闵行区火锅排行榜" :rankData="rankList"></rank-list>
             </div>
         </div>
+        <h1>数字格式化</h1>
+        <input type="text" v-model="inputNumber" v-number.3>
     </div>
 </template>
 

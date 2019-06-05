@@ -12,6 +12,7 @@ import FantSwitch from 'cmp/switch/Switch.vue'
 import MultilevelAddress from 'cmp/multilevelAddress/MultilevelAddress.vue'
 import RankList from 'cmp/storeRank/RankList.vue'
 import BlockPanelItem from 'cmp/blockPanelItem/BlockPanelItem.vue'
+import InputDay from 'cmp/inputday/input-day.vue'
 
 @Component({
     name: 'TestComponent',
@@ -27,12 +28,15 @@ import BlockPanelItem from 'cmp/blockPanelItem/BlockPanelItem.vue'
         FantSwitch,
         MultilevelAddress,
         RankList,
-        BlockPanelItem
+        BlockPanelItem,
+        InputDay
     }
 })
 export default class TestComponent extends Vue {
     dialogShow = false
     $refs: any
+    inputNumber = ''
+    selectDay = '5'
     columns = [
         {
             text: '事件',
@@ -141,7 +145,7 @@ export default class TestComponent extends Vue {
     ]
     broadcastArray = [
         {
-            name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+            name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function],window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function],window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
             uuid: 'uuid1',
             code: 'code1'
         },
@@ -167,6 +171,11 @@ export default class TestComponent extends Vue {
                 name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
                 uuid: 'uuid12',
                 code: 'code12'
+            },
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid12',
+                code: 'code12'
             }
         ],
         [
@@ -179,6 +188,11 @@ export default class TestComponent extends Vue {
                 name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
                 uuid: 'uuid22',
                 code: 'code22'
+            },
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid12',
+                code: 'code12'
             }
         ],
         [
@@ -191,6 +205,11 @@ export default class TestComponent extends Vue {
                 name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
                 uuid: 'uuid32',
                 code: 'code32'
+            },
+            {
+                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                uuid: 'uuid12',
+                code: 'code12'
             }
         ]
     ]
@@ -485,5 +504,14 @@ export default class TestComponent extends Vue {
     }
     onBeforeClose() {
         this.inputDialogShow = false
+    }
+    onClick(item: any) {
+        console.log(item)
+    }
+    onFocus() {
+        console.log('focus')
+    }
+    onBlur() {
+        console.log('blur')
     }
 }

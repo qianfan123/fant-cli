@@ -1,29 +1,31 @@
 <template>
-    <div class="auto-broadcast-wrap" :style="{'backgroundColor': backgroundColor, 'height' : getHeight}">
-        <div class="auto-broadcast-absolute">
-            <div class="broadcast-icon" :style="{'color': iconColor, 'marginTop' : getMarginTop}"><slot name="icon"></slot></div>
-            <div class="broadcast-text" :class="{broadcast_marquee_top:animate}">
-                <ul class="broadcast-text-content-wrap">
-                    <li class="broadcast-text-content"
-                        :style="{'color': textColor}"
-                        v-for="item in broadcastArray"
-                    >
-                        <div v-if="getType === 'object'">
+    <div class="auto-broadcast" :style="{'backgroundColor': backgroundColor, 'height' : getHeight, 'borderColor': borderColor}">
+        <div class="icon" :style="{'color': iconColor, 'lineHeight' : getLineHeight}"><slot name="icon"></slot></div>
+        <div class="text" :class="{broadcast_marquee_top:animate}">
+            <ul class="broadcast-text-content-wrap">
+                <li class="broadcast-text-content"
+                    :style="{'color': textColor}"
+                    v-for="item in broadcastArray"
+                >
+                    <div v-if="getType === 'object'">
+                        <div class="a-wrap">
                             <a @click="doBroadcast(item)"
                                @mouseover="doCancelTimer"
-                               @mouseleave="doStartTimer">{{typeof item === 'string' ? item : item[prop]}}
+                               @mouseleave="doStartTimer">{{typeof item === 'string' ? item : item
+                                [prop]}}
                             </a>
                         </div>
-                        <div v-else>
-                            <div v-for="sub in item">
-                                <a @click="doBroadcast(sub)" @mouseover="doCancelTimer"
-                                    @mouseleave="doStartTimer">{{typeof item === 'string' ? item : sub[prop]}}
-                                </a>
-                            </div>
+                    </div>
+                    <div v-else class="a-wrap">
+                        <div v-for="sub in item" class="a-wrap">
+                            <a @click="doBroadcast(sub)" @mouseover="doCancelTimer"
+                               @mouseleave="doStartTimer">{{typeof item === 'string' ? item :
+                                sub[prop]}}
+                            </a>
                         </div>
-                    </li>
-                </ul>
-            </div>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -34,6 +36,10 @@
             backgroundColor: { // 背景颜色
                 type: String,
                 default: 'white'
+            },
+            borderColor: {
+                type: String,
+                default: '#dcdfe6'
             },
             textColor: { // 文字颜色
                 type: String,
@@ -81,14 +87,13 @@
             },
             doCancelTimer() {
                 console.log('mouseover')
-                // this.animate = false
                 clearInterval(this.timer2000);
                 clearTimeout(this.timer500)
             },
             doStartTimer() {
                 console.log('mouseleave')
                 this.animate = false
-                this.timer2000 = setInterval(this.showMarquee, 2000)
+                this.timer2000 = setInterval(this.showMarquee, this.time)
             }
         },
         computed: {
@@ -112,11 +117,11 @@
                 }
 
             },
-            getMarginTop() {
+            getLineHeight() {
                 if (this.broadcastArray[0]) {
-                    return this.getType === 'array' ? (this.broadcastArray[0].length - 1) * 25 + 'px' : '0px'
+                    return this.getType === 'array' ? this.broadcastArray[0].length * 50 + 'px' : '50px'
                 } else {
-                    return '0px'
+                    return '50px'
                 }
             }
         },
@@ -130,38 +135,38 @@
 </script>
 
 <style lang="scss">
-    .auto-broadcast-wrap{
-        height: 50px;
-        background-color: deeppink;
-        position: relative;
+    .auto-broadcast{
+        display: flex;
         overflow: hidden;
-        .auto-broadcast-absolute{
-            .broadcast-icon{
-                position: absolute;
-                text-align: center;
-                display: inline-block;
-                padding: 9px;
-                font-size: 25px;
-            }
-            .broadcast-text{
-                position: absolute;
-                top: 0;
-                left: 0;
-                display: inline-block;
-                line-height: 50px;
-                margin-left: 50px;
-                .broadcast-text-content-wrap{
-                    margin: 0;
-                    padding: 0;
-                    .broadcast-text-content{
-                        clear: both;
-                        height: 100%;
+        border: 1px solid transparent;
+        .icon{
+            width: 50px;
+            min-width: 50px;
+            font-size: 25px;
+            text-align: center;
+        }
+        .text{
+            flex: 1;
+            overflow: hidden;
+            .broadcast-text-content-wrap{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                .broadcast-text-content{
+                    height: 50px;
+                    .a-wrap{
+                        height: 50px;
                         overflow: hidden;
-                        white-space:nowrap;
-                        text-overflow:ellipsis;
-                        max-width: 600px;
-                        a{
-                            cursor: pointer;
+                        text-overflow: ellipsis;
+                    }
+                    a{
+                        cursor: pointer;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        line-height: 50px;
+                        &:hover{
+                            color: blue;
                         }
                     }
                 }
