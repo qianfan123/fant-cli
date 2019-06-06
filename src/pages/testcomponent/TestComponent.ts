@@ -514,4 +514,7 @@ export default class TestComponent extends Vue {
     onBlur() {
         console.log('blur')
     }
+    onStreet(value: any) {
+        console.log(value)
+    }
 }

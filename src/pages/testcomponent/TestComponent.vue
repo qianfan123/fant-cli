@@ -194,6 +194,7 @@
                 :countyFunc="countyFunc"
                 :villageFunc="villageFunc"
                 :showColNumber="1"
+                @street="onStreet"
         >
         </MultilevelAddress>
         <br>

@@ -221,7 +221,14 @@
             doVillageChange() {
                 this.street = ''
             }
-        }
+        },
+        watch: {
+            street(value) {
+                if (value) {
+                    this.$emit('street', value)
+                }
+            }
+        },
     }
 </script>
 
