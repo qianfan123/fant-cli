@@ -193,12 +193,7 @@
                 provinceList: [],
                 cityList: [],
                 countyList: [],
-                villageList: [],
-                showOrNot1: false,
-                showOrNot2: false,
-                showOrNot3: false,
-                showOrNot4: false,
-                showOrNot5: false
+                villageList: []
             }
         },
         mounted() {
