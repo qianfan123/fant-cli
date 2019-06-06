@@ -192,7 +192,49 @@
                 :provinceFunc="provinceFunc"
                 :cityFunc="cityFunc"
                 :countyFunc="countyFunc"
-                :villageFunc="villageFunc">
+                :villageFunc="villageFunc"
+                :showColNumber="1"
+        >
+        </MultilevelAddress>
+        <br>
+        <br>
+        <MultilevelAddress
+                :provinceFunc="provinceFunc"
+                :cityFunc="cityFunc"
+                :countyFunc="countyFunc"
+                :villageFunc="villageFunc"
+                :showColNumber="2"
+        >
+        </MultilevelAddress>
+        <br>
+        <br>
+        <MultilevelAddress
+                :provinceFunc="provinceFunc"
+                :cityFunc="cityFunc"
+                :countyFunc="countyFunc"
+                :villageFunc="villageFunc"
+                :showColNumber="3"
+        >
+        </MultilevelAddress>
+        <br>
+        <br>
+        <MultilevelAddress
+                :provinceFunc="provinceFunc"
+                :cityFunc="cityFunc"
+                :countyFunc="countyFunc"
+                :villageFunc="villageFunc"
+                :showColNumber="4"
+        >
+        </MultilevelAddress>
+        <br>
+        <br>
+        <MultilevelAddress
+                :provinceFunc="provinceFunc"
+                :cityFunc="cityFunc"
+                :countyFunc="countyFunc"
+                :villageFunc="villageFunc"
+                :showColNumber="5"
+        >
         </MultilevelAddress>
         <!--门店排行组件-->
         <h1>排行组件</h1>

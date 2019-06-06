@@ -1,19 +1,161 @@
 <template>
-    <div class="dividerAddress">
-        <el-select class="marginRight" v-model="province" @change="doProvinceChange">
-            <el-option v-for="(item, index) in provinceList" :key="index" :label="item.name" :value="item.uuid"></el-option>
-        </el-select>
-        <el-select class="marginRight" v-model="city" @change="doCityChange">
-            <el-option v-for="(item, index) in  cityList" :key="index" :label="item.name" :value="item.uuid"></el-option>
-        </el-select>
-        <el-select class="marginRight" v-model="county" @change="doCountyChange">
-            <el-option v-for="(item,index) in countyList" :key="index" :label="item.name" :value="item.uuid"></el-option>
-        </el-select>
-        <el-select class="marginRight" v-model="village" @change="doVillageChange">
-            <el-option v-for="(item,index) in villageList" :key="index" :label="item.name" :value="item.uuid"></el-option>
-        </el-select>
-        <el-input class="streetStyle" v-model="street" placeholder="请输入街道，门牌号"></el-input>
+    <div>
+        <div class="dividerAddress" v-if="showColNumber == 1">
+            <el-row>
+                <el-col :span="24">
+                    <el-select class="widthLength marginBottom" v-model="province" @change="doProvinceChange" placeholder="省">
+                        <el-option v-for="(item, index) in provinceList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="24">
+                    <el-select class="widthLength marginBottom" v-model="city" @change="doCityChange" placeholder="市">
+                        <el-option v-for="(item, index) in  cityList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="24">
+                    <el-select class="widthLength marginBottom" v-model="county" @change="doCountyChange" placeholder="区/县">
+                        <el-option v-for="(item,index) in countyList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+
+            </el-row>
+            <el-row>
+                <el-col :span="24">
+                    <el-select class="widthLength marginBottom" v-model="village" @change="doVillageChange" placeholder="镇/乡">
+                        <el-option v-for="(item,index) in villageList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+
+            </el-row>
+            <el-row>
+                <el-col :span="24">
+                    <el-input class="streetStyle" v-model="street" placeholder="请输入街道，门牌号"></el-input>
+                </el-col>
+
+            </el-row>
+        </div>
+        <div class="dividerAddress" v-if="showColNumber == 2">
+            <el-row class="marginBottom">
+                <el-col :span="12">
+                    <el-select class="widthLength" v-model="province" @change="doProvinceChange" placeholder="省">
+                        <el-option v-for="(item, index) in provinceList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="12">
+                    <el-select class="widthLength" v-model="city" @change="doCityChange" placeholder="市">
+                        <el-option v-for="(item, index) in  cityList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+            </el-row>
+            <el-row class="marginBottom">
+                <el-col :span="12">
+                    <el-select class="widthLength" v-model="county" @change="doCountyChange" placeholder="区/县">
+                        <el-option v-for="(item,index) in countyList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="12">
+                    <el-select class="widthLength" v-model="village" @change="doVillageChange" placeholder="镇/乡">
+                        <el-option v-for="(item,index) in villageList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="24">
+                    <el-input class="streetStyle" v-model="street" placeholder="请输入街道，门牌号"></el-input>
+                </el-col>
+            </el-row>
+        </div>
+        <div class="dividerAddress" v-if="showColNumber == 3">
+            <el-row class="marginBottom">
+                <el-col :span="8">
+                    <el-select class="widthLength" v-model="province" @change="doProvinceChange" placeholder="省">
+                        <el-option v-for="(item, index) in provinceList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="8">
+                    <el-select class="widthLength" v-model="city" @change="doCityChange" placeholder="市">
+                        <el-option v-for="(item, index) in  cityList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="8">
+                    <el-select class="widthLength" v-model="county" @change="doCountyChange" placeholder="区/县">
+                        <el-option v-for="(item,index) in countyList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="8">
+                    <el-select class="widthLength" v-model="village" @change="doVillageChange" placeholder="镇/乡">
+                        <el-option v-for="(item,index) in villageList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="16">
+                    <el-input class="streetStyle" v-model="street" placeholder="请输入街道，门牌号"></el-input>
+                </el-col>
+            </el-row>
+        </div>
+        <div class="dividerAddress" v-if="showColNumber == 4">
+            <el-row class="marginBottom">
+                <el-col :span="6">
+                    <el-select class="widthLength" v-model="province" @change="doProvinceChange" placeholder="省">
+                        <el-option v-for="(item, index) in provinceList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="6">
+                    <el-select class="widthLength" v-model="city" @change="doCityChange" placeholder="市">
+                        <el-option v-for="(item, index) in  cityList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="6">
+                    <el-select class="widthLength" v-model="county" @change="doCountyChange" placeholder="区/县">
+                        <el-option v-for="(item,index) in countyList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="6">
+                    <el-select class="widthLength" v-model="village" @change="doVillageChange" placeholder="镇/乡">
+                        <el-option v-for="(item,index) in villageList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+            </el-row>
+            <el-row>
+                <el-col :span="24">
+                    <el-input class="streetStyle" v-model="street" placeholder="请输入街道，门牌号"></el-input>
+                </el-col>
+            </el-row>
+        </div>
+        <div class="dividerAddress" v-if="showColNumber == 5">
+            <el-row class="marginBottom">
+                <el-col :span="4">
+                    <el-select class="widthLength" v-model="province" @change="doProvinceChange" placeholder="省">
+                        <el-option v-for="(item, index) in provinceList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="4">
+                    <el-select class="widthLength" v-model="city" @change="doCityChange" placeholder="市">
+                        <el-option v-for="(item, index) in  cityList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="4">
+                    <el-select class="widthLength" v-model="county" @change="doCountyChange" placeholder="区/县">
+                        <el-option v-for="(item,index) in countyList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="4">
+                    <el-select class="widthLength" v-model="village" @change="doVillageChange" placeholder="镇/乡">
+                        <el-option v-for="(item,index) in villageList" :key="index" :label="item.name" :value="item.uuid"></el-option>
+                    </el-select>
+                </el-col>
+                <el-col :span="8">
+                    <el-input class="streetStyle" v-model="street" placeholder="请输入街道，门牌号"></el-input>
+                </el-col>
+            </el-row>
+        </div>
     </div>
+
 </template>
 
 <script>
@@ -35,6 +177,10 @@
             villageFunc: {
                 type: Function,
                 default: () => {}
+            },
+            showColNumber: {
+                type: Number,
+                default: 1
             }
         },
         data(){
@@ -47,7 +193,12 @@
                 provinceList: [],
                 cityList: [],
                 countyList: [],
-                villageList: []
+                villageList: [],
+                showOrNot1: false,
+                showOrNot2: false,
+                showOrNot3: false,
+                showOrNot4: false,
+                showOrNot5: false
             }
         },
         mounted() {
@@ -81,13 +232,18 @@
 
 <style lang="scss">
     .dividerAddress {
-        .marginRight {
+        .widthLength {
+            width: 100%;
+        }
+        .marginBottom {
+            margin-bottom: 20px;
+        }
+        .marginRight4 {
             margin-right: 20px;
         }
-        .streetStyle {
-            width: 350px;
-            display: inline-block;
-            position: relative;}
+        .el-col{
+            padding: 0 5px;
+        }
     }
 
 </style>
