@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="dividerAddress" v-if="showColNumber == 1">
+        <div class="divider-address" v-if="showColNumber == 1">
             <el-row>
                 <el-col :span="24">
                     <el-select class="widthLength marginBottom" v-model="province" @change="doProvinceChange" placeholder="省">
@@ -38,7 +38,7 @@
 
             </el-row>
         </div>
-        <div class="dividerAddress" v-if="showColNumber == 2">
+        <div class="divider-address" v-if="showColNumber == 2">
             <el-row class="marginBottom">
                 <el-col :span="12">
                     <el-select class="widthLength" v-model="province" @change="doProvinceChange" placeholder="省">
@@ -69,7 +69,7 @@
                 </el-col>
             </el-row>
         </div>
-        <div class="dividerAddress" v-if="showColNumber == 3">
+        <div class="divider-address" v-if="showColNumber == 3">
             <el-row class="marginBottom">
                 <el-col :span="8">
                     <el-select class="widthLength" v-model="province" @change="doProvinceChange" placeholder="省">
@@ -98,7 +98,7 @@
                 </el-col>
             </el-row>
         </div>
-        <div class="dividerAddress" v-if="showColNumber == 4">
+        <div class="divider-address" v-if="showColNumber == 4">
             <el-row class="marginBottom">
                 <el-col :span="6">
                     <el-select class="widthLength" v-model="province" @change="doProvinceChange" placeholder="省">
@@ -127,7 +127,7 @@
                 </el-col>
             </el-row>
         </div>
-        <div class="dividerAddress" v-if="showColNumber == 5">
+        <div class="divider-address" v-if="showColNumber == 5">
             <el-row class="marginBottom">
                 <el-col :span="4">
                     <el-select class="widthLength" v-model="province" @change="doProvinceChange" placeholder="省">
@@ -160,7 +160,7 @@
 
 <script>
     export default {
-        name: "multilevelAddress",
+        name: "ELMultilevelAddress",
         props: {
             provinceFunc: {
                 type: Function,
@@ -226,7 +226,7 @@
 </script>
 
 <style lang="scss">
-    .dividerAddress {
+    .divider-address {
         .widthLength {
             width: 100%;
         }
