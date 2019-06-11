@@ -13,6 +13,7 @@ import MultilevelAddress from 'cmp/multilevelAddress/MultilevelAddress.vue'
 import RankList from 'cmp/storeRank/RankList.vue'
 import BlockPanelItem from 'cmp/blockPanelItem/BlockPanelItem.vue'
 import InputDay from 'cmp/inputday/input-day.vue'
+import InputFormat from 'cmp/inputformat/input-format.vue'
 
 @Component({
     name: 'TestComponent',
@@ -29,13 +30,16 @@ import InputDay from 'cmp/inputday/input-day.vue'
         MultilevelAddress,
         RankList,
         BlockPanelItem,
-        InputDay
+        InputDay,
+        InputFormat
     }
 })
 export default class TestComponent extends Vue {
     dialogShow = false
     $refs: any
-    inputNumber = ''
+    inputNumber1 = '0.3'
+    inputNumber2 = '4.98'
+    inputNumber3 = '555555'
     selectDay = '5'
     columns = [
         {

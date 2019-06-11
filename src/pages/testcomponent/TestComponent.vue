@@ -1,6 +1,14 @@
 <template>
     <div>
-        <!--飘窗组件-->
+        <h1>数字格式化</h1>
+        <!--<input-format></input-format>-->
+        <h2>只写v-number，则只能输入正负整数{{inputNumber1}}</h2>
+        <el-input type="text" v-model="inputNumber1" v-number></el-input>
+        <h2>只写v-number.3，则代表3位正负小数{{inputNumber2}}</h2>
+        <el-input type="text" v-model="inputNumber2" v-number.3></el-input>
+        <h2>只写v-number.3="{ min: '0.000', max: '10000.003' }",则代表最大值为10000最小值为0的三位小数{{inputNumber3}}</h2>
+        <el-input type="text" v-model="inputNumber3" v-number.3="{ min:'0.000', max: '10000.003' }"></el-input>
+
         <h1>飘窗内容自定义</h1>
         <el-button @click="doShowAnnotation">飘窗</el-button>
         <h1>弹框重新包装</h1>
@@ -247,8 +255,6 @@
                 <rank-list color="#dd6b4d" title="闵行区火锅排行榜" :rankData="rankList"></rank-list>
             </div>
         </div>
-        <h1>数字格式化</h1>
-        <input type="text" v-model="inputNumber" v-number.3>
     </div>
 </template>
 
