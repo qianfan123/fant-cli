@@ -114,12 +114,30 @@ export default class Directive {
                                     validateNumberOnly(ele, binding, vnode, $event)
                                 } else {
                                     // v-number.3 || v-number.3="{ min: '0.000', max: '10000.000' }"
+                                    // 以0开头的进行去0处理
                                     if (/^(\-|\+)?0\d+/.test($event.target.value)) {
-                                        vnode.context.$data[bindModel] = removeZero($event.target.value)
+                                        Vue.nextTick(() => {
+                                            vnode.context.$data[bindModel] = removeZero($event.target.value)
+                                        })
+                                    }
+                                    // 中文下的+-。进行处理
+                                    if (/。|(?<=\S+)(\-|\+)|=/g.test($event.target.value)) {
+                                        Vue.nextTick(() => {
+                                            vnode.context.$data[bindModel] = removeZero($event.target.value.replace(/。|(?<=\S+)(\-|\+)|=/g, ''))
+                                        })
                                     }
                                 }
                             } else {
-                                vnode.context.$data[bindModel] = $event.target.value.replace(/[\u4E00-\u9FFF]/g,'')
+                                let oValue = ''
+                                oValue = $event.target.value.replace(/[\u4E00-\u9FFF]/g,'')
+                                if (getType(binding) === 'NUMBER') {
+                                    oValue = oValue.replace(/[^0-9]/g,'')
+                                } else {
+                                    oValue = $event.target.value.replace(/[^0-9\+\-\.]/g,'')
+                                }
+                                Vue.nextTick(() => {
+                                    vnode.context.$data[bindModel] = oValue
+                                })
                             }
                         }
                         ele.onkeydown = function ($event) {
@@ -131,7 +149,7 @@ export default class Directive {
                             if (setPreventKey().concat([229]).indexOf($event.which) > -1) {
                                 // v-number
                                 if (getType(binding) === 'NUMBER') {
-                                    if (/(?<=\S+)(\-|\+|\=|\.)/g.test(equalValue)) {
+                                    if (/(?<=\S+)(\-|\+|\=|\.)/g.test(equalValue) || !/^(\+|\-)?\d*$/g.test(equalValue)) {
                                         $event.preventDefault()
                                     }
                                 } else if (getType(binding) === 'FLOAT' || getType(binding) === 'VALIDATE'){
@@ -219,6 +237,7 @@ export default class Directive {
                                     vnode.context.$data[bindModel] = ''
                                 }
                             }
+                            // vnode.$forceUpdate()
                         }
                     }
                 }
