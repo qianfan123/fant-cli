@@ -41,6 +41,9 @@ export default class TestComponent extends Vue {
     inputNumber2 = '4.98'
     inputNumber3 = '555555'
     selectDay = '5'
+    inputNumber4 = {
+        aa: '4.9'
+    }
     columns = [
         {
             text: '事件',
@@ -259,19 +262,19 @@ export default class TestComponent extends Vue {
     inputValue: any = null
     inputDialogShow = false
     tableData = [{
-        date: '2016-05-02',
+        date: '10.0',
         name: '王小虎1',
         address: '上海市普陀区金沙江路 1518 弄'
     }, {
-        date: '2016-05-04',
+        date: '10.3',
         name: '王小虎2',
         address: '上海市普陀区金沙江路 1517 弄'
     }, {
-        date: '2016-05-01',
+        date: '10.6',
         name: '王小虎3',
         address: '上海市普陀区金沙江路 1519 弄'
     }, {
-        date: '2016-05-03',
+        date: '10.8',
         name: '王小虎4',
         address: '上海市普陀区金沙江路 1516 弄'
     }]

@@ -98,6 +98,24 @@ export default class Directive {
                 }
 
                 /**
+                 * 设置绑定值
+                 * @param ele
+                 * @param binding
+                 * @param vnode
+                 * @param expression
+                 */
+                function setModelValue(ele, binding, vnode, expression, value) {
+                    // 多层级处理方式
+                    if (/[a-zA-Z0-9_]+\.[a-zA-Z0-9_]+/.test(expression)) {
+                        ele.value = value
+                        vnode.componentInstance.$emit('input', ele.value)
+                    } else {
+                        // 单层级处理方式
+                        vnode.context.$data[expression] = value
+                    }
+                }
+
+                /**
                  * 设置监听事件
                  * @param ele
                  * @param binding
@@ -117,13 +135,13 @@ export default class Directive {
                                     // 以0开头的进行去0处理
                                     if (/^(\-|\+)?0\d+/.test($event.target.value)) {
                                         Vue.nextTick(() => {
-                                            vnode.context.$data[bindModel] = removeZero($event.target.value)
+                                            setModelValue(ele, binding, vnode, bindModel, removeZero($event.target.value))
                                         })
                                     }
                                     // 中文下的+-。进行处理
                                     if (/。|(?<=\S+)(\-|\+)|=/g.test($event.target.value)) {
                                         Vue.nextTick(() => {
-                                            vnode.context.$data[bindModel] = removeZero($event.target.value.replace(/。|(?<=\S+)(\-|\+)|=/g, ''))
+                                            setModelValue(ele, binding, vnode, bindModel, removeZero($event.target.value.replace(/。|(?<=\S+)(\-|\+)|=/g, '')))
                                         })
                                     }
                                 }
@@ -136,7 +154,7 @@ export default class Directive {
                                     oValue = $event.target.value.replace(/[^0-9\+\-\.]/g,'')
                                 }
                                 Vue.nextTick(() => {
-                                    vnode.context.$data[bindModel] = oValue
+                                    setModelValue(ele, binding, vnode, bindModel, oValue)
                                 })
                             }
                         }
@@ -205,10 +223,10 @@ export default class Directive {
                         let value = event ? event.target.value : ele.value
                         let bindModel = vnode.data.model.expression
                         if (value && regExp.test(value)) {
-                            vnode.context.$data[bindModel] = removeZero(value)
+                            setModelValue(ele, binding, vnode, bindModel, removeZero(value))
                         } else {
                             let oValue = value.replace(/(?<=\S+)(\-|\+)|[^0-9\+\-]/g, '')
-                            vnode.context.$data[bindModel] = removeZero(oValue)
+                            setModelValue(ele, binding, vnode, bindModel, removeZero(oValue))
                         }
                     }
                 }
@@ -227,14 +245,14 @@ export default class Directive {
                         let value = event ? event.target.value : ele.value
                         let bindModel = vnode.data.model.expression
                         if (value && regExp.test(value)) {
-                            vnode.context.$data[bindModel] = parseFloat(removeZero(value)).toFixed(bit)
+                            setModelValue(ele, binding, vnode, bindModel, parseFloat(removeZero(value)).toFixed(bit))
                         } else {
                             if (value) {
                                 let oValue = value.replace(/[^\.0-9\+\-]/g, '')
                                 if (oValue) {
-                                    vnode.context.$data[bindModel] = parseFloat(removeZero(oValue)).toFixed(bit)
+                                    setModelValue(ele, binding, vnode, bindModel, parseFloat(removeZero(oValue)).toFixed(bit))
                                 } else {
-                                    vnode.context.$data[bindModel] = ''
+                                    setModelValue(ele, binding, vnode, bindModel, '')
                                 }
                             }
                             // vnode.$forceUpdate()
@@ -259,9 +277,9 @@ export default class Directive {
                         console.log('格式正确')
                     }
                     if (parseFloat(value) < parseFloat(min)) {
-                        vnode.context.$data[bindModel] = min
+                        setModelValue(ele, binding, vnode, bindModel, min)
                     } else if (parseFloat(value) > parseFloat(max)) {
-                        vnode.context.$data[bindModel] = max
+                        setModelValue(ele, binding, vnode, bindModel, max)
                     } else {
                         console.log('格式化正常')
                     }
