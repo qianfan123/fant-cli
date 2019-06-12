@@ -29,8 +29,11 @@ export default class Directive {
                     let characterKey = [110,190]
                     let backspaceKey = [8]
                     let deleteKey = [46,110]
-                    let arrowKey = [37,39]
-                    let allKey = [...numberKey, ...plusKey, ...minusKey, ...characterKey, ...backspaceKey, ...plusKey, ...minusKey, ...deleteKey, ...arrowKey]
+                    let arrowKey = [37,38,39,40]
+                    let enterKey = [13]
+                    let allKey = [...numberKey, ...plusKey, ...minusKey,
+                        ...characterKey, ...backspaceKey, ...plusKey,
+                        ...minusKey, ...deleteKey, ...arrowKey, ...enterKey]
                     return allKey
                 }
 
