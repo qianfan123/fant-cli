@@ -5,7 +5,7 @@
         <el-input type="text" v-model="inputNumber1" v-number></el-input>
         <h2>只写v-number.3，则代表3位正负小数{{inputNumber2}}</h2>
         <el-input type="text" v-model="inputNumber2" v-number.3></el-input>
-        <h2>只写v-number.3="{ min: '0.000', max: '10000.003' }",则代表最大值为10000最小值为0的三位小数{{inputNumber3}}</h2>
+        <h2>只写v-number.3="{ min: '0.000', max: '10000.003' }",则代表最大值为10000.003最小值为0.000的三位小数{{inputNumber3}}</h2>
         <el-input type="text" v-model="inputNumber3" v-number.3="{ min:'0.000', max: '10000.003' }"></el-input>
         <el-input type="text" v-model="inputNumber4.aa" v-number.3="{ min:'0.000', max: '10000.003' }"></el-input>
 
