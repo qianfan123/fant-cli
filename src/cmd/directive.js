@@ -22,7 +22,7 @@ export default class Directive {
                  * 设置输入按键
                  * @returns {number[]}
                  */
-                function setPreventKey() {
+                function setPermitKey() {
                     let numberKey = [48,49,50,51,52,53,54,55,56,57,96,97,98,99,100,101,102,103,104,105]
                     let plusKey = [109,189]
                     let minusKey = [107,187]
@@ -126,7 +126,7 @@ export default class Directive {
                         ele.onkeyup = function ($event) {
                             console.dir($event)
                             let bindModel = vnode.data.model.expression
-                            if (setPreventKey().indexOf($event.which) > -1) {
+                            if (setPermitKey().indexOf($event.which) > -1) {
                                 if (getType(binding) === 'NUMBER') {
                                     // 1、只写v-number，则只能输入数字
                                     validateNumberOnly(ele, binding, vnode, $event)
@@ -164,7 +164,7 @@ export default class Directive {
                             let eventKey = $event.key === 'ArrowLeft' || $event.key === 'ArrowRight' || $event.key === 'Backspace' || $event.key === 'Delete' ? '' : $event.key
                             let equalValue = index === 0 ? `${eventKey+$event.target.value}` : `${$event.target.value+eventKey}`
                             // onkeydown与onkeyup在中文输入法下+-.的which值不同
-                            if (setPreventKey().concat([229]).indexOf($event.which) > -1) {
+                            if (setPermitKey().concat([229]).indexOf($event.which) > -1) {
                                 // v-number
                                 if (getType(binding) === 'NUMBER') {
                                     if (/(?<=\S+)(\-|\+|\=|\.)/g.test(equalValue) || !/^(\+|\-)?\d*$/g.test(equalValue)) {
