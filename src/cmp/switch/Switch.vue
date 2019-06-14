@@ -21,17 +21,17 @@
     >
     <span
       :class="['el-switch__label', 'el-switch__label--left', !checked ? 'is-active' : '']"
-      v-if="inactiveIconClass || inactiveText">
+      v-if="(inactiveIconClass || inactiveText) && !inner">
       <i :class="[inactiveIconClass]" v-if="inactiveIconClass"></i>
       <span v-if="!inactiveIconClass && inactiveText" :aria-hidden="checked">{{ inactiveText }}</span>
     </span>
-    <span class="el-switch__core" ref="core" :style="{ 'width': coreWidth + 'px' }">
-      <span v-if="checked" class="inner-text-left">{{ activeInnerText }}</span>
-      <span v-if="!checked" class="inner-text-right">{{ inactiveInnerText }}</span>
+    <span class="el-switch__core" ref="core" :style="calcWidth">
+      <span v-if="checked && inner" class="inner-text-left" ref="innerTextLeft">{{ activeText }}</span>
+      <span v-if="!checked && inner" class="inner-text-right" ref="innerTextRight">{{ inactiveText }}</span>
     </span>
     <span
       :class="['el-switch__label', 'el-switch__label--right', checked ? 'is-active' : '']"
-      v-if="activeIconClass || activeText">
+      v-if="(activeIconClass || activeText) && !inner">
       <i :class="[activeIconClass]" v-if="activeIconClass"></i>
       <span v-if="!activeIconClass && activeText" :aria-hidden="!checked">{{ activeText }}</span>
     </span>
@@ -88,8 +88,10 @@
         type: [Boolean, String, Number],
         default: false
       },
-      activeInnerText: String,
-      inactiveInnerText: String,
+      inner: {
+        type: Boolean,
+        default: false
+      },
       name: {
         type: String,
         default: ''
@@ -112,6 +114,17 @@
       },
       switchDisabled() {
         return this.disabled || (this.elForm || {}).disabled;
+      },
+      calcWidth() {
+        if (this.inner && (this.inactiveText || this.activeText)) {
+          let inLeftWidth = this.$refs.innerTextLeft ? this.$refs.innerTextLeft.offsetWidth : 0
+          let inRightWidth = this.$refs.innerTextRight ? this.$refs.innerTextRight.offsetWidth : 0
+          let addWidth = Math.max(inLeftWidth, inRightWidth)
+          this.coreWidth = this.width - 12 + addWidth
+          return {
+            width: this.coreWidth < 40 ? '40px' : this.coreWidth + 'px'
+          }
+        }
       }
     },
     watch: {
@@ -259,13 +272,10 @@
 
   .el-switch__core .inner-text-left {
     display: inline-block;
-    width: -moz-calc(100% - 25px);
-    width: -webkit-calc(100% - 25px);
-    width: calc(100% - 25px);
     color: #ffffff;
     font-size: 12px;
     position: absolute;
-    left: 6px;
+    left: 7px;
     top: -1px;
     white-space: nowrap;
     overflow: hidden;
@@ -273,13 +283,10 @@
 
   .el-switch__core .inner-text-right {
     display: inline-block;
-    width: -moz-calc(100% - 25px);
-    width: -webkit-calc(100% - 25px);
-    width: calc(100% - 25px);
     color: #ffffff;
     font-size: 12px;
     position: absolute;
-    right: 6px;
+    right: 7px;
     top: -1px;
     white-space: nowrap;
     overflow: hidden;

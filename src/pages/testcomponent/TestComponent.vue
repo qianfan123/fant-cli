@@ -11,6 +11,13 @@
 
         <h1>飘窗内容自定义</h1>
         <el-button @click="doShowAnnotation">飘窗</el-button>
+        <!--开关组件-->
+        <h1>开关组件</h1>
+        <fant-switch v-model="switchValue"
+                     :inner="true"
+                     active-text="开启"
+                     inactive-text="关闭"
+        ></fant-switch>
         <h1>弹框重新包装</h1>
         <el-button @click="doShowDialog">弹框</el-button>
         <!--dialog组件-->
@@ -111,15 +118,6 @@
         <!--提示组件-->
         <h1>提示组件</h1>
         <alert title="定单异常" :center="false" :closeable="true" type="warning" description="请及时处理！"></alert>
-        <!--开关组件-->
-        <h1>开关组件</h1>
-        <fant-switch v-model="switchValue"
-                     width="52"
-                     active-inner-text="开启"
-                     inactive-inner-text="关闭"
-        ></fant-switch>
-
-
         <!--<h1>国际化</h1>-->
         <!--见登录模块，登录模块已改造成国际化-->
         <!--需要配置src/locale/Locale.js下面的zh和en-->
