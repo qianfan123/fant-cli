@@ -5,7 +5,7 @@ export default class Directive {
          * 1、只写v-number，则只能输入正负整数
          * 2、只写v-number.3，则代表3位正负小数
          * 3、只写v-number="正则表达式",则代表自定义校验规则
-         * 4、只写v-number="{ min: '0', max: '10' }"
+         * 4、只写v-number="{ min: '0', max: '10' }"，则代表
          */
         Vue.directive('number', {
             bind: (el, binding, vnode) => {

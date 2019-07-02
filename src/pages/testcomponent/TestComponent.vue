@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="test">
         <h1>数字格式化</h1>
         <h2>只写v-number，则只能输入正负整数{{inputNumber1}}</h2>
         <el-input type="text" v-model="inputNumber1" v-number></el-input>
@@ -7,7 +7,12 @@
         <el-input type="text" v-model="inputNumber2" v-number.3></el-input>
         <h2>只写v-number.3="{ min: '0.000', max: '10000.003' }",则代表最大值为10000.003最小值为0.000的三位小数{{inputNumber3}}</h2>
         <el-input type="text" v-model="inputNumber3" v-number.3="{ min:'0.000', max: '10000.003' }"></el-input>
-        <el-input type="text" v-model="inputNumber4.aa" v-number.3="{ min:'0.000', max: '10000.003' }"></el-input>
+        <el-input type="text" v-model="inputNumber4.aa" v-number.5="{ min:'0.00000', max: '10000.00003' }"></el-input>
+        <h2>只写v-number="{ min: '0', max: '10000' }",则代表最大值为10000最小值为0的整数{{inputNumber5}}</h2>
+        暂未实现
+        <h2>只写v-number="/^\d+/g",则代表自定义规则{{inputNumber6}}</h2>
+        暂未实现
+
 
         <h1>飘窗内容自定义</h1>
         <el-button @click="doShowAnnotation">飘窗</el-button>
@@ -89,13 +94,13 @@
         <br>
         <br>
         <br>
-        <auto-broadcast
-                prop="name"
-                @get-select="onGetSelect"
-                :broadcastArray="broadcastArray">
-            <template slot="icon"><i class="el-icon-delete"></i></template>
+        <!--<auto-broadcast-->
+                <!--prop="name"-->
+                <!--@get-select="onGetSelect"-->
+                <!--:broadcastArray="broadcastArray">-->
+            <!--<template slot="icon"><i class="el-icon-delete"></i></template>-->
 
-        </auto-broadcast>
+        <!--</auto-broadcast>-->
         <!--带输入可弹框组件-->
         <h1>带输入可弹框组件{{inputValue}}</h1>
         <input-dailog v-model="inputValue" :query="queryFunc" prop="address" @visiable="onVisiable" clearable>
@@ -254,6 +259,13 @@
                 <rank-list color="#dd6b4d" title="闵行区火锅排行榜" :rankData="rankList"></rank-list>
             </div>
         </div>
+        <h2>jsonedit</h2>
+        <vue-json-editor
+                style="height: 400px"
+                v-model="json"
+                mode="code"
+                :show-btns="false"
+                @json-change="onJsonChange"></vue-json-editor>
     </div>
 </template>
 
@@ -261,16 +273,9 @@
 </script>
 
 <style lang="scss">
-    .rank-lists{
-        display: flex;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-        .list {
-            padding: 0 30px;
-            flex: 1;
-            &:nth-child(1) {
-                border-right: 1px solid #f2f2f2;
-            }
+    .test{
+        .jsoneditor-vue{
+            height: 400px;
         }
     }
 </style>

@@ -14,7 +14,7 @@ import RankList from 'cmp/storeRank/RankList.vue'
 import BlockPanelItem from 'cmp/blockPanelItem/BlockPanelItem.vue'
 import InputDay from 'cmp/inputday/input-day.vue'
 import InputFormat from 'cmp/inputformat/input-format.vue'
-
+import vueJsonEditor from 'vue-json-editor'
 @Component({
     name: 'TestComponent',
     components: {
@@ -31,7 +31,8 @@ import InputFormat from 'cmp/inputformat/input-format.vue'
         RankList,
         BlockPanelItem,
         InputDay,
-        InputFormat
+        InputFormat,
+        vueJsonEditor
     }
 })
 export default class TestComponent extends Vue {
@@ -40,10 +41,22 @@ export default class TestComponent extends Vue {
     inputNumber1 = '0.3'
     inputNumber2 = '4.98'
     inputNumber3 = '555555'
+    inputNumber5 = ''
+    inputNumber6 = ''
     selectDay = '5'
     inputNumber4 = {
         aa: '4.9'
     }
+
+    json = {
+        "Array": [1, 2, 3],
+        "Boolean": true,
+        "Null": null,
+        "Number": 123,
+        "Object": {"a": "b", "c": "d"},
+        "String": "Hello World"
+    }
+
     columns = [
         {
             text: '事件',
@@ -59,95 +72,6 @@ export default class TestComponent extends Vue {
             text: '自定义view',
             value: 'view',
             sortable: false
-        }
-    ]
-    treeTableData =  [
-        {
-            id: 0,
-            event: '事件0',
-            timeLine: 50,
-            comment: '无'
-        },
-        {
-            id: 1,
-            event: '事件1',
-            timeLine: 100,
-            comment: '无',
-            child: [
-                {
-                    id: 2,
-                    event: '事件2',
-                    timeLine: 10,
-                    comment: '无'
-                },
-                {
-                    id: 3,
-                    event: '事件3',
-                    timeLine: 90,
-                    comment: '无',
-                    child: [
-                        {
-                            id: 4,
-                            event: '事件4',
-                            timeLine: 5,
-                            comment: '无'
-                        },
-                        {
-                            id: 5,
-                            event: '事件5',
-                            timeLine: 10,
-                            comment: '无'
-                        },
-                        {
-                            id: 6,
-                            event: '事件6',
-                            timeLine: 75,
-                            comment: '无',
-                            child: [
-                                {
-                                    id: 7,
-                                    event: '事件7',
-                                    timeLine: 50,
-                                    comment: '无',
-                                    child: [
-                                        {
-                                            id: 71,
-                                            event: '事件71',
-                                            timeLine: 25,
-                                            comment: 'xx'
-                                        },
-                                        {
-                                            id: 72,
-                                            event: '事件72',
-                                            timeLine: 5,
-                                            comment: 'xx'
-                                        },
-                                        {
-                                            id: 73,
-                                            event: '事件73',
-                                            timeLine: 20,
-                                            comment: 'xx'
-                                        }
-                                        ]
-                                },
-                                {
-                                    id: 8,
-                                    event: '事件8',
-                                    timeLine: 25,
-                                    comment: '无'
-                                }
-                                ]
-                        }
-                        ]
-                }
-            ]
-        },
-        {
-            id: 2,
-            event: '事件2',
-            timeLine: 50,
-            comment: '无',
-            view: true
         }
     ]
     broadcastArray = [
@@ -170,53 +94,53 @@ export default class TestComponent extends Vue {
     broadcastDoubleArray = [
         [
             {
-                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                name: 'name11',
                 uuid: 'uuid11',
                 code: 'code11'
             },
             {
-                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                name: 'name12',
                 uuid: 'uuid12',
                 code: 'code12'
             },
             {
-                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
-                uuid: 'uuid12',
-                code: 'code12'
+                name: 'name13',
+                uuid: 'uuid13',
+                code: 'code13'
             }
         ],
         [
             {
-                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                name: 'name21',
                 uuid: 'uuid21',
                 code: 'code21'
             },
             {
-                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                name: 'name22',
                 uuid: 'uuid22',
                 code: 'code22'
             },
             {
-                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
-                uuid: 'uuid12',
-                code: 'code12'
+                name: 'name23',
+                uuid: 'uuid23',
+                code: 'code23'
             }
         ],
         [
             {
-                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                name: 'name31',
                 uuid: 'uuid31',
                 code: 'code31'
             },
             {
-                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
+                name: 'name32',
                 uuid: 'uuid32',
                 code: 'code32'
             },
             {
-                name: 'window.setInterval([function],[interval]) 设置一个定时器,并且设定了一个等待的时间[interval],当到达时间后,执行对应的方法[function]',
-                uuid: 'uuid12',
-                code: 'code12'
+                name: 'name33',
+                uuid: 'uuid33',
+                code: 'code33'
             }
         ]
     ]

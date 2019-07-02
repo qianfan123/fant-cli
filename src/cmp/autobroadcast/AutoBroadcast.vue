@@ -4,7 +4,7 @@
         <div class="text" :class="{broadcast_marquee_top:animate}">
             <ul class="broadcast-text-content-wrap">
                 <li class="broadcast-text-content"
-                    :style="{'color': textColor}"
+                    :style="{'color': textColor, 'height': getHeight}"
                     v-for="item in broadcastArray"
                 >
                     <div v-if="getType === 'object'">
@@ -16,7 +16,7 @@
                             </a>
                         </div>
                     </div>
-                    <div v-else class="a-wrap">
+                    <div v-else>
                         <div v-for="sub in item" class="a-wrap">
                             <a @click="doBroadcast(sub)" @mouseover="doCancelTimer"
                                @mouseleave="doStartTimer">{{typeof item === 'string' ? item :
@@ -77,6 +77,7 @@
             showMarquee() {
                 this.animate = true;
                 this.timer500 = setTimeout( () => {
+                    console.dir(this.broadcastArray)
                     this.broadcastArray.push(this.broadcastArray[0]);
                     this.broadcastArray.shift();
                     this.animate = false;
@@ -93,7 +94,7 @@
             doStartTimer() {
                 console.log('mouseleave')
                 this.animate = false
-                this.timer2000 = setInterval(this.showMarquee, this.time)
+                // this.timer2000 = setInterval(this.showMarquee, this.time)
             }
         },
         computed: {
@@ -174,7 +175,7 @@
         }
         .broadcast_marquee_top{
             transition: all 0.5s;
-            margin-top: -50px
+            margin-top: -150px
         }
     }
 </style>
