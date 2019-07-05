@@ -41,7 +41,7 @@ export default class TestComponent extends Vue {
     inputNumber1 = '0.3'
     inputNumber2 = '4.98'
     inputNumber3 = '555555'
-    inputNumber5 = ''
+    inputNumber5 = '4.98'
     inputNumber6 = ''
     selectDay = '5'
     inputNumber4 = {

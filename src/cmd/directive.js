@@ -6,6 +6,7 @@ export default class Directive {
          * 2、只写v-number.3，则代表3位正负小数
          * 3、只写v-number="正则表达式",则代表自定义校验规则
          * 4、只写v-number="{ min: '0', max: '10' }"，则代表
+         * 5、只写v-number="正则表达式",则代表自定义校验规则
          */
         Vue.directive('number', {
             bind: (el, binding, vnode) => {
@@ -43,12 +44,17 @@ export default class Directive {
                  * @returns {string}
                  */
                 function getType(binding) {
-                    if (binding.rawName === 'v-number') {
+                    if (binding.rawName === 'v-number' && !binding.expression) {
                         return 'NUMBER'
                     } else if (/v-number\.\d/g.test(binding.rawName) && !binding.expression){
                         return 'FLOAT'
                     } else if (/v-number\.\d/g.test(binding.rawName) && binding.expression) {
-                        return 'VALIDATE'
+                        return 'VALIDATE-FLOAT'
+                    } else if (binding.rawName === 'v-number' && binding.expression) {
+                        if (/^\/.*\//g.test(binding.expression.substring(0, binding.expression.length))) {
+                            return 'REGEXP'
+                        }
+                        return 'VALIDATE-INT'
                     } else {
                         console.error('不合法的指令语法，请遵从组件规则')
                     }
@@ -87,10 +93,15 @@ export default class Directive {
                  * 初始化
                  */
                 function init(ele, binding, vnode) {
-                    if (getType(binding) === 'NUMBER') { // 首次绑定校验v.number
+                    if (getType(binding) === 'NUMBER' || getType(binding) === 'VALIDATE-INT') { // 首次绑定校验v.number
                         validateNumberOnly(ele, binding, vnode, '')
+                        if (getType(binding) === 'VALIDATE-INT') {
+                            validateMinAndMax(ele, binding, vnode, '', getFloatNumber(binding))
+                        }
                     } else if(getType(binding) === 'FLOAT') { // 首次绑定校验v.number.3
                         validateNumberWithFloat(ele, binding, vnode, '', getFloatNumber(binding))
+                    } else if (getType(binding) === 'REGEXP') {
+                        // 暂时先不做
                     } else { // 首次绑定校验v.number.3="{ min: '0.000', max: '10000.000' }"
                         validateNumberWithFloat(ele, binding, vnode, '', getFloatNumber(binding))
                         validateMinAndMax(ele, binding, vnode, '', getFloatNumber(binding))
@@ -126,8 +137,14 @@ export default class Directive {
                         ele.onkeyup = function ($event) {
                             console.dir($event)
                             let bindModel = vnode.data.model.expression
-                            if (setPermitKey().indexOf($event.which) > -1) {
-                                if (getType(binding) === 'NUMBER') {
+                            if (getType(binding) === 'REGEXP') {
+                                if (eval(binding.expression).test($event.target.value)) {
+                                    setModelValue(ele, binding, vnode, bindModel, $event.target.value)
+                                } else {
+                                    setModelValue(ele, binding, vnode, bindModel, '')
+                                }
+                            } else if (setPermitKey().indexOf($event.which) > -1) {
+                                if (getType(binding) === 'NUMBER' || getType(binding) === 'VALIDATE-INT') {
                                     // 1、只写v-number，则只能输入数字
                                     validateNumberOnly(ele, binding, vnode, $event)
                                 } else {
@@ -148,7 +165,7 @@ export default class Directive {
                             } else {
                                 let oValue = ''
                                 oValue = $event.target.value.replace(/[\u4E00-\u9FFF]/g,'')
-                                if (getType(binding) === 'NUMBER') {
+                                if (getType(binding) === 'NUMBER' || getType(binding) === 'VALIDATE-INT') {
                                     oValue = oValue.replace(/[^0-9]/g,'')
                                 } else {
                                     oValue = $event.target.value.replace(/[^0-9\+\-\.]/g,'')
@@ -166,11 +183,30 @@ export default class Directive {
                             // onkeydown与onkeyup在中文输入法下+-.的which值不同
                             if (setPermitKey().concat([229]).indexOf($event.which) > -1) {
                                 // v-number
-                                if (getType(binding) === 'NUMBER') {
+                                if (getType(binding) === 'NUMBER' || getType(binding) === 'VALIDATE-INT') {
                                     if (/(?<=\S+)(\-|\+|\=|\.)/g.test(equalValue) || !/^(\+|\-)?\d*$/g.test(equalValue)) {
                                         $event.preventDefault()
                                     }
-                                } else if (getType(binding) === 'FLOAT' || getType(binding) === 'VALIDATE'){
+                                    if (getType(binding) === 'VALIDATE-INT') {
+                                        // 这种方法可以实现更为精确的控制，为了和先前的做法一致，先不用吧
+                                        // if (($event.which >= 48 && $event.which <= 57) || ($event.which >= 96 && $event.which <= 105)) {
+                                        //     let min = binding.expression.match(/(?<=min:\s*[\'|\"]).*(?=[\'|\"],\s?max)/g)[0].trim()
+                                        //     let max = binding.expression.match(/(?<=,\s*max\s*:\s*[\'|\"]).*(?=[\'|\"]\s*})/g)[0].trim()
+                                        //     // 先判断光标的位置
+                                        //     console.log('光标位置='+$event.target.selectionStart)
+                                        //     let strLength = $event.target.value.length
+                                        //     let cursorIndex = $event.target.selectionStart
+                                        //     let lastValue = $event.target.value.substring(0,cursorIndex) + $event.key + $event.target.value.substring(cursorIndex,strLength)
+                                        //     console.log('最后的值='+lastValue)
+                                        //     if (parseInt(lastValue) > parseInt(max)) {
+                                        //         $event.preventDefault()
+                                        //     }
+                                        //     if (parseInt(lastValue) < parseInt(min)) {
+                                        //         $event.preventDefault()
+                                        //     }
+                                        // }
+                                    }
+                                } else if (getType(binding) === 'FLOAT' || getType(binding) === 'VALIDATE-FLOAT'){
                                     // v-number.3
                                     if (/(?<=\S+)(\-|\+|\=)/g.test(equalValue)) {
                                         $event.preventDefault()
@@ -192,17 +228,31 @@ export default class Directive {
                                     // todo
                                 }
                             } else {
-                                $event.preventDefault()
+                                if (getType(binding) === 'REGEXP') {
+                                    // 不处理
+                                } else {
+                                    $event.preventDefault()
+                                }
                             }
                         }
                         ele.onblur = function ($event) {
-                            if (getType(binding) === 'NUMBER') {
+                            if (getType(binding) === 'NUMBER' || getType(binding) === 'VALIDATE-INT') {
                                 validateNumberOnly(ele, binding, vnode, $event)
-                            }
-                            if (getType(binding) === 'FLOAT' || getType(binding) === 'VALIDATE') {
-                                validateNumberWithFloat(ele, binding, vnode, $event, getFloatNumber(binding))
-                                if (getType(binding) === 'VALIDATE') {
+                                if (getType(binding) === 'VALIDATE-INT') {
                                     validateMinAndMax(ele, binding, vnode, $event)
+                                }
+                            }
+                            if (getType(binding) === 'FLOAT' || getType(binding) === 'VALIDATE-FLOAT') {
+                                validateNumberWithFloat(ele, binding, vnode, $event, getFloatNumber(binding))
+                                if (getType(binding) === 'VALIDATE-FLOAT') {
+                                    validateMinAndMax(ele, binding, vnode, $event)
+                                }
+                            }
+                            if (getType(binding) === 'REGEXP') {
+                                if (eval(binding.expression).test($event.target.value)) {
+                                    setModelValue(ele, binding, vnode, bindModel, $event.target.value)
+                                } else {
+                                    setModelValue(ele, binding, vnode, bindModel, '')
                                 }
                             }
                         }
@@ -218,16 +268,14 @@ export default class Directive {
                  * @param event
                  */
                 function validateNumberOnly(ele, binding, vnode, event){
-                    if (!binding.expression) {
-                        let regExp = new RegExp("^(\\+|\\-)?\\d*$")
-                        let value = event ? event.target.value : ele.value
-                        let bindModel = vnode.data.model.expression
-                        if (value && regExp.test(value)) {
-                            setModelValue(ele, binding, vnode, bindModel, removeZero(value))
-                        } else {
-                            let oValue = value.replace(/(?<=\S+)(\-|\+)|[^0-9\+\-]/g, '')
-                            setModelValue(ele, binding, vnode, bindModel, removeZero(oValue))
-                        }
+                    let regExp = new RegExp("^(\\+|\\-)?\\d*$")
+                    let value = event ? event.target.value : ele.value
+                    let bindModel = vnode.data.model.expression
+                    if (value && regExp.test(value)) {
+                        setModelValue(ele, binding, vnode, bindModel, removeZero(value))
+                    } else {
+                        let oValue = value.replace(/(?<=\S+)(\-|\+)|[^0-9\+\-]/g, '')
+                        setModelValue(ele, binding, vnode, bindModel, removeZero(oValue))
                     }
                 }
 
@@ -239,7 +287,7 @@ export default class Directive {
                  * @param event
                  */
                 function validateNumberWithFloat(ele, binding, vnode, event){
-                    if (getType(binding) === 'VALIDATE' || getType(binding) === 'FLOAT') {
+                    if (getType(binding) === 'VALIDATE-FLOAT' || getType(binding) === 'FLOAT') {
                         let bit = getFloatNumber(binding)
                         let regExp = new RegExp('^(\\-|\\+)?\\d*\\.?\\d{0,' + bit + '}$')
                         let value = event ? event.target.value : ele.value
@@ -276,13 +324,24 @@ export default class Directive {
                     } else {
                         console.log('格式正确')
                     }
-                    if (parseFloat(value) < parseFloat(min)) {
-                        setModelValue(ele, binding, vnode, bindModel, min)
-                    } else if (parseFloat(value) > parseFloat(max)) {
-                        setModelValue(ele, binding, vnode, bindModel, max)
+                    if (getType(binding) === 'VALIDATE-FLOAT') {
+                        if (parseFloat(value) < parseFloat(min)) {
+                            setModelValue(ele, binding, vnode, bindModel, min)
+                        } else if (parseFloat(value) > parseFloat(max)) {
+                            setModelValue(ele, binding, vnode, bindModel, max)
+                        } else {
+                            console.log('格式化正常')
+                        }
                     } else {
-                        console.log('格式化正常')
+                        if (parseInt(value) < parseInt(min)) {
+                            setModelValue(ele, binding, vnode, bindModel, min)
+                        } else if (parseInt(value) > parseInt(max)) {
+                            setModelValue(ele, binding, vnode, bindModel, max)
+                        } else {
+                            console.log('格式化正常')
+                        }
                     }
+
                 }
                 // 初始化绑定
                 init(getElement(), binding, vnode)
