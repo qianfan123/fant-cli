@@ -3,14 +3,14 @@
         <!--<h1>数字格式化</h1>-->
         <h2>只写v-number，则只能输入正负整数{{inputNumber1}}</h2>
         <el-input type="text" v-model="inputNumber1" v-number></el-input>
-        <!--<h2>只写v-number.3，则代表3位正负小数{{inputNumber2}}</h2>-->
-        <!--<el-input type="text" v-model="inputNumber2" v-number.3></el-input>-->
+        <h2>只写v-number.3，则代表3位正负小数{{inputNumber2}}</h2>
+        <el-input type="text" v-model="inputNumber2" v-number.3></el-input>
         <h2>只写v-number.3="{ min: '0.000', max: '10000.003' }",则代表最大值为10000.003最小值为0.000的三位小数{{inputNumber3}}</h2>
         <el-input type="text" v-model="inputNumber3" v-number.3="{ min:'0.000', max: '10000.003' }"></el-input>
         <h2>只写v-number="{ min: '0', max: '10000' }",则代表最大值为10000最小值为0的整数{{inputNumber5}}</h2>
         <el-input type="text" v-model="inputNumber5" v-number="{ min:'0', max: '10000' }"></el-input>
         <h2>只写v-number="/^\d+/g",则代表自定义规则{{inputNumber6}}</h2>
-        <el-input type="text" v-model="inputNumber6" v-number="/^\d+/g"></el-input>
+        <el-input type="text" v-model="inputNumber6" v-number="/^\d+$/g"></el-input>
 
 
         <h1>飘窗内容自定义</h1>
@@ -58,7 +58,7 @@
                     label="日期"
             >
                 <template slot-scope="scope">
-                    <!--<el-input v-model="scope.row.date" ref="date" v-number.3></el-input>-->
+                    <el-input v-model="scope.row.date" ref="date" v-number.3></el-input>
                 </template>
             </el-table-column>
             <el-table-column

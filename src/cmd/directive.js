@@ -101,7 +101,13 @@ export default class Directive {
                     } else if(getType(binding) === 'FLOAT') { // 首次绑定校验v.number.3
                         validateNumberWithFloat(ele, binding, vnode, '', getFloatNumber(binding))
                     } else if (getType(binding) === 'REGEXP') {
-                        // 暂时先不做
+                        if (getType(binding) === 'REGEXP') {
+                            if (eval(binding.expression).test(ele.value)) {
+                                setModelValue(ele, binding, vnode, vnode.data.model.expression, ele.value)
+                            } else {
+                                setModelValue(ele, binding, vnode, vnode.data.model.expression, '')
+                            }
+                        }
                     } else { // 首次绑定校验v.number.3="{ min: '0.000', max: '10000.000' }"
                         validateNumberWithFloat(ele, binding, vnode, '', getFloatNumber(binding))
                         validateMinAndMax(ele, binding, vnode, '', getFloatNumber(binding))
@@ -250,9 +256,9 @@ export default class Directive {
                             }
                             if (getType(binding) === 'REGEXP') {
                                 if (eval(binding.expression).test($event.target.value)) {
-                                    setModelValue(ele, binding, vnode, bindModel, $event.target.value)
+                                    setModelValue(ele, binding, vnode, vnode.data.model.expression, $event.target.value)
                                 } else {
-                                    setModelValue(ele, binding, vnode, bindModel, '')
+                                    setModelValue(ele, binding, vnode, vnode.data.model.expression, '')
                                 }
                             }
                         }
