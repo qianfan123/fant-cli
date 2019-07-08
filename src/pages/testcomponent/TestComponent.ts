@@ -1,14 +1,8 @@
 import { Component, Vue } from 'vue-property-decorator'
-import AutoBroadcast from 'cmp/autobroadcast/AutoBroadcast.vue'
 import MyDialog from 'pages/testcomponent/MyDialog.vue'
-import RichText from 'cmp/richtext/RichText.vue'
-import TreeTable from 'cmp/treetable/TreeTable.vue'
 @Component({
     name: 'TestComponent',
     components: {
-        AutoBroadcast,
-        RichText,
-        TreeTable
     }
 })
 export default class TestComponent extends Vue {
