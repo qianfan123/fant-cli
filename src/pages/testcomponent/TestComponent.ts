@@ -14,7 +14,7 @@ import RankList from 'cmp/storeRank/RankList.vue'
 import BlockPanelItem from 'cmp/blockPanelItem/BlockPanelItem.vue'
 import InputDay from 'cmp/inputday/input-day.vue'
 import InputFormat from 'cmp/inputformat/input-format.vue'
-import vueJsonEditor from 'vue-json-editor'
+import JsonEdit from 'cmp/json-edit/JsonEdit.vue'
 @Component({
     name: 'TestComponent',
     components: {
@@ -32,7 +32,7 @@ import vueJsonEditor from 'vue-json-editor'
         BlockPanelItem,
         InputDay,
         InputFormat,
-        vueJsonEditor
+        JsonEdit
     }
 })
 export default class TestComponent extends Vue {
@@ -47,7 +47,12 @@ export default class TestComponent extends Vue {
     inputNumber4 = {
         aa: '4.9'
     }
-
+    option = {
+        mode: 'code',
+        indentation: 2,
+        search: true,
+        language: 'zh-CN'
+    }
     json = {
         "Array": [1, 2, 3],
         "Boolean": true,

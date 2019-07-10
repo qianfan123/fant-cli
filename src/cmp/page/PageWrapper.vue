@@ -7,7 +7,7 @@
       </div>
     </header>
     <slot></slot>
-    <footer>copyright© 2019 海鼎研发部出品</footer>
+    <footer>copyright©&nbsp;&nbsp;{{getYear}}&nbsp;&nbsp;海鼎研发部出品</footer>
   </div>
 </template>
 

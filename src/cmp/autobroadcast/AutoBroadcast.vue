@@ -77,7 +77,6 @@
             showMarquee() {
                 this.animate = true;
                 this.timer500 = setTimeout( () => {
-                    console.dir(this.broadcastArray)
                     this.broadcastArray.push(this.broadcastArray[0]);
                     this.broadcastArray.shift();
                     this.animate = false;
@@ -87,12 +86,10 @@
                 this.$emit('get-select', item)
             },
             doCancelTimer() {
-                console.log('mouseover')
                 clearInterval(this.timer2000);
                 clearTimeout(this.timer500)
             },
             doStartTimer() {
-                console.log('mouseleave')
                 this.animate = false
                 // this.timer2000 = setInterval(this.showMarquee, this.time)
             }

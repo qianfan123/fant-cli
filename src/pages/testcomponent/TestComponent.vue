@@ -1,5 +1,10 @@
 <template>
     <div class="test">
+        <h2>jsonedit</h2>
+        <div>
+            {{json}}
+            <json-edit v-model="json" :option="option" :menuAble="false"></json-edit>
+        </div>
         <!--<h1>数字格式化</h1>-->
         <h2>只写v-number，则只能输入正负整数{{inputNumber1}}</h2>
         <el-input type="text" v-model="inputNumber1" v-number></el-input>
@@ -258,13 +263,6 @@
                 <rank-list color="#dd6b4d" title="闵行区火锅排行榜" :rankData="rankList"></rank-list>
             </div>
         </div>
-        <h2>jsonedit</h2>
-        <vue-json-editor
-                style="height: 400px"
-                v-model="json"
-                mode="code"
-                :show-btns="false"
-                @json-change="onJsonChange"></vue-json-editor>
     </div>
 </template>
 

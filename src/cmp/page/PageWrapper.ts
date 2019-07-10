@@ -11,4 +11,7 @@ export default class PageWrapper extends Vue {
     title: string
     @Prop()
     panelArray: object[]
+    get getYear() {
+        return new Date().getFullYear()
+    }
 }
